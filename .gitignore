@@ -1,0 +1,68 @@
+# Dependencies
+node_modules/
+
+# Next.js
+.next/
+out/
+
+# Build output
+dist/
+build/
+
+# Environment variables — NEVER commit these
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+.env.production
+
+# Vercel
+.vercel
+
+# TypeScript
+*.tsbuildinfo
+next-env.d.ts
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# Package manager locks (keep only one — this project uses npm)
+yarn.lock
+pnpm-lock.yaml
+
+# Graphify output — generated, not source
+graphify-out/
+.graphifyignore
+
+# Claude / session management — local only
+.claude/
+memory/
+context/
+peers/
+DELIBERATION.md
+
+# PDF briefs — sensitive, not source
+*.pdf
+
+# Local utility scripts with hardcoded paths
+build_brief.js
+
+# Misc
+*.pem
+.cache/
