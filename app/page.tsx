@@ -9,6 +9,7 @@ import {
   BellOff,
   LayoutGrid,
   Users,
+  Phone,
   ArrowRight,
   CheckCircle2,
 } from "lucide-react";
@@ -17,7 +18,11 @@ import { CTAButton } from "@/components/ui/CTAButton";
 import { CalloutBlock } from "@/components/ui/CalloutBlock";
 import { FadeUp } from "@/components/ui/FadeUp";
 import { DiagonalDivider } from "@/components/ui/DiagonalDivider";
+import { ParticleField } from "@/components/ui/ParticleField";
+import { TiltCard } from "@/components/ui/TiltCard";
+import { TypewriterGlitch } from "@/components/ui/TypewriterGlitch";
 import { PRICING_TIERS } from "@/lib/constants";
+import { cn } from "@/lib/utils";
 
 export const metadata: Metadata = {
   title: "Aureon Bridge — AI Automation for Independent Businesses",
@@ -54,15 +59,19 @@ export default function HomePage() {
 // ─── 1. Hero ──────────────────────────────────────────────────────────────────
 function HeroSection() {
   return (
-    <section className="bg-navy text-white dot-grid">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-24 md:py-32">
+    <section className="relative bg-navy text-white overflow-hidden">
+      <ParticleField />
+      <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-24 md:py-32">
         <div className="max-w-3xl">
           {/* Staggered entrance — each child delayed 150ms */}
-          <h1
-            className="hero-anim text-4xl sm:text-5xl md:text-6xl font-bold leading-[1.1] tracking-tight mb-6"
-            style={{ animationDelay: "0ms" }}
-          >
-            Your admin process is bleeding your profits.
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold leading-[1.1] tracking-tight mb-6">
+            <TypewriterGlitch
+              text="Is your admin process bleeding profit?"
+              speed={45}
+              glitchChance={0.12}
+              startDelay={300}
+              className="font-mono"
+            />
           </h1>
           <p
             className="hero-anim text-lg sm:text-xl text-cream/80 leading-relaxed mb-10 max-w-2xl"
@@ -171,13 +180,8 @@ function HowItWorksSection() {
     },
     {
       number: "04",
-      title: "Run",
-      body: "We manage and monitor your automations on an ongoing basis. When something breaks or needs updating, we handle it. You don't have to think about it.",
-    },
-    {
-      number: "05",
-      title: "Optimize",
-      body: "Monthly reviews to measure what's working, refine what isn't, and expand your automation coverage as your business grows.",
+      title: "Run & Optimize",
+      body: "We manage and monitor your automations on an ongoing basis. Monthly reviews measure what's working, refine what isn't, and expand coverage as your business grows. You don't have to think about it.",
     },
   ];
 
@@ -191,30 +195,24 @@ function HowItWorksSection() {
             for it.
           </h2>
           <p className="text-grey text-base mb-14">
-            Five steps. No guesswork. A system that works.
+            Four steps. No guesswork. A system that works.
           </p>
         </FadeUp>
 
         <div className="space-y-0">
           {steps.map((step, i) => (
             <FadeUp key={step.number} delay={i * 80}>
-              {/* overflow-hidden keeps the decorative number from breaking layout */}
-              <div className="relative flex gap-8 py-9 border-b border-gray-100 last:border-b-0 overflow-hidden">
-                {/* Decorative large background number */}
+              <div className="relative py-9 border-b border-gray-100 last:border-b-0 overflow-hidden">
+                {/* Ghost number — only visual step marker, visible at all sizes */}
                 <span
                   aria-hidden="true"
-                  className="hidden md:block absolute right-0 top-1/2 -translate-y-1/2 text-[160px] font-black leading-none select-none pointer-events-none text-navy/[0.04]"
+                  className="absolute right-0 top-1/2 -translate-y-1/2 text-[64px] sm:text-[120px] md:text-[160px] font-black leading-none select-none pointer-events-none text-navy/[0.045]"
                 >
                   {step.number}
                 </span>
 
-                {/* Step number (visible) */}
-                <div className="flex-shrink-0 w-10">
-                  <span className="text-2xl font-bold text-gold">{step.number}</span>
-                </div>
-
                 {/* Step content */}
-                <div className="flex-1 relative z-10">
+                <div className="relative z-10">
                   <h3 className="text-base font-bold text-navy mb-2">{step.title}</h3>
                   <p className="text-sm text-grey leading-relaxed max-w-2xl">{step.body}</p>
                 </div>
@@ -267,6 +265,11 @@ function ServicesSection() {
       title: "CRM Integration",
       body: "Your customer data in one place, connected to every other tool we build. No more copying and pasting between systems.",
     },
+    {
+      icon: <Phone size={22} />,
+      title: "AI Phone Receptionist",
+      body: "An AI that answers calls, qualifies leads, books appointments, and handles common questions — so no call goes unanswered and no opportunity slips through.",
+    },
   ];
 
   return (
@@ -290,11 +293,13 @@ function ServicesSection() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {services.map((service, i) => (
             <FadeUp key={service.title} delay={i * 80}>
-              <div className="bg-white p-7 h-full hover:-translate-y-1 transition-transform duration-200">
-                <div className="text-gold mb-4">{service.icon}</div>
-                <h3 className="text-base font-bold text-navy mb-2">{service.title}</h3>
-                <p className="text-sm text-grey leading-relaxed">{service.body}</p>
-              </div>
+              <TiltCard className="h-full shadow-sm hover:shadow-lg transition-shadow duration-300">
+                <div className="bg-white p-7 h-full">
+                  <div className="text-gold mb-4">{service.icon}</div>
+                  <h3 className="text-base font-bold text-navy mb-2">{service.title}</h3>
+                  <p className="text-sm text-grey leading-relaxed">{service.body}</p>
+                </div>
+              </TiltCard>
             </FadeUp>
           ))}
         </div>
@@ -392,13 +397,15 @@ function PricingSection() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
           {PRICING_TIERS.map((tier, i) => (
             <FadeUp key={tier.id} delay={i * 80}>
-              <div
-                className={
+              <TiltCard
+                className={cn(
+                  "relative h-full",
                   tier.highlighted
-                    ? "bg-navy text-white p-7 relative h-full hover:-translate-y-1.5 transition-transform duration-200"
-                    : "bg-white p-7 relative h-full hover:-translate-y-1.5 transition-transform duration-200"
-                }
+                    ? "bg-navy text-white"
+                    : "bg-white shadow-sm hover:shadow-lg transition-shadow duration-300"
+                )}
               >
+              <div className="p-7 h-full">
                 {tier.highlighted && (
                   <span className="absolute top-0 right-6 -translate-y-1/2 bg-gold text-white text-[10px] font-bold tracking-widest uppercase px-3 py-1">
                     Most Popular
@@ -427,13 +434,6 @@ function PricingSection() {
                     /mo
                   </span>
                 </div>
-                <p
-                  className={`text-xs mb-5 ${
-                    tier.highlighted ? "text-goldlight" : "text-gold"
-                  }`}
-                >
-                  ${tier.setupFee.toLocaleString()} setup
-                </p>
                 <p
                   className={`text-xs leading-relaxed mb-6 ${
                     tier.highlighted ? "text-cream/70" : "text-grey"
@@ -471,6 +471,7 @@ function PricingSection() {
                   Get started →
                 </Link>
               </div>
+              </TiltCard>
             </FadeUp>
           ))}
         </div>

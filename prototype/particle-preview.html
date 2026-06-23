@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aureon Bridge — Particle Preview</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:   #1A1A2E;
+      --gold:   #B8860B;
+      --goldlt: #D4AF37;
+      --grey:   #4A4A5A;
+      --cream:  #FAF7F0;
+    }
+
+    body {
+      background: var(--navy);
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      color: var(--cream);
+      overflow-x: hidden;
+    }
+
+    /* ── Hero ── */
+    #hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 0 8vw;
+      overflow: hidden;
+    }
+
+    #tsparticles {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+
+    /* cursor glow — injected by JS, sits above particles, below text */
+    #cursor-glow {
+      position: fixed;
+      pointer-events: none;
+      border-radius: 50%;
+      width: 180px;
+      height: 180px;
+      background: radial-gradient(
+        circle,
+        rgba(212, 175, 55, 0.32) 0%,
+        rgba(184, 134, 11, 0.12) 45%,
+        transparent 70%
+      );
+      transform: translate(-50%, -50%);
+      transition: opacity 0.45s ease, width 0.35s ease, height 0.35s ease;
+      opacity: 0;
+      z-index: 2;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 3;
+      max-width: 680px;
+    }
+
+    .section-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.25rem;
+    }
+
+    h1 {
+      font-size: clamp(2.2rem, 5vw, 3.8rem);
+      font-weight: 800;
+      line-height: 1.1;
+      color: var(--cream);
+      margin-bottom: 1.5rem;
+      letter-spacing: -0.02em;
+    }
+
+    h1 span { color: var(--gold); }
+
+    .subheadline {
+      font-size: clamp(1rem, 2vw, 1.2rem);
+      color: rgba(250, 247, 240, 0.72);
+      line-height: 1.65;
+      margin-bottom: 2.5rem;
+      max-width: 560px;
+    }
+
+    .cta-btn {
+      display: inline-block;
+      background: var(--gold);
+      color: var(--navy);
+      font-size: 1rem;
+      font-weight: 700;
+      padding: 0.85rem 2rem;
+      border-radius: 4px;
+      text-decoration: none;
+      letter-spacing: 0.01em;
+      transition: background 0.2s, transform 0.15s;
+      cursor: pointer;
+      border: none;
+    }
+
+    .cta-btn:hover {
+      background: var(--goldlt);
+      transform: translateY(-2px);
+    }
+
+    .trust-note {
+      margin-top: 1.25rem;
+      font-size: 0.85rem;
+      color: rgba(250, 247, 240, 0.45);
+    }
+
+    /* ── Sample section below ── */
+    #below {
+      background: var(--cream);
+      padding: 6rem 8vw;
+      color: var(--navy);
+    }
+
+    #below h2 {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+
+    #below > p {
+      color: var(--grey);
+      line-height: 1.7;
+      max-width: 600px;
+    }
+
+    /* ── Service cards ── */
+    .cards {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+
+    .card {
+      position: relative;
+      background: #fff;
+      border-radius: 6px;
+      padding: 1.5rem;
+      width: 220px;
+      box-shadow: 0 2px 12px rgba(26, 26, 46, 0.07);
+      transition: box-shadow 0.25s ease;
+      cursor: default;
+      will-change: transform;
+      transform-style: preserve-3d;
+      overflow: hidden; /* clips vanilla-tilt glare */
+    }
+
+    .card:hover {
+      box-shadow: 0 12px 38px rgba(26, 26, 46, 0.15);
+    }
+
+    .card h3 {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 0.5rem;
+    }
+
+    .card p {
+      font-size: 0.83rem;
+      color: var(--grey);
+      line-height: 1.55;
+    }
+
+    /* ── Corner accent — two edges meeting at right angle ── */
+    .card-corner {
+      position: absolute;
+      width: 13px;
+      height: 13px;
+      pointer-events: none;
+      opacity: 0;
+      /* lines form at top-left by default; rotation moves to other corners */
+      border-top: 1.5px solid var(--gold);
+      border-left: 1.5px solid var(--gold);
+      transition: opacity 0.15s ease;
+    }
+
+    .card:hover .card-corner { opacity: 1; }
+
+    /* four corner positions + rotation to flip the L */
+    .card-corner.tl { top: 9px;  left: 9px;  transform: rotate(0deg);    }
+    .card-corner.tr { top: 9px;  right: 9px; transform: rotate(90deg);   left: auto; }
+    .card-corner.bl { bottom: 9px; left: 9px; transform: rotate(-90deg); top: auto;  }
+    .card-corner.br { bottom: 9px; right: 9px; transform: rotate(180deg); top: auto; left: auto; }
+
+    /* ── Debug bar ── */
+    .debug-bar {
+      position: fixed;
+      bottom: 0; left: 0; right: 0;
+      background: rgba(26, 26, 46, 0.92);
+      color: var(--gold);
+      font-size: 0.72rem;
+      font-family: monospace;
+      padding: 0.5rem 1rem;
+      text-align: center;
+      letter-spacing: 0.08em;
+      z-index: 999;
+    }
+
+    @media (max-width: 600px) {
+      h1 { font-size: 2rem; }
+      .card { width: 100%; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .cta-btn, .card, .card-corner { transition: none; }
+    }
+  </style>
+</head>
+<body>
+
+<div id="cursor-glow"></div>
+
+<!-- ── HERO ── -->
+<section id="hero">
+  <div id="tsparticles"></div>
+  <div class="hero-content">
+    <p class="section-label">AI Automation Agency</p>
+    <h1>Your admin process is<br><span>bleeding your profits.</span></h1>
+    <p class="subheadline">
+      Aureon Bridge builds custom AI automation systems that handle booking,
+      follow-up, and customer communication — so your team stops doing admin
+      and starts doing the work that actually pays.
+    </p>
+    <button class="cta-btn">Book a Free Consultation</button>
+    <p class="trust-note">Working with businesses in the DMV.</p>
+  </div>
+</section>
+
+<!-- ── BELOW HERO ── -->
+<section id="below">
+  <h2>What we automate</h2>
+  <p>Hover the cards — the gold corner tracks opposite to the tilt direction.</p>
+
+  <div class="cards">
+    <div class="card js-tilt">
+      <div class="card-corner tl"></div>
+      <h3>Booking Automation</h3>
+      <p>Appointments booked without a single phone call.</p>
+    </div>
+    <div class="card js-tilt">
+      <div class="card-corner tl"></div>
+      <h3>Customer Follow-Up</h3>
+      <p>Automated reminders and re-engagement sequences.</p>
+    </div>
+    <div class="card js-tilt">
+      <div class="card-corner tl"></div>
+      <h3>Social Media Content</h3>
+      <p>Posts drafted and scheduled without manual effort.</p>
+    </div>
+    <div class="card js-tilt">
+      <div class="card-corner tl"></div>
+      <h3>Google Ads Management</h3>
+      <p>Campaigns optimised on a consistent cadence.</p>
+    </div>
+  </div>
+</section>
+
+<div class="debug-bar">
+  PROTOTYPE — Resize to 375px for mobile sim &nbsp;|&nbsp; Particles: <span id="particle-count">loading…</span>
+</div>
+
+<!-- tsParticles v2 -->
+<script src="https://cdn.jsdelivr.net/npm/tsparticles@2.12.0/tsparticles.bundle.min.js"></script>
+
+<script>
+(async () => {
+  const isMobile      = window.matchMedia("(pointer: coarse)").matches;
+  const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const particleCount  = prefersReduced ? 0 : isMobile ? 32 : 92;
+
+  document.getElementById("particle-count").textContent =
+    prefersReduced ? "disabled (prefers-reduced-motion)" :
+    `${particleCount} (${isMobile ? "mobile" : "desktop"})`;
+
+  if (particleCount === 0) return;
+
+  await tsParticles.load("tsparticles", {
+    background: { color: { value: "transparent" } },
+    fpsLimit: 60,
+    detectRetina: true,
+    particles: {
+      number: {
+        value: particleCount,
+        density: { enable: true, area: 900 }
+      },
+      color: { value: ["#B8860B", "#D4AF37", "#FAF7F0"] },
+      shape: { type: "circle" },
+      opacity: {
+        value: 0.55,
+        random: { enable: true, minimumValue: 0.25 },
+        animation: { enable: true, speed: 0.4, minimumValue: 0.15, sync: false }
+      },
+      size: {
+        value: { min: 1, max: 2.5 },
+        random: { enable: true }
+      },
+      links: {
+        enable: true,
+        distance: 160,
+        color: "#B8860B",
+        opacity: 0.22,
+        width: 1
+      },
+      move: {
+        enable: true,
+        speed: 0.45,
+        direction: "none",
+        random: true,
+        straight: false,
+        outModes: { default: "bounce" }
+      }
+    },
+    interactivity: {
+      detectsOn: "window",
+      events: {
+        onHover: { enable: !isMobile, mode: "attract" },
+        onClick:  { enable: true,     mode: "push" },
+        resize: true
+      },
+      modes: {
+        attract: {
+          distance: 200,        // gravity field radius (px)
+          duration: 0.4,        // drift-back time after cursor leaves
+          easing: "ease-out-quad",
+          factor: 3,            // pull strength
+          maxSpeed: 40
+        },
+        push: { quantity: 3 }
+      }
+    }
+  });
+
+  /* ── Convergence glow ──────────────────────────────────────── */
+  if (isMobile || prefersReduced) return;
+
+  const glowEl   = document.getElementById("cursor-glow");
+  const heroEl   = document.getElementById("hero");
+  const NEAR_PX  = 55;   // radius counted as "converged"
+  const MIN_COUNT = 6;   // particles needed to trigger glow
+
+  let mouseX = -9999, mouseY = -9999, overHero = false;
+
+  heroEl.addEventListener("mouseenter", () => { overHero = true; });
+  heroEl.addEventListener("mouseleave", () => {
+    overHero = false;
+    glowEl.style.opacity = "0";
+  });
+
+  window.addEventListener("mousemove", (e) => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+    glowEl.style.left = mouseX + "px";
+    glowEl.style.top  = mouseY + "px";
+  });
+
+  setInterval(() => {
+    if (!overHero) return;
+    const container = tsParticles.domItem(0);
+    if (!container) return;
+
+    const particles = container.particles.array;
+    const r2 = NEAR_PX * NEAR_PX;
+    let nearby = 0;
+
+    for (const p of particles) {
+      const dx = p.position.x - mouseX;
+      const dy = p.position.y - mouseY;
+      if (dx * dx + dy * dy < r2) nearby++;
+    }
+
+    if (nearby >= MIN_COUNT) {
+      /* scale glow size and opacity with particle count */
+      const extra   = Math.min(nearby - MIN_COUNT, 12);
+      const opacity = (0.45 + extra * 0.04).toFixed(2);
+      const size    = 160 + extra * 10;
+      glowEl.style.opacity = opacity;
+      glowEl.style.width   = size + "px";
+      glowEl.style.height  = size + "px";
+    } else {
+      glowEl.style.opacity = "0";
+    }
+  }, 80);
+})();
+</script>
+
+<!-- Vanilla Tilt -->
+<script src="https://cdn.jsdelivr.net/npm/vanilla-tilt@1.8.1/dist/vanilla-tilt.min.js"></script>
+
+<script>
+(function () {
+  const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const isTouch        = window.matchMedia("(pointer: coarse)").matches;
+
+  if (prefersReduced || isTouch) return;
+
+  VanillaTilt.init(document.querySelectorAll(".js-tilt"), {
+    max: 8,
+    speed: 400,
+    glare: true,
+    "max-glare": 0.10,
+    scale: 1.03,
+    perspective: 800
+  });
+
+  /* ── Corner accent: tracks opposite quadrant to cursor ─────── */
+  document.querySelectorAll(".js-tilt").forEach(card => {
+    const corner    = card.querySelector(".card-corner");
+    let currentPos  = "tl";
+    let fadeTimeout = null;
+
+    function setCorner(pos) {
+      if (pos === currentPos) return;
+      currentPos = pos;
+
+      /* fade out → swap → fade back via CSS transition */
+      corner.style.opacity = "0";
+      clearTimeout(fadeTimeout);
+      fadeTimeout = setTimeout(() => {
+        /* remove all position classes, set new one */
+        corner.className = "card-corner " + pos;
+        corner.style.opacity = ""; /* CSS :hover rule takes over */
+      }, 90);
+    }
+
+    card.addEventListener("mousemove", (e) => {
+      const r      = card.getBoundingClientRect();
+      const inLeft = (e.clientX - r.left)  < r.width  / 2;
+      const inTop  = (e.clientY - r.top)   < r.height / 2;
+
+      /* opposite diagonal */
+      if ( inLeft &&  inTop) setCorner("br");
+      if (!inLeft &&  inTop) setCorner("bl");
+      if ( inLeft && !inTop) setCorner("tr");
+      if (!inLeft && !inTop) setCorner("tl");
+    });
+
+    card.addEventListener("mouseleave", () => {
+      clearTimeout(fadeTimeout);
+      currentPos = "tl";
+      corner.className = "card-corner tl";
+      corner.style.opacity = "";
+    });
+  });
+})();
+</script>
+
+</body>
+</html>
