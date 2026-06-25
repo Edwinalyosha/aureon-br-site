@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter, Space_Mono } from "next/font/google";
+import Script from "next/script";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import "./globals.css";
@@ -71,6 +72,13 @@ export default function RootLayout({
         <Navbar />
         <main id="main-content">{children}</main>
         <Footer />
+        <Script id="aurea-chat-config" strategy="afterInteractive">
+          {`window.AureaChatConfig = { account_id: "aureon_bridge", webhook_url: "https://chatbot.archineer-ug.com/chat" };`}
+        </Script>
+        <Script
+          src="https://chatbot.archineer-ug.com/widget.js"
+          strategy="afterInteractive"
+        />
       </body>
     </html>
   );
