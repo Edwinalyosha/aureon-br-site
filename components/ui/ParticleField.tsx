@@ -133,8 +133,8 @@ export function ParticleField() {
       },
     },
     interactivity: {
-      // "canvas" is more reliable than "window" on Chromium-based browsers (Edge, Chrome)
-      detectsOn: "canvas",
+      // "window" so the attract effect fires even when the mouse is over overlaid cards/text
+      detectsOn: "window",
       events: {
         onHover: { enable: cfg.interactive, mode: "attract" },
         onClick:  { enable: true, mode: "push" },
