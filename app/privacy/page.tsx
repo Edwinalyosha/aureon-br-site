@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Privacy Policy",
@@ -60,8 +60,8 @@ export default function PrivacyPage() {
           <Section title="6. Data Retention">
             We retain your intake data for [period — define before launch]. You may
             request deletion of your data at any time by contacting{" "}
-            <a href="mailto:hello@aureonbridge.com" className="text-gold hover:text-goldlight">
-              hello@aureonbridge.com
+            <a href="mailto:info@aureonnbridge.com" className="text-gold hover:text-goldlight">
+              info@aureonnbridge.com
             </a>
             .
           </Section>
@@ -74,8 +74,8 @@ export default function PrivacyPage() {
 
           <Section title="8. Contact">
             Questions about this policy:{" "}
-            <a href="mailto:hello@aureonbridge.com" className="text-gold hover:text-goldlight">
-              hello@aureonbridge.com
+            <a href="mailto:info@aureonnbridge.com" className="text-gold hover:text-goldlight">
+              info@aureonnbridge.com
             </a>
           </Section>
         </div>

@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import { ArrowRight } from "lucide-react";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 
@@ -68,10 +68,10 @@ export default function ContactPage() {
             <p className="text-sm text-grey">
               Prefer email?{" "}
               <a
-                href="mailto:hello@aureonbridge.com"
+                href="mailto:info@aureonnbridge.com"
                 className="text-gold font-medium hover:text-goldlight transition-colors"
               >
-                hello@aureonbridge.com
+                info@aureonnbridge.com
               </a>
             </p>
           </div>

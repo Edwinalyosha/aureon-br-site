@@ -1,4 +1,4 @@
-import Link from "next/link";
+﻿import Link from "next/link";
 import Image from "next/image";
 import { FOOTER_NAV, FOOTER_LEGAL } from "@/lib/constants";
 
@@ -77,10 +77,10 @@ export function Footer() {
             </p>
             <div className="space-y-4">
               <a
-                href="mailto:hello@aureonbridge.com"
+                href="mailto:info@aureonnbridge.com"
                 className="block text-sm text-gray-300 hover:text-white transition-colors"
               >
-                hello@aureonbridge.com
+                info@aureonnbridge.com
               </a>
               <Link
                 href="/contact"

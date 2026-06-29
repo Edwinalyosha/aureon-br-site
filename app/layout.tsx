@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import { Inter, Space_Mono } from "next/font/google";
 import Script from "next/script";
 import { Navbar } from "@/components/layout/Navbar";
@@ -56,7 +56,7 @@ export default function RootLayout({
               "@type": "ProfessionalService",
               name: "Aureon Bridge",
               url: "https://aureonbridge.com",
-              email: "hello@aureonbridge.com",
+              email: "info@aureonnbridge.com",
               description:
                 "Custom AI automation agency for independent businesses. Booking, follow-up, reviews, and operational dashboards — integrated into one system.",
               areaServed: {

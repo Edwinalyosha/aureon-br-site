@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Terms of Service",
@@ -78,8 +78,8 @@ export default function TermsPage() {
 
           <Section title="9. Contact">
             Questions about these Terms:{" "}
-            <a href="mailto:hello@aureonbridge.com" className="text-gold hover:text-goldlight">
-              hello@aureonbridge.com
+            <a href="mailto:info@aureonnbridge.com" className="text-gold hover:text-goldlight">
+              info@aureonnbridge.com
             </a>
           </Section>
         </div>
