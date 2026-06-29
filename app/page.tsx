@@ -5,7 +5,6 @@ import {
   Mail,
   MessageSquare,
   BarChart3,
-  GitMerge,
   BellOff,
   LayoutGrid,
   Users,
@@ -20,7 +19,6 @@ import { FadeUp } from "@/components/ui/FadeUp";
 import { DiagonalDivider } from "@/components/ui/DiagonalDivider";
 import { ParticleField } from "@/components/ui/ParticleField";
 import { TiltCard } from "@/components/ui/TiltCard";
-import { TypewriterGlitch } from "@/components/ui/TypewriterGlitch";
 import { PRICING_TIERS } from "@/lib/constants";
 import { cn } from "@/lib/utils";
 
@@ -47,7 +45,7 @@ export default function HomePage() {
       <DiagonalDivider from="#ffffff" to="#FAF7F0" />
       <ServicesSection />
       <DiagonalDivider from="#FAF7F0" to="#ffffff" flip />
-      <ProofSection />
+      {/* <ProofSection /> — hidden until Morgatech quote is confirmed */}
       <DiagonalDivider from="#ffffff" to="#FAF7F0" />
       <PricingSection />
       <DiagonalDivider from="#FAF7F0" to="#1A1A2E" flip />
@@ -64,22 +62,14 @@ function HeroSection() {
       <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-24 md:py-32">
         <div className="max-w-3xl">
           {/* Staggered entrance — each child delayed 150ms */}
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold leading-[1.1] tracking-tight mb-6">
-            <TypewriterGlitch
-              text="Is your admin process bleeding profit?"
-              speed={45}
-              glitchChance={0.12}
-              startDelay={300}
-              className="font-mono"
-            />
+          <h1 className="hero-anim text-4xl sm:text-5xl md:text-6xl font-bold leading-[1.1] tracking-tight mb-6">
+            We automate. You scale.
           </h1>
           <p
-            className="hero-anim text-lg sm:text-xl text-cream/80 leading-relaxed mb-10 max-w-2xl"
-            style={{ animationDelay: "150ms" }}
+            className="hero-anim text-base sm:text-lg text-goldlight font-medium tracking-wide mb-10 max-w-2xl"
+            style={{ animationDelay: "100ms" }}
           >
-            Aureon Bridge builds custom AI automation systems that handle
-            booking, follow-up, and customer communication — so your team stops
-            doing admin and starts doing the work that actually pays.
+            One system. Booking, follow-up, and customer communication — all connected, all automated.
           </p>
           <div
             className="hero-anim flex flex-wrap items-center gap-4 mb-10"
@@ -112,18 +102,18 @@ function ProblemSection() {
   const pains = [
     {
       icon: <BellOff size={22} />,
-      title: "Missed Follow-Ups",
-      body: "Customers who called and never heard back. Estimates that sat in someone's inbox. Reviews you meant to respond to. Every gap costs you a job.",
+      title: "Every Lead Followed Up",
+      body: "Automated follow-up sequences that reach every customer on time, every time. No job lost to a message that slipped through.",
     },
     {
       icon: <LayoutGrid size={22} />,
-      title: "Fragmented Systems",
-      body: "Your booking tool doesn't talk to your CRM. Your CRM doesn't talk to your review platform. You're paying for tools that make you work harder, not smarter.",
+      title: "Internal Ops on Autopilot",
+      body: "Intake, onboarding, and daily task workflows — standardized and automated so your team runs consistently, whether you're there or not. Train once. Run forever.",
     },
     {
       icon: <Users size={22} />,
-      title: "Hiring to Patch the Problem",
-      body: "Bringing on admin staff to manage what software should handle automatically. Good people spending time on work that shouldn't require a person.",
+      title: "Scale Without Adding Headcount",
+      body: "Let automation handle the work your team shouldn't be doing. Your people focus on what moves the business — not on keeping up with admin.",
     },
   ];
 
@@ -131,16 +121,15 @@ function ProblemSection() {
     <section className="bg-cream">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-28">
         <FadeUp>
-          <SectionLabel>The Problem</SectionLabel>
+          <SectionLabel>The Reality</SectionLabel>
           <h2 className="text-3xl sm:text-4xl font-bold text-navy leading-tight mb-6 max-w-2xl">
-            You&apos;re running a great operation. Your tools aren&apos;t.
+            Every growing business hits the same ceiling.
           </h2>
           <p className="text-grey text-base leading-relaxed mb-14 max-w-2xl">
-            Most independent business owners are managing four to seven separate
-            tools that don&apos;t communicate with each other. A booking system here,
-            a follow-up spreadsheet there, a review platform somewhere else.
-            Every gap between those tools is time your team spends on admin
-            instead of actual work. That&apos;s margin walking out the door.
+            62% of small business calls go unanswered — and 85% of those callers
+            never try back. Meanwhile, the average owner loses 24 working days a
+            year just to admin overhead. At Aureon Bridge, we say automate the
+            admin so you can focus on scaling your business.
           </p>
         </FadeUp>
 
@@ -166,22 +155,22 @@ function HowItWorksSection() {
     {
       number: "01",
       title: "Audit",
-      body: "We spend 60–90 minutes understanding your operation: the tools you use, the gaps you've noticed, and where time disappears. No assumptions, no generic recommendations.",
+      body: "We map your tools, your gaps, and where your time actually goes.",
     },
     {
       number: "02",
       title: "Map",
-      body: "We identify which automations will deliver the most impact for your specific setup — not a cookie-cutter package, a custom solution built around how you actually run.",
+      body: "We identify exactly which automations will move the needle for your operation.",
     },
     {
       number: "03",
       title: "Build",
-      body: "We build your automation stack and integrate it with your existing tools. You get a system that works the way your business works — not the other way around.",
+      body: "We build and integrate your automation stack around how you actually run.",
     },
     {
       number: "04",
       title: "Run & Optimize",
-      body: "We manage and monitor your automations on an ongoing basis. Monthly reviews measure what's working, refine what isn't, and expand coverage as your business grows. You don't have to think about it.",
+      body: "We manage, monitor, and improve your system on an ongoing basis.",
     },
   ];
 
@@ -191,30 +180,31 @@ function HowItWorksSection() {
         <FadeUp>
           <SectionLabel>How It Works</SectionLabel>
           <h2 className="text-3xl sm:text-4xl font-bold text-navy leading-tight mb-3 max-w-2xl">
-            We bridge the gap between your operation and what AI can actually do
-            for it.
+            How we get you past the ceiling.
           </h2>
           <p className="text-grey text-base mb-14">
             Four steps. No guesswork. A system that works.
           </p>
         </FadeUp>
 
-        <div className="space-y-0">
+        <div className="relative max-w-lg">
+          {/* Vertical connecting line */}
+          <div
+            aria-hidden="true"
+            className="absolute left-5 top-5 bottom-5 w-px bg-gold/30"
+          />
+
           {steps.map((step, i) => (
             <FadeUp key={step.number} delay={i * 80}>
-              <div className="relative py-9 border-b border-gray-100 last:border-b-0 overflow-hidden">
-                {/* Ghost number — only visual step marker, visible at all sizes */}
-                <span
-                  aria-hidden="true"
-                  className="absolute right-0 top-1/2 -translate-y-1/2 text-[64px] sm:text-[120px] md:text-[160px] font-black leading-none select-none pointer-events-none text-navy/[0.045]"
-                >
-                  {step.number}
-                </span>
-
-                {/* Step content */}
-                <div className="relative z-10">
-                  <h3 className="text-base font-bold text-navy mb-2">{step.title}</h3>
-                  <p className="text-sm text-grey leading-relaxed max-w-2xl">{step.body}</p>
+              <div className="relative flex gap-6 pb-10 last:pb-0">
+                {/* Number circle */}
+                <div className="flex-shrink-0 w-10 h-10 rounded-full bg-gold text-white text-sm font-bold flex items-center justify-center z-10 ring-4 ring-white">
+                  {i + 1}
+                </div>
+                {/* Content */}
+                <div className="pt-1.5">
+                  <h3 className="text-base font-bold text-navy mb-1.5">{step.title}</h3>
+                  <p className="text-sm text-grey leading-relaxed">{step.body}</p>
                 </div>
               </div>
             </FadeUp>
@@ -243,32 +233,27 @@ function ServicesSection() {
     {
       icon: <CalendarCheck size={22} />,
       title: "Booking Automation",
-      body: "AI-powered scheduling that handles inbound requests, confirms appointments, and sends reminders — without a single manual touchpoint.",
+      body: "Handles inbound requests, confirms appointments, and sends reminders — no manual touchpoints required.",
     },
     {
       icon: <Mail size={22} />,
       title: "Automated Follow-Up",
-      body: "Email and SMS sequences that nurture customers post-visit, request reviews, and re-engage lapsed clients on a schedule you set once and forget.",
+      body: "Email sequences that nurture customers post-visit, request reviews, and re-engage lapsed clients — set once, running in the background.",
     },
     {
       icon: <MessageSquare size={22} />,
       title: "Customer Communication",
-      body: "AI-assisted responses to inquiries and reviews, plus a conversational booking intake that feels human even when it's not.",
+      body: "AI-assisted responses to customer inquiries and reviews — fast, consistent, and on-brand.",
     },
     {
       icon: <BarChart3 size={22} />,
       title: "Reporting & Visibility",
-      body: "A single dashboard showing your booking rate, follow-up performance, review scores, and revenue trends — updated in real time.",
-    },
-    {
-      icon: <GitMerge size={22} />,
-      title: "CRM Integration",
-      body: "Your customer data in one place, connected to every other tool we build. No more copying and pasting between systems.",
+      body: "One dashboard. Booking rate, follow-up performance, review scores, and revenue trends — all in real time.",
     },
     {
       icon: <Phone size={22} />,
       title: "AI Phone Receptionist",
-      body: "An AI that answers calls, qualifies leads, books appointments, and handles common questions — so no call goes unanswered and no opportunity slips through.",
+      body: "Answers calls, qualifies leads, and books appointments automatically — so no call goes unanswered.",
     },
   ];
 
@@ -487,24 +472,15 @@ function FinalCTASection() {
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-24 md:py-32 text-center">
         <FadeUp>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white leading-tight mb-5 max-w-2xl mx-auto">
-            Ready to bridge the gap?
+            Ready to automate and scale?
           </h2>
           <p className="text-cream/70 text-base sm:text-lg leading-relaxed mb-10 max-w-xl mx-auto">
-            Book a free 45-minute consultation. We&apos;ll audit your operation,
-            identify where AI can make the biggest difference, and give you a
-            custom proposal — no obligation.
+            A 30-minute call. We&apos;ll map your operation and show you exactly
+            what we&apos;d build — no commitment required.
           </p>
-          <div className="flex flex-wrap items-center justify-center gap-4">
-            <CTAButton href="/contact" variant="primary" className="text-base px-8 py-4">
-              Book Your Free Consultation →
-            </CTAButton>
-            <Link
-              href="/services"
-              className="text-sm text-cream/50 hover:text-cream/80 transition-colors"
-            >
-              See how it works →
-            </Link>
-          </div>
+          <CTAButton href="/contact" variant="primary" className="text-base px-8 py-4">
+            Book a Free Consultation →
+          </CTAButton>
         </FadeUp>
       </div>
     </section>

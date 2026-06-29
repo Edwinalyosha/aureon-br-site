@@ -6,6 +6,7 @@ import { CalloutBlock } from "@/components/ui/CalloutBlock";
 import { DiagonalDivider } from "@/components/ui/DiagonalDivider";
 import { FadeUp } from "@/components/ui/FadeUp";
 import { BookingChat } from "@/components/features/BookingChat";
+import { ParticleField } from "@/components/ui/ParticleField";
 
 export const metadata: Metadata = {
   title: "AI Automation for Auto Repair Shops",
@@ -18,8 +19,9 @@ export default function ForShopsPage() {
   return (
     <>
       {/* ── Section 1: Hero ──────────────────────────────────────────────── */}
-      <section className="bg-navy text-white dot-grid">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-28">
+      <section className="relative bg-navy text-white overflow-hidden">
+        <ParticleField />
+        <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-28">
           <div className="max-w-2xl">
             <h1
               className="hero-anim text-3xl sm:text-4xl md:text-5xl font-bold leading-tight mb-5"

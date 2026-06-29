@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
 import { NAV_LINKS } from "@/lib/constants";
@@ -23,14 +24,23 @@ export function Navbar() {
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 sm:h-20">
 
-          {/* Logo wordmark */}
-          <Link href="/" className="flex flex-col leading-none group">
-            <span className="text-lg font-bold tracking-tight text-navy group-hover:text-gold transition-colors">
-              Aureon Bridge
-            </span>
-            <span className="hidden sm:block text-[10px] font-medium tracking-widest text-gold uppercase">
-              Bridge the gap.
-            </span>
+          {/* Logo */}
+          <Link href="/" className="flex items-center gap-2.5 group">
+            <Image
+              src="/logo-icon.png"
+              alt="Aureon Bridge"
+              width={36}
+              height={36}
+              className="w-8 h-8 sm:w-9 sm:h-9"
+            />
+            <div className="flex flex-col leading-none">
+              <span className="text-base font-bold tracking-tight text-navy group-hover:text-gold transition-colors">
+                Aureon Bridge
+              </span>
+              <span className="hidden sm:block text-[10px] font-medium tracking-widest text-gold uppercase mt-0.5">
+                we automate, you scale
+              </span>
+            </div>
           </Link>
 
           {/* Desktop navigation */}

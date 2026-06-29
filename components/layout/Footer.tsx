@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { FOOTER_NAV, FOOTER_LEGAL } from "@/lib/constants";
 
 export function Footer() {
@@ -11,12 +12,21 @@ export function Footer() {
 
           {/* Column 1: Brand */}
           <div className="space-y-4">
-            <div>
-              <p className="text-base font-bold tracking-tight">Aureon Bridge</p>
-              <p className="text-xs font-medium tracking-widest text-gold uppercase mt-0.5">
-                Bridge the gap.
-              </p>
-            </div>
+            <Link href="/" className="flex items-center gap-2.5">
+              <Image
+                src="/logo-icon.png"
+                alt="Aureon Bridge"
+                width={36}
+                height={36}
+                className="w-8 h-8"
+              />
+              <div className="flex flex-col leading-none">
+                <span className="text-base font-bold tracking-tight text-white">Aureon Bridge</span>
+                <span className="text-[10px] font-medium tracking-widest text-gold uppercase mt-0.5">
+                  we automate, you scale
+                </span>
+              </div>
+            </Link>
             <p className="text-sm text-gray-400 leading-relaxed">
               Custom AI automation for independent businesses.
             </p>
