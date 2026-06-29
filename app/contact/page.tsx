@@ -15,7 +15,7 @@ const CALL_TOPICS = [
   "Timeline and next steps if it's a fit",
 ];
 
-const calendarUrl = process.env.NEXT_PUBLIC_GOOGLE_CALENDAR_URL;
+const calendarUrl = "https://cal.com/edwin-ssekyondwa-pfuhrv/30min";
 
 export default function ContactPage() {
   return (
