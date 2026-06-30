@@ -19,7 +19,7 @@ export function ParticleField() {
     const mobile  = window.matchMedia("(pointer: coarse)").matches;
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     setCfg({
-      count:       reduced ? 0 : mobile ? 32 : 92,
+      count:       reduced ? 0 : mobile ? 65 : 92,
       interactive: !mobile && !reduced,
     });
   }, []);
