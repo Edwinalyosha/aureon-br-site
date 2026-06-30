@@ -13,7 +13,9 @@ export interface Service {
 export interface PricingTier {
   id: string;
   name: string;
+  tagline: string;
   monthly: number;
+  regularPrice: number;
   description: string;
   features: string[];
   highlighted?: boolean;

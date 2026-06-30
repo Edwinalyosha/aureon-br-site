@@ -86,12 +86,20 @@ export default function PricingPage() {
 
                   <div className="mb-auto">
                     <p
-                      className={`text-sm font-bold mb-1 ${
+                      className={`text-sm font-bold mb-0.5 ${
                         tier.highlighted ? "text-white" : "text-navy"
                       }`}
                     >
                       {tier.name}
                     </p>
+                    <p className={`text-xs mb-3 ${tier.highlighted ? "text-cream/60" : "text-grey/70"}`}>
+                      {tier.tagline}
+                    </p>
+                    <div className="mb-1">
+                      <span className={`text-xs line-through ${tier.highlighted ? "text-cream/50" : "text-grey/50"}`}>
+                        ${tier.regularPrice.toLocaleString()}/mo
+                      </span>
+                    </div>
                     <div className="flex items-baseline gap-1 mb-1">
                       <span
                         className={`text-3xl font-bold ${
@@ -108,6 +116,9 @@ export default function PricingPage() {
                         /mo
                       </span>
                     </div>
+                    <p className={`text-[10px] font-semibold tracking-wider uppercase mb-4 ${tier.highlighted ? "text-goldlight" : "text-gold"}`}>
+                      Launch price
+                    </p>
                     <p
                       className={`text-xs leading-relaxed mb-6 ${
                         tier.highlighted ? "text-cream/70" : "text-grey"

@@ -375,9 +375,8 @@ function PricingSection() {
             </Link>
           </div>
           <p className="text-grey text-base leading-relaxed mb-12 max-w-2xl">
-            A one-time setup fee to build your system. A monthly retainer to
-            run and optimize it. Simple service agreement — easy to exit if
-            it&apos;s ever not working for you.
+            Three tiers. No setup fees. Launch pricing available now — lock it
+            in before it goes to regular rate.
           </p>
         </FadeUp>
 
@@ -399,28 +398,31 @@ function PricingSection() {
                   </span>
                 )}
                 <p
-                  className={`text-sm font-bold mb-1 ${
+                  className={`text-sm font-bold mb-0.5 ${
                     tier.highlighted ? "text-white" : "text-navy"
                   }`}
                 >
                   {tier.name}
                 </p>
+                <p className={`text-xs mb-3 ${tier.highlighted ? "text-cream/60" : "text-grey/70"}`}>
+                  {tier.tagline}
+                </p>
                 <div className="mb-1">
-                  <span
-                    className={`text-3xl font-bold ${
-                      tier.highlighted ? "text-white" : "text-navy"
-                    }`}
-                  >
+                  <span className={`text-xs line-through ${tier.highlighted ? "text-cream/50" : "text-grey/50"}`}>
+                    ${tier.regularPrice.toLocaleString()}/mo
+                  </span>
+                </div>
+                <div className="mb-1">
+                  <span className={`text-3xl font-bold ${tier.highlighted ? "text-white" : "text-navy"}`}>
                     ${tier.monthly.toLocaleString()}
                   </span>
-                  <span
-                    className={`text-sm ml-1 ${
-                      tier.highlighted ? "text-cream/70" : "text-grey"
-                    }`}
-                  >
+                  <span className={`text-sm ml-1 ${tier.highlighted ? "text-cream/70" : "text-grey"}`}>
                     /mo
                   </span>
                 </div>
+                <p className={`text-[10px] font-semibold tracking-wider uppercase mb-4 ${tier.highlighted ? "text-goldlight" : "text-gold"}`}>
+                  Launch price
+                </p>
                 <p
                   className={`text-xs leading-relaxed mb-6 ${
                     tier.highlighted ? "text-cream/70" : "text-grey"

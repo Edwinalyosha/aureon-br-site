@@ -5,7 +5,6 @@ import { SectionLabel } from "@/components/ui/SectionLabel";
 import { CalloutBlock } from "@/components/ui/CalloutBlock";
 import { DiagonalDivider } from "@/components/ui/DiagonalDivider";
 import { FadeUp } from "@/components/ui/FadeUp";
-import { BookingChat } from "@/components/features/BookingChat";
 import { ParticleField } from "@/components/ui/ParticleField";
 
 export const metadata: Metadata = {
@@ -148,11 +147,18 @@ export default function ForShopsPage() {
           </FadeUp>
 
           <FadeUp delay={100}>
-            <BookingChat />
+            <a
+              href="https://cal.com/edwin-ssekyondwa-pfuhrv/30min"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 bg-gold hover:bg-goldlight text-white text-sm font-semibold px-8 py-4 transition-colors"
+            >
+              Book a Free Audit →
+            </a>
           </FadeUp>
 
           <FadeUp delay={200}>
-            <p className="mt-6 text-xs text-cream/40 max-w-md">
+            <p className="mt-8 text-xs text-cream/40 max-w-md">
               Simple service agreement — easy to exit if it&apos;s ever not right
               for you. You keep your data no matter what.
             </p>
