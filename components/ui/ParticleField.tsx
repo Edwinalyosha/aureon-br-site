@@ -4,7 +4,7 @@ import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import Particles from "react-tsparticles";
 import { loadSlim } from "tsparticles-slim";
 
-export function ParticleField() {
+export function ParticleField({ id = "tsparticles" }: { id?: string }) {
   const [mounted, setMounted] = useState(false);
   const [cfg, setCfg] = useState({ count: 0, interactive: false });
 
@@ -186,7 +186,7 @@ export function ParticleField() {
       />
 
       <Particles
-        id="tsparticles"
+        id={id}
         init={init}
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         loaded={loaded as any}

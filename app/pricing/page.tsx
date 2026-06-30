@@ -6,6 +6,7 @@ import { CTAButton } from "@/components/ui/CTAButton";
 import { DiagonalDivider } from "@/components/ui/DiagonalDivider";
 import { FadeUp } from "@/components/ui/FadeUp";
 import { PRICING_TIERS } from "@/lib/constants";
+import { ParticleField } from "@/components/ui/ParticleField";
 
 export const metadata: Metadata = {
   title: "Pricing",
@@ -66,14 +67,15 @@ export default function PricingPage() {
       </section>
 
       {/* ── Pricing tiers ─────────────────────────────────────────────────── */}
-      <section className="bg-cream">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
+      <section className="relative bg-cream overflow-hidden">
+        <ParticleField id="particles-pricing-page" />
+        <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
             {PRICING_TIERS.map((tier, i) => (
               <FadeUp key={tier.id} delay={i * 80}>
                 <div
-                  className={`relative p-7 h-full flex flex-col hover:-translate-y-1.5 transition-transform duration-200 ${
-                    tier.highlighted ? "bg-navy text-white" : "bg-white"
+                  className={`relative p-7 h-full flex flex-col hover:-translate-y-1.5 transition-transform duration-200 backdrop-blur-sm ${
+                    tier.highlighted ? "bg-navy/75 text-white" : "bg-white/65"
                   }`}
                 >
                   {tier.highlighted && (

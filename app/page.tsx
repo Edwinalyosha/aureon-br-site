@@ -118,8 +118,9 @@ function ProblemSection() {
   ];
 
   return (
-    <section className="bg-cream">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-28">
+    <section className="relative bg-cream overflow-hidden">
+      <ParticleField id="particles-reality" />
+      <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-28">
         <FadeUp>
           <SectionLabel>The Reality</SectionLabel>
           <h2 className="text-3xl sm:text-4xl font-bold text-navy leading-tight mb-6 max-w-2xl">
@@ -136,7 +137,7 @@ function ProblemSection() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {pains.map((pain, i) => (
             <FadeUp key={pain.title} delay={i * 100}>
-              <div className="bg-white border-l-4 border-gold pl-6 pr-6 py-7 h-full hover:-translate-y-1 transition-transform duration-200">
+              <div className="bg-white/65 backdrop-blur-sm border-l-4 border-gold pl-6 pr-6 py-7 h-full hover:-translate-y-1 transition-transform duration-200">
                 <div className="text-gold mb-4">{pain.icon}</div>
                 <h3 className="text-base font-bold text-navy mb-3">{pain.title}</h3>
                 <p className="text-sm text-grey leading-relaxed">{pain.body}</p>
@@ -357,8 +358,9 @@ function ProofSection() {
 // ─── 6. Pricing Anchor ────────────────────────────────────────────────────────
 function PricingSection() {
   return (
-    <section className="bg-cream">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-28">
+    <section className="relative bg-cream overflow-hidden">
+      <ParticleField id="particles-pricing" />
+      <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-28">
         <FadeUp>
           <SectionLabel>Pricing</SectionLabel>
           <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-4">
@@ -386,8 +388,8 @@ function PricingSection() {
                 className={cn(
                   "relative h-full",
                   tier.highlighted
-                    ? "bg-navy text-white"
-                    : "bg-white shadow-sm hover:shadow-lg transition-shadow duration-300"
+                    ? "bg-navy/75 text-white backdrop-blur-sm"
+                    : "bg-white/65 shadow-sm hover:shadow-lg transition-shadow duration-300 backdrop-blur-sm"
                 )}
               >
               <div className="p-7 h-full">
