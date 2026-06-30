@@ -13,7 +13,6 @@ export interface Service {
 export interface PricingTier {
   id: string;
   name: string;
-  setupFee: number;
   monthly: number;
   description: string;
   features: string[];

@@ -64,7 +64,7 @@ export default function ContactPage() {
             </div>
           )}
 
-          <div className="mt-8 pt-8 border-t border-gray-100">
+          <div className="mt-8 pt-8 border-t border-gray-100 space-y-2">
             <p className="text-sm text-grey">
               Prefer email?{" "}
               <a
@@ -72,6 +72,15 @@ export default function ContactPage() {
                 className="text-gold font-medium hover:text-goldlight transition-colors"
               >
                 info@aureonnbridge.com
+              </a>
+            </p>
+            <p className="text-sm text-grey">
+              Or call us:{" "}
+              <a
+                href="tel:+12406604547"
+                className="text-gold font-medium hover:text-goldlight transition-colors"
+              >
+                (240) 660-4547
               </a>
             </p>
           </div>

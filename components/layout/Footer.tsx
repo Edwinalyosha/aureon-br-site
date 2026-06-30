@@ -82,6 +82,12 @@ export function Footer() {
               >
                 info@aureonnbridge.com
               </a>
+              <a
+                href="tel:+12406604547"
+                className="block text-sm text-gray-300 hover:text-white transition-colors"
+              >
+                (240) 660-4547
+              </a>
               <Link
                 href="/contact"
                 className="inline-block bg-gold hover:bg-goldlight text-white text-sm font-semibold px-5 py-2.5 transition-colors"

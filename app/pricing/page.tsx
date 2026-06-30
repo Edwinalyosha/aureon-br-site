@@ -10,7 +10,7 @@ import { PRICING_TIERS } from "@/lib/constants";
 export const metadata: Metadata = {
   title: "Pricing",
   description:
-    "Transparent pricing for custom AI automation. Setup fees from $700. Monthly from $300. Simple service agreement with easy exit.",
+    "Transparent pricing for custom AI automation. Plans from $300/month. No setup fees. Simple service agreement with easy exit.",
 };
 
 const FAQ = [
@@ -52,15 +52,13 @@ export default function PricingPage() {
               Transparent pricing. No surprises.
             </h1>
             <p className="text-grey text-base leading-relaxed mb-5">
-              A one-time setup fee to build your system. A monthly retainer to
-              run and maintain it. Simple service agreement with flexible exit
-              terms.
+              A monthly retainer. No setup fees. Pick the tier that matches
+              where your operation is today — upgrade when you&apos;re ready for more.
             </p>
             <div className="border-l-4 border-gold bg-cream px-5 py-4">
               <p className="text-sm text-grey leading-relaxed">
-                Setup fees are scoped per client based on the complexity of
-                your system. We give you a fixed quote during your consultation
-                — before you commit to anything.
+                Not sure which tier fits? Book a free consultation and
+                we&apos;ll scope it for you — no commitment required.
               </p>
             </div>
           </div>
@@ -108,13 +106,6 @@ export default function PricingPage() {
                         /mo
                       </span>
                     </div>
-                    <p
-                      className={`text-xs mb-5 font-medium ${
-                        tier.highlighted ? "text-goldlight" : "text-gold"
-                      }`}
-                    >
-                      ${tier.setupFee.toLocaleString()} one-time setup
-                    </p>
                     <p
                       className={`text-xs leading-relaxed mb-6 ${
                         tier.highlighted ? "text-cream/70" : "text-grey"
