@@ -25,7 +25,7 @@ export function Navbar() {
         <div className="flex items-center justify-between h-16 sm:h-20">
 
           {/* Logo */}
-          <Link href="/" className="flex flex-col leading-none group">
+          <Link href="/" className="inline-block group">
             <Image
               src="/logo-dhw.png"
               alt="Aureon Bridge"
@@ -34,9 +34,6 @@ export function Navbar() {
               className="h-8 sm:h-10 w-auto group-hover:opacity-85 transition-opacity"
               priority
             />
-            <span className="hidden sm:block text-[10px] font-medium tracking-widest text-gold uppercase mt-1">
-              we automate, you scale
-            </span>
           </Link>
 
           {/* Desktop navigation */}
