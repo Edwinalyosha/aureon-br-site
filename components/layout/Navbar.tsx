@@ -31,7 +31,7 @@ export function Navbar() {
               alt="Aureon Bridge"
               width={2051}
               height={928}
-              className="h-8 sm:h-10 w-auto group-hover:opacity-85 transition-opacity"
+              className="h-9 sm:h-12 w-auto group-hover:opacity-85 transition-opacity"
               priority
             />
           </Link>
