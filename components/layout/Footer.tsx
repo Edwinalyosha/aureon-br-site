@@ -18,7 +18,7 @@ export function Footer() {
                 alt="Aureon Bridge"
                 width={1147}
                 height={1227}
-                className="h-28 w-auto"
+                className="h-40 w-auto"
               />
             </Link>
             <p className="text-sm text-gray-400 leading-relaxed">
