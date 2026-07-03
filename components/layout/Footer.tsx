@@ -12,20 +12,17 @@ export function Footer() {
 
           {/* Column 1: Brand */}
           <div className="space-y-4">
-            <Link href="/" className="flex items-center gap-2.5">
+            <Link href="/" className="flex flex-col leading-none">
               <Image
-                src="/logo-icon.png"
+                src="/logo-lhw.png"
                 alt="Aureon Bridge"
-                width={36}
-                height={36}
-                className="w-8 h-8"
+                width={2051}
+                height={928}
+                className="h-9 w-auto"
               />
-              <div className="flex flex-col leading-none">
-                <span className="text-base font-bold tracking-tight text-white">Aureon Bridge</span>
-                <span className="text-[10px] font-medium tracking-widest text-gold uppercase mt-0.5">
-                  we automate, you scale
-                </span>
-              </div>
+              <span className="text-[10px] font-medium tracking-widest text-gold uppercase mt-1.5">
+                we automate, you scale
+              </span>
             </Link>
             <p className="text-sm text-gray-400 leading-relaxed">
               Custom AI automation for independent businesses.
