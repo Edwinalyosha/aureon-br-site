@@ -1,5 +1,5 @@
 ﻿import type { Metadata } from "next";
-import { Inter, Space_Mono } from "next/font/google";
+import { Inter, Space_Mono, Nova_Square, Michroma } from "next/font/google";
 import Script from "next/script";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
@@ -15,6 +15,20 @@ const spaceMono = Space_Mono({
   subsets: ["latin"],
   weight: ["400", "700"],
   variable: "--font-space-mono",
+  display: "swap",
+});
+
+const novaSquare = Nova_Square({
+  subsets: ["latin"],
+  weight: "400",
+  variable: "--font-nova-square",
+  display: "swap",
+});
+
+const michroma = Michroma({
+  subsets: ["latin"],
+  weight: "400",
+  variable: "--font-michroma",
   display: "swap",
 });
 
@@ -46,7 +60,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${inter.variable} ${spaceMono.variable}`}>
+    <html lang="en" className={`${inter.variable} ${spaceMono.variable} ${novaSquare.variable} ${michroma.variable}`}>
       <head>
         <script
           type="application/ld+json"

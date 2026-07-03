@@ -11,17 +11,29 @@ export function Footer() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
 
           {/* Column 1: Brand */}
-          <div className="space-y-4">
-            <Link href="/" className="inline-block">
+          <div className="space-y-3">
+            <Link href="/" className="flex flex-col items-start gap-1.5 group">
               <Image
-                src="/logo-lvw.png"
-                alt="Aureon Bridge"
-                width={1147}
-                height={1227}
-                className="h-40 w-auto"
+                src="/logo-li.png"
+                alt=""
+                width={895}
+                height={928}
+                className="h-14 w-auto"
               />
+              <span
+                className="text-base tracking-widest uppercase text-white group-hover:text-gold transition-colors"
+                style={{ fontFamily: "var(--font-nova-square, sans-serif)" }}
+              >
+                Aureon Bridge
+              </span>
+              <span
+                className="text-[10px] tracking-wider text-gold"
+                style={{ fontFamily: "var(--font-michroma, sans-serif)" }}
+              >
+                automations that scale
+              </span>
             </Link>
-            <p className="text-sm text-gray-400 leading-relaxed">
+            <p className="text-sm text-gray-400 leading-relaxed pt-1">
               Custom AI automation for independent businesses.
             </p>
           </div>

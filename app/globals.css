@@ -1,8 +1,10 @@
 @import "tailwindcss";
 
 @theme inline {
-  --font-sans: var(--font-inter);
-  --font-mono: var(--font-space-mono);
+  --font-sans:    var(--font-inter);
+  --font-mono:    var(--font-space-mono);
+  --font-heading: var(--font-nova-square);
+  --font-accent:  var(--font-michroma);
 
   --color-navy:      #1A1A2E;
   --color-gold:      #B8860B;
@@ -27,6 +29,12 @@ body {
   font-family: var(--font-inter, system-ui, sans-serif);
   -webkit-font-smoothing: antialiased;
   min-height: 100dvh;
+}
+
+h1, h2, h3 {
+  font-family: var(--font-nova-square, var(--font-inter), system-ui, sans-serif);
+  font-weight: 400;
+  letter-spacing: 0.02em;
 }
 
 :focus-visible {

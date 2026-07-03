@@ -25,15 +25,29 @@ export function Navbar() {
         <div className="flex items-center justify-between h-16 sm:h-20">
 
           {/* Logo */}
-          <Link href="/" className="inline-block group">
+          <Link href="/" className="flex items-center gap-2.5 group">
             <Image
-              src="/logo-dhw.png"
-              alt="Aureon Bridge"
-              width={2051}
+              src="/logo-di.png"
+              alt=""
+              width={895}
               height={928}
-              className="h-11 sm:h-14 w-auto group-hover:opacity-85 transition-opacity"
+              className="h-9 sm:h-11 w-auto flex-shrink-0"
               priority
             />
+            <div className="flex flex-col leading-none">
+              <span
+                className="text-sm sm:text-base tracking-widest uppercase text-navy group-hover:text-gold transition-colors"
+                style={{ fontFamily: "var(--font-nova-square, sans-serif)" }}
+              >
+                Aureon Bridge
+              </span>
+              <span
+                className="text-[9px] sm:text-[10px] tracking-wider text-gold mt-0.5"
+                style={{ fontFamily: "var(--font-michroma, sans-serif)" }}
+              >
+                automations that scale
+              </span>
+            </div>
           </Link>
 
           {/* Desktop navigation */}
