@@ -63,13 +63,13 @@ function HeroSection() {
         <div className="max-w-3xl">
           {/* Staggered entrance — each child delayed 150ms */}
           <h1 className="hero-anim text-4xl sm:text-5xl md:text-6xl font-bold leading-[1.1] tracking-tight mb-6">
-            We automate. You scale.
+            Your admin process is bleeding your profits.
           </h1>
           <p
             className="hero-anim text-base sm:text-lg text-goldlight font-medium tracking-wide mb-10 max-w-2xl"
             style={{ animationDelay: "100ms" }}
           >
-            One system. Booking, follow-up, and customer communication — all connected, all automated.
+            Aureon Bridge builds custom AI automation systems that handle booking, follow-up, and customer communication — so your team stops doing admin and starts doing the work that actually pays.
           </p>
           <div
             className="hero-anim flex flex-wrap items-center gap-4 mb-10"

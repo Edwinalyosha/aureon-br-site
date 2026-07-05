@@ -18,7 +18,7 @@ export function Footer() {
                 alt=""
                 width={895}
                 height={928}
-                className="h-14 w-auto"
+                className="h-20 w-auto"
               />
               <span
                 className="text-base tracking-widest uppercase text-white group-hover:text-gold transition-colors"
