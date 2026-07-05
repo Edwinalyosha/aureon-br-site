@@ -70,7 +70,7 @@ export default function PricingPage() {
       <section className="relative bg-cream overflow-hidden">
         <ParticleField id="particles-pricing-page" />
         <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {PRICING_TIERS.map((tier, i) => (
               <FadeUp key={tier.id} delay={i * 80}>
                 <div

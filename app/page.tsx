@@ -380,7 +380,7 @@ function PricingSection() {
           </p>
         </FadeUp>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {PRICING_TIERS.map((tier, i) => (
             <FadeUp key={tier.id} delay={i * 80}>
               <TiltCard
