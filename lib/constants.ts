@@ -86,7 +86,7 @@ export const PRICING_TIERS: PricingTier[] = [
       "Everything in Presence",
       "Booking automation — customers book directly through chat or voice",
       "Email capture at point of pricing inquiry",
-      "AI-generated price estimate delivered via email (inflation-adjusted)",
+      "Inquiry capture log — every call and chat recorded",
       "Structured call and chat summaries sent to owner and technician",
       "Automated follow-up sequences for unconverted leads",
       "Google Reviews automation — AI drafts, you approve before posting",
@@ -104,7 +104,6 @@ export const PRICING_TIERS: PricingTier[] = [
     features: [
       "AI voice receptionist — answers every missed call, captures name, number, and reason",
       "Chatbot handles common questions (hours, services, basic pricing inquiries)",
-      "Inquiry capture log — every call and chat recorded",
       "Call and chat transcript delivered to your inbox after each interaction",
     ],
   },
