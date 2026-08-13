@@ -63,13 +63,13 @@ function HeroSection() {
         <div className="max-w-3xl">
           {/* Staggered entrance — each child delayed 150ms */}
           <h1 className="hero-anim text-4xl sm:text-5xl md:text-6xl font-bold leading-[1.1] tracking-tight mb-6">
-            Your admin process is bleeding your profits.
+            Never miss another call, booking, or follow-up again.
           </h1>
           <p
             className="hero-anim text-base sm:text-lg text-goldlight font-medium tracking-wide mb-10 max-w-2xl"
             style={{ animationDelay: "100ms" }}
           >
-            Aureon Bridge builds custom AI automation systems that handle booking, follow-up, and customer communication — so your team stops doing admin and starts doing the work that actually pays.
+            Aureon Bridge builds you a tireless digital employee — one that answers calls, books appointments, and follows up with customers around the clock. Your team stops doing busywork and starts doing the work that actually pays.
           </p>
           <div
             className="hero-anim flex flex-wrap items-center gap-4 mb-10"
@@ -102,18 +102,18 @@ function ProblemSection() {
   const pains = [
     {
       icon: <BellOff size={22} />,
-      title: "Every Lead Followed Up",
-      body: "Automated follow-up sequences that reach every customer on time, every time. No job lost to a message that slipped through.",
+      title: "No Customer Falls Through the Cracks",
+      body: "Every call, text, and inquiry gets a reply and a follow-up, on time, automatically. Nothing gets missed because someone forgot to get back to them.",
     },
     {
       icon: <LayoutGrid size={22} />,
-      title: "Internal Ops on Autopilot",
-      body: "Intake, onboarding, and daily task workflows — standardized and automated so your team runs consistently, whether you're there or not. Train once. Run forever.",
+      title: "Your Business Runs the Same Way Every Day",
+      body: "Booking, reminders, and intake happen the same way whether you're in the shop or not. Set it up once, and it keeps working.",
     },
     {
       icon: <Users size={22} />,
-      title: "Scale Without Adding Headcount",
-      body: "Let automation handle the work your team shouldn't be doing. Your people focus on what moves the business — not on keeping up with admin.",
+      title: "Grow Without Hiring More People",
+      body: "The busywork that used to eat up an employee's day now runs itself — so your people spend their time on the work that actually makes you money.",
     },
   ];
 
@@ -128,9 +128,10 @@ function ProblemSection() {
           </h2>
           <p className="text-grey text-base leading-relaxed mb-14 max-w-2xl">
             62% of small business calls go unanswered — and 85% of those callers
-            never try back. Meanwhile, the average owner loses 24 working days a
-            year just to admin overhead. At Aureon Bridge, we say automate the
-            admin so you can focus on scaling your business.
+            never call back. The average owner loses 24 working days a year just
+            to admin work: answering phones, chasing follow-ups, juggling
+            reminders. Aureon Bridge takes that off your plate so you can focus
+            on running the business.
           </p>
         </FadeUp>
 
@@ -156,22 +157,22 @@ function HowItWorksSection() {
     {
       number: "01",
       title: "Audit",
-      body: "We map your tools, your gaps, and where your time actually goes.",
+      body: "We look at how your business actually runs today and find out where time and money are slipping away.",
     },
     {
       number: "02",
       title: "Map",
-      body: "We identify exactly which automations will move the needle for your operation.",
+      body: "We figure out exactly which parts of your day-to-day should run automatically — and which shouldn't.",
     },
     {
       number: "03",
       title: "Build",
-      body: "We build and integrate your automation stack around how you actually run.",
+      body: "We build it around your business as it already runs. No ripping out what works, no starting over.",
     },
     {
       number: "04",
       title: "Run & Optimize",
-      body: "We manage, monitor, and improve your system on an ongoing basis.",
+      body: "It runs in the background. We keep an eye on it and fine-tune it as your business changes.",
     },
   ];
 
@@ -239,12 +240,12 @@ function ServicesSection() {
     {
       icon: <Mail size={22} />,
       title: "Automated Follow-Up",
-      body: "Email sequences that nurture customers post-visit, request reviews, and re-engage lapsed clients — set once, running in the background.",
+      body: "Checks in with customers after their visit, asks for reviews, and reaches back out to ones you haven't heard from in a while — set once, running in the background.",
     },
     {
       icon: <MessageSquare size={22} />,
       title: "Customer Communication",
-      body: "AI-assisted responses to customer inquiries and reviews — fast, consistent, and on-brand.",
+      body: "Replies to customer questions and reviews for you — fast, consistent, and in your voice.",
     },
     {
       icon: <BarChart3 size={22} />,
@@ -265,7 +266,7 @@ function ServicesSection() {
           <SectionLabel>What We Build</SectionLabel>
           <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-14">
             <h2 className="text-3xl sm:text-4xl font-bold text-navy leading-tight max-w-xl">
-              One integrated system. Not five separate subscriptions.
+              One system that does it all. Not five apps that don&apos;t talk to each other.
             </h2>
             <Link
               href="/services"
@@ -476,11 +477,11 @@ function FinalCTASection() {
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-24 md:py-32 text-center">
         <FadeUp>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white leading-tight mb-5 max-w-2xl mx-auto">
-            Ready to automate and scale?
+            Ready for your business to run itself?
           </h2>
           <p className="text-cream/70 text-base sm:text-lg leading-relaxed mb-10 max-w-xl mx-auto">
-            A 30-minute call. We&apos;ll map your operation and show you exactly
-            what we&apos;d build — no commitment required.
+            A 30-minute call. We&apos;ll look at how your business runs today and
+            show you exactly what we&apos;d build — no commitment required.
           </p>
           <CTAButton href="/contact" variant="primary" className="text-base px-8 py-4">
             Book a Free Consultation →
