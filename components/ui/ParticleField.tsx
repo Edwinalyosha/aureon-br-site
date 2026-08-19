@@ -19,7 +19,7 @@ export function ParticleField({ id = "tsparticles" }: { id?: string }) {
     const mobile  = window.matchMedia("(pointer: coarse)").matches;
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     setCfg({
-      count:       reduced ? 0 : mobile ? 65 : 92,
+      count:       reduced ? 0 : mobile ? 28 : 42,
       interactive: !mobile && !reduced,
     });
   }, []);
@@ -106,21 +106,21 @@ export function ParticleField({ id = "tsparticles" }: { id?: string }) {
     fpsLimit: 60,
     detectRetina: true,
     particles: {
-      number: { value: cfg.count, density: { enable: true, area: 900 } },
+      number: { value: cfg.count, density: { enable: true, area: 1400 } },
       // goldlight (#D4AF37) dominant for particles + cream for variety
       color: { value: ["#D4AF37", "#D4AF37", "#FAF7F0"] },
       shape: { type: "circle" },
       opacity: {
-        value: 0.55,
-        random: { enable: true, minimumValue: 0.25 },
-        animation: { enable: true, speed: 0.4, minimumValue: 0.15, sync: false },
+        value: 0.32,
+        random: { enable: true, minimumValue: 0.12 },
+        animation: { enable: true, speed: 0.3, minimumValue: 0.08, sync: false },
       },
-      size: { value: { min: 1, max: 2.5 }, random: { enable: true } },
+      size: { value: { min: 1, max: 2 }, random: { enable: true } },
       links: {
         enable: true,
-        distance: 160,
+        distance: 140,
         color: "#D4AF37", // goldlight for the constellation lines
-        opacity: 0.22,
+        opacity: 0.1,
         width: 1,
       },
       move: {
