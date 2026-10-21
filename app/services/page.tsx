@@ -55,7 +55,7 @@ const SERVICES = [
       "Calendar integration so there's no double-booking",
       "Confirmation sent to the customer automatically",
     ],
-    tier: "Starter Complete and above",
+    tier: "Pipeline and above",
   },
   {
     icon: <Mail size={26} />,
@@ -72,7 +72,7 @@ const SERVICES = [
       "Re-engagement campaigns for lapsed customers",
       "Timing and messaging designed for your specific workflow",
     ],
-    tier: "Starter Complete and above",
+    tier: "Pipeline and above",
   },
   {
     icon: <Star size={26} />,
@@ -89,7 +89,7 @@ const SERVICES = [
       "Review request automation woven into your post-job follow-up",
       "Google ranking signals improved through active engagement",
     ],
-    tier: "Professional and above",
+    tier: "Pipeline and above",
   },
   {
     icon: <BarChart3 size={26} />,
@@ -106,7 +106,7 @@ const SERVICES = [
       "Campaign-level data so you know what's working and what isn't",
       "Built to your metrics — not a generic template",
     ],
-    tier: "Professional and above",
+    tier: "Momentum",
   },
   {
     icon: <Plug size={26} />,
@@ -123,7 +123,7 @@ const SERVICES = [
       "No more copy-pasting between platforms",
       "Reduced tool count — most clients end up with fewer subscriptions, not more",
     ],
-    tier: "Professional and above",
+    tier: "Momentum",
   },
   {
     icon: <Megaphone size={26} />,
@@ -140,7 +140,7 @@ const SERVICES = [
       "Content tied to your actual business (seasonal demand, service promotions, team highlights)",
       "Voice guidelines set once, maintained automatically",
     ],
-    tier: "Starter Complete and above",
+    tier: "Momentum",
   },
   {
     icon: <MousePointer size={26} />,
@@ -157,7 +157,7 @@ const SERVICES = [
       "Monthly performance report — spend, clicks, calls generated",
       "Landing page recommendations to improve conversion rate",
     ],
-    tier: "Professional and above",
+    tier: "Momentum",
   },
 ];
 

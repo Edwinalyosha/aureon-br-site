@@ -30,21 +30,19 @@ export default function TermsPage() {
           <Section title="1. The Service">
             Aureon Bridge LLC (&quot;Aureon Bridge,&quot; &quot;we,&quot; &quot;us,&quot; or &quot;our&quot;) provides custom
             AI automation services under a simple month-to-month service agreement.
-            Services begin upon execution of a signed proposal and receipt of the
-            one-time setup fee.
+            Services begin upon execution of a signed proposal.
           </Section>
 
           <Section title="2. Payment Terms">
-            A one-time setup fee is due before we begin building your system. The
-            monthly retainer is billed on the same calendar date each month. Retainer
+            There is no setup fee. The monthly retainer is billed on the same
+            calendar date each month. Retainer
             invoices unpaid after 14 days are subject to service suspension. All prices
             are in USD.
           </Section>
 
           <Section title="3. Service Agreement and Exit Terms">
-            Starter and Starter Complete tier clients may terminate with 30 days
-            written notice. Professional and Enterprise clients may terminate with 60
-            days written notice. No early-termination penalties apply. Final month
+            Presence and Pipeline tier clients may terminate with 30 days written
+            notice. Momentum tier clients may terminate with 60 days written notice. No early-termination penalties apply. Final month
             prorated if applicable.
           </Section>
 

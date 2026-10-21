@@ -38,37 +38,37 @@ function generateResults(answers: Answers): string {
 
   let lossRange = "$3,200–$4,800";
   let painFocus = "disconnected tools and manual admin";
-  let tier = "Starter Complete";
+  let tier = "Pipeline";
 
   if (businessType === "Auto repair shop") {
     if (biggestPain.includes("booking") || biggestPain.includes("calls")) {
       lossRange = "$2,800–$4,400";
       painFocus = "missed calls and unconfirmed appointments";
-      tier = staffSize === "6–20 people" || staffSize === "More than 20" ? "Professional" : "Starter Complete";
+      tier = staffSize === "6–20 people" || staffSize === "More than 20" ? "Momentum" : "Pipeline";
     } else if (biggestPain.includes("follow")) {
       lossRange = "$3,400–$5,200";
       painFocus = "lapsed customers and unanswered follow-ups";
-      tier = "Starter Complete";
+      tier = "Pipeline";
     } else if (biggestPain.includes("tools")) {
       lossRange = "$3,800–$5,600";
       painFocus = "fragmented systems that don't communicate";
-      tier = staffSize === "More than 20" ? "Enterprise" : "Professional";
+      tier = "Momentum";
     }
   } else if (businessType === "Engineering firm") {
     lossRange = "$4,000–$6,500";
     painFocus = "manual coordination and project communication gaps";
-    tier = "Professional";
+    tier = "Momentum";
   } else if (businessType === "Real estate operation") {
     lossRange = "$3,600–$5,400";
     painFocus = "lead follow-up and scheduling gaps";
-    tier = "Starter Complete";
+    tier = "Pipeline";
   } else {
     lossRange = "$3,000–$5,000";
     painFocus = "manual processes that AI can handle automatically";
-    tier = "Starter Complete";
+    tier = "Pipeline";
   }
 
-  if (staffSize === "More than 20") tier = "Professional";
+  if (staffSize === "More than 20") tier = "Momentum";
 
   return `Based on what you've shared, operations like yours typically lose ${lossRange}/month to ${painFocus}.\n\nAureon Bridge's ${tier} tier is built for exactly this situation. Edwin will review your answers before the call — you won't need to repeat yourself.\n\nPick a time below.`;
 }

@@ -11,7 +11,7 @@ import { ParticleField } from "@/components/ui/ParticleField";
 export const metadata: Metadata = {
   title: "Pricing",
   description:
-    "Transparent pricing for custom AI automation. Plans from $300/month. No setup fees. Simple service agreement with easy exit.",
+    "Transparent pricing for custom AI automation. Plans from $299/month. No setup fees. Simple service agreement with easy exit.",
 };
 
 const FAQ = [
@@ -21,7 +21,7 @@ const FAQ = [
   },
   {
     q: "Is there a long-term contract?",
-    a: "We use a simple service agreement. It's easy to exit — 30 days written notice is all we need for Starter tiers; 60 days for Enterprise. No penalties, no long-term lock-in.",
+    a: "We use a simple service agreement. It's easy to exit — 30 days written notice is all we need for Presence and Pipeline; 60 days for Momentum. No penalties, no long-term lock-in.",
   },
   {
     q: "How long does setup take?",
@@ -32,12 +32,12 @@ const FAQ = [
     a: "Usually, yes. We've built around the most common booking platforms and business management tools. If you're using something niche, we'll tell you in the consultation whether we can integrate it cleanly.",
   },
   {
-    q: "What exactly is the setup fee?",
-    a: "It's a fixed, one-time fee based on scope. We give you the exact number during your consultation — before you sign anything. No hourly billing, no scope creep without your approval.",
+    q: "Is there a setup fee?",
+    a: "No. You pay the monthly price for your tier and nothing upfront. If you need something beyond the three tiers, we scope it in your consultation and give you the exact number before you sign anything. No hourly billing, no scope creep without your approval.",
   },
   {
     q: "Can I upgrade my tier later?",
-    a: "Yes. Most clients start at Starter or Starter Complete and move up once they see what's possible. Upgrading means we expand your automation coverage and adjust the monthly retainer. No full rebuild required.",
+    a: "Yes. Most clients start at Presence or Pipeline and move up once they see what's possible. Upgrading means we expand your automation coverage and adjust the monthly retainer. No full rebuild required.",
   },
 ];
 
