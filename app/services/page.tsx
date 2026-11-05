@@ -1,13 +1,13 @@
 import type { Metadata } from "next";
 import {
   Phone,
-  CalendarCheck,
-  Mail,
-  Star,
   BarChart3,
-  Plug,
+  Smartphone,
+  CalendarCheck,
+  BellRing,
+  Star,
+  Mail,
   Megaphone,
-  MousePointer,
   ArrowRight,
 } from "lucide-react";
 import { SectionLabel } from "@/components/ui/SectionLabel";
@@ -15,148 +15,143 @@ import { ParticleField } from "@/components/ui/ParticleField";
 import { CTAButton } from "@/components/ui/CTAButton";
 import { DiagonalDivider } from "@/components/ui/DiagonalDivider";
 import { FadeUp } from "@/components/ui/FadeUp";
-import { CTA } from "@/lib/constants";
+import { CTA, TRIAL } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: "Services",
   description:
-    "AI voice receptionist, booking intake, automated follow-up, review management, operational dashboards, CRM integration, social media, and Google Ads — built custom for your operation.",
+    "An AI receptionist for auto repair shops that answers your missed calls on your current number, from $99/month. Coming next: the Aureon Phone app, service reminders, reviews and marketing done for you.",
 };
 
+// Ordered by plan. "tier" names the cheapest plan that includes the service; only Catch is on sale today.
 const SERVICES = [
   {
     icon: <Phone size={26} />,
     tag: "NEVER MISS A CALL",
     title: "AI Voice Receptionist",
-    headline: "Your phone gets answered. Every time.",
+    headline: "The calls you can't get to still get answered.",
     body: [
-      "When your team is on a job, in a meeting, or off the clock, calls go to voicemail — and most customers don't leave one. They call your competitor instead.",
-      "The AI Voice Receptionist answers every missed call, collects the caller's name, number, and reason for calling, and sends you a full summary by email within seconds. You wake up with a list of who called and what they need. Nothing falls through.",
+      "When everyone's busy with a customer or under a car, the phone rings out. Most callers don't leave a voicemail. They call the next shop.",
+      "The AI answers only the calls you don't pick up, on the number you already have. It takes the caller's name, number, vehicle and reason, tells them the shop will call back, and emails you a summary.",
     ],
     gets: [
-      "24/7 call coverage with no additional staff",
-      "Immediate email notification after every call — name, callback number, and AI-generated summary",
-      "Full call transcript stored and logged automatically",
-      "Urgency detection — emergency calls flagged separately",
+      "Missed and after-hours calls answered, day or night",
+      "Works through call forwarding, so your number and phones stay the same",
+      "Summary and full transcript emailed after every call",
+      "A callback list of everyone waiting to hear back",
     ],
     tier: "All plans, from Catch",
   },
   {
-    icon: <CalendarCheck size={26} />,
-    tag: "INBOUND BOOKING",
-    title: "AI Booking Intake",
-    headline: "Customers book themselves. You show up.",
+    icon: <BarChart3 size={26} />,
+    tag: "REPORTING",
+    title: "Monthly Missed-Call Report",
+    headline: "See what the AI caught for you.",
     body: [
-      "A conversational AI intake handles inbound booking requests around the clock. Customers answer a few questions, get placed on your calendar, and receive confirmation — without a phone call or a manual scheduling step on your end.",
-      "No more voicemail tag. No more missed estimates. No more scheduling callbacks that never happen.",
+      "Once a month you get a short report: how many calls the AI answered, what callers wanted, and who's still waiting for a call back.",
+      "It's the simplest way to see whether the phone is costing you work, without digging through anything.",
     ],
     gets: [
-      "Bookings confirmed while you sleep",
-      "Qualifier questions built in — you only get the calls worth taking",
-      "Calendar integration so there's no double-booking",
-      "Confirmation sent to the customer automatically",
+      "Calls answered by the AI that month",
+      "What people were calling about",
+      "Callbacks still open",
+    ],
+    tier: "All plans, from Catch",
+  },
+  {
+    icon: <Smartphone size={26} />,
+    tag: "YOUR BUSINESS PHONE",
+    title: "Aureon Phone App",
+    headline: "Your business line, on your cell.",
+    body: [
+      "The shop's line rings in the Aureon Phone app like a normal call, even when your phone is locked. If you don't pick up, the AI does.",
+      "Call customers back from the business number instead of your personal cell, and see your calls and the AI's in one history.",
+    ],
+    gets: [
+      "The business line rings on your phone, wherever you are",
+      "Unanswered calls go to the AI automatically",
+      "Call back from the business number",
+      "Texting from the business number, once carrier registration is approved",
+    ],
+    tier: "Presence and above · coming soon (Android first)",
+  },
+  {
+    icon: <CalendarCheck size={26} />,
+    tag: "BOOKING",
+    title: "Booking by Phone and Chat",
+    headline: "Customers book themselves.",
+    body: [
+      "Callers and website visitors can pick a time without waiting for someone at the counter. The appointment lands on your calendar.",
+      "Call summaries go to your technician as well as you, so they know what's coming in.",
+    ],
+    gets: [
+      "Booking through the AI on the phone",
+      "Booking through a chat assistant on your website",
+      "Call summaries sent to your technician",
     ],
     tier: "Presence and above · coming soon",
   },
   {
-    icon: <Mail size={26} />,
-    tag: "FOLLOW-UP & RETENTION",
-    title: "Automated Follow-Up Sequences",
-    headline: "Every estimate gets followed up. Every customer gets a reason to come back.",
+    icon: <BellRing size={26} />,
+    tag: "BRING CUSTOMERS BACK",
+    title: "Service Reminders",
+    headline: "Reminders that go out without anyone remembering to send them.",
     body: [
-      "Most revenue leaks happen after the first contact. An estimate that doesn't get a follow-up. A satisfied customer who never hears from you again. A job that closes but never turns into a referral.",
-      "We build email sequences that fire automatically after a visit, an estimate, or an inquiry. You approve the content once. It runs.",
+      "We sync with your shop management system and send service reminders by date and mileage.",
+      "They're on from day one. You don't have to log in and build anything.",
     ],
     gets: [
-      "Estimate follow-up sequences that close more work",
-      "Post-job sequences that generate reviews and referrals",
-      "Re-engagement campaigns for lapsed customers",
-      "Timing and messaging designed for your specific workflow",
+      "Reminders by service date and mileage",
+      "Your customer and vehicle history, synced",
+      "Works without anyone at the shop setting it up",
     ],
     tier: "Pipeline and above · coming soon",
   },
   {
     icon: <Star size={26} />,
     tag: "REPUTATION",
-    title: "Review Management",
-    headline: "Your Google rating is a sales tool. Treat it like one.",
+    title: "Review Requests and Replies",
+    headline: "More reviews, and every one answered.",
     body: [
-      "Most businesses don't respond to reviews — or respond inconsistently. Both hurt you. Search algorithms reward engagement. Customers read how you handle criticism before they call.",
-      "We handle AI-assisted responses to your Google reviews — positive and negative — drafted in your voice. Review before posting, or set it to run automatically.",
+      "When a repair order closes, the customer gets a review request. When a review comes in, a reply is drafted in your voice.",
+      "You approve replies with one tap. Nothing gets posted without you.",
     ],
     gets: [
-      "Consistent, professional responses to every review",
-      "Negative reviews handled with tone and care — not defensiveness",
-      "Review request automation woven into your post-job follow-up",
-      "Google ranking signals improved through active engagement",
+      "Review request after each closed repair",
+      "Reply drafts for every Google review",
+      "One-tap approval before anything posts",
     ],
     tier: "Pipeline and above · coming soon",
   },
   {
-    icon: <BarChart3 size={26} />,
-    tag: "REPORTING",
-    title: "Operational Dashboard",
-    headline: "One number for each metric that matters.",
+    icon: <Mail size={26} />,
+    tag: "FOLLOW-UP",
+    title: "Follow-Up and Campaigns",
+    headline: "Price shoppers and past customers hear from you again.",
     body: [
-      "Most business owners manage by gut feel. They know roughly how busy they are, roughly what campaigns are running, and roughly whether last month was better or worse. Roughly isn't a strategy.",
-      "The Operational Dashboard gives you a single view of your business — booking volume, follow-up performance, review scores, and revenue trends — updated automatically, no spreadsheets required.",
+      "Callers who asked about a price and said yes to a follow-up get one. Past customers get a text or email campaign twice a month, written for you.",
+      "You approve each campaign before it goes out.",
     ],
     gets: [
-      "Live view of bookings, follow-up performance, and review scores",
-      "Week-over-week trends that surface problems early",
-      "Campaign-level data so you know what's working and what isn't",
-      "Built to your metrics — not a generic template",
-    ],
-    tier: "Pipeline and above · coming soon",
-  },
-  {
-    icon: <Plug size={26} />,
-    tag: "INTEGRATION",
-    title: "CRM & Tool Integration",
-    headline: "Your tools should work together. Most of them don't.",
-    body: [
-      "The average small business runs 4–8 separate tools. A booking platform. A CRM. An email tool. A payment processor. Each works fine in isolation. None of them talk to each other. So data gets re-entered, touchpoints get missed, and things fall through the cracks.",
-      "We connect your existing tools — or recommend and configure new ones — so customer data flows between systems without manual entry.",
-    ],
-    gets: [
-      "Single source of truth for every customer relationship",
-      "Data flowing automatically between booking, CRM, email, and billing",
-      "No more copy-pasting between platforms",
-      "Reduced tool count — most clients end up with fewer subscriptions, not more",
+      "Follow-up with price shoppers who asked for it",
+      "2 text and email campaigns a month, written for you",
+      "A report linking AI-handled calls to repair orders",
     ],
     tier: "Pipeline and above · coming soon",
   },
   {
     icon: <Megaphone size={26} />,
-    tag: "CONTENT",
-    title: "Social Media Content",
-    headline: "Content that sounds like you. Posted without thinking about it.",
+    tag: "DONE FOR YOU",
+    title: "Hands-On Marketing",
+    headline: "Marketing from someone who knows your shop.",
     body: [
-      "You know you should be posting. You don't have time to post. What goes up is inconsistent, and you're not sure it's doing anything anyway.",
-      "We build a content system for your business — AI-assisted drafting in your voice, platform-specific formatting, and a publishing schedule that runs without your involvement beyond an initial approval pass.",
+      "For shops that want more new customers, not only returning ones. We run your Google Ads, write your campaigns and personally follow up on pricing inquiries.",
+      "Limited to a few shops at a time so each one gets real attention.",
     ],
     gets: [
-      "Platform-specific content (Google Business, Facebook, Instagram)",
-      "Posting on a consistent schedule — no gap weeks",
-      "Content tied to your actual business (seasonal demand, service promotions, team highlights)",
-      "Voice guidelines set once, maintained automatically",
-    ],
-    tier: "Momentum · coming soon",
-  },
-  {
-    icon: <MousePointer size={26} />,
-    tag: "PAID TRAFFIC",
-    title: "Google Ads Management",
-    headline: "Ads that target the right customer at the right moment.",
-    body: [
-      "Google Ads for service businesses isn't complicated — but it is specific. The wrong keyword match type wastes budget. The wrong landing page loses the click you paid for. Most agencies set it and forget it.",
-      "We build and manage campaigns around your actual service area, your actual margins, and your actual capacity. Monthly reporting included.",
-    ],
-    gets: [
-      "Campaign setup built for local service targeting",
-      "Ongoing bid and budget management",
-      "Monthly performance report — spend, clicks, calls generated",
-      "Landing page recommendations to improve conversion rate",
+      "Google Ads management and social media posts",
+      "Personal phone follow-up on up to 15 pricing inquiries a month",
+      "4 campaigns a month and a monthly call with you",
     ],
     tier: "Momentum · coming soon",
   },
@@ -164,28 +159,23 @@ const SERVICES = [
 
 const INDUSTRIES = [
   {
-    name: "HVAC, Plumbing & Electrical",
-    body: "Field-based operations where the tech in the field can't answer the phone — and missed calls mean missed revenue. The AI Voice Receptionist and Booking Intake were built for exactly this.",
-    active: true,
-  },
-  {
     name: "Auto Repair",
-    body: "High call volume, time-sensitive scheduling, and reputation that lives and dies on Google reviews. We've built a full automation stack for a DMV-area shop and it runs without a dedicated front-desk person.",
+    body: "Our main focus. Independent shops with one to ten bays, where the people who could answer the phone are the same people doing the work.",
     active: true,
   },
   {
     name: "Engineering & Professional Services",
-    body: "Client communication, follow-up, and reporting automation for firms where relationships are the product.",
+    body: "Call answering and client follow-up for firms where the phone rings while everyone is out on a job.",
     active: true,
   },
   {
-    name: "Real Estate Operations",
-    body: "Inquiry handling, follow-up sequences, and lead qualification automation.",
+    name: "Real Estate",
+    body: "Inquiry handling and lead qualification for property businesses.",
     active: false,
   },
   {
-    name: "Other Small & Mid-Size Businesses",
-    body: "If your team is spending time on admin that should be automated, we can map it. Book a consultation and we'll tell you what's worth building.",
+    name: "Any Business That Misses Calls",
+    body: "If your phone rings while you're busy doing the work, Catch can answer it. Book a call and we'll tell you whether it fits.",
     active: true,
   },
 ];
@@ -203,17 +193,16 @@ export default function ServicesPage() {
               className="hero-anim text-4xl sm:text-5xl font-bold leading-tight mb-5"
               style={{ animationDelay: "0ms" }}
             >
-              Every hour your team spends on admin is an hour they&apos;re not
-              doing the work that pays.
+              Every missed call is a job going to another shop.
             </h1>
             <p
               className="hero-anim text-base sm:text-lg text-cream/80 leading-relaxed mb-8"
               style={{ animationDelay: "150ms" }}
             >
-              Aureon Bridge builds custom automation systems that handle the
-              operational layer of your business — booking, follow-up, reviews,
-              reporting, and tool integration — so your team can focus on
-              delivering the work.
+              Start with Catch: an AI receptionist on the number you already
+              have, $99 a month. As each next piece is ready, you can add your
+              business phone in an app, reminders and reviews that run
+              themselves, and marketing done for you.
             </p>
             <div
               className="hero-anim"
@@ -292,15 +281,15 @@ export default function ServicesPage() {
           <FadeUp>
             <SectionLabel>Who We Work With</SectionLabel>
             <h2 className="text-2xl sm:text-3xl font-bold text-navy mb-4 max-w-xl">
-              Built for the businesses that keep things running.
+              Built for auto repair shops first.
             </h2>
             <p className="text-grey text-base leading-relaxed mb-10 max-w-2xl">
-              The systems we build are custom — but the problems they solve are
-              the same: missed calls, lost estimates, manual processes that eat
-              time, and tools that don&apos;t talk to each other.
+              Auto repair is where we started and where we focus. The same
+              problem, a phone that rings while everyone is working, shows up in
+              other businesses too.
             </p>
           </FadeUp>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
             {INDUSTRIES.map((ind, i) => (
               <FadeUp key={ind.name} delay={i * 80}>
                 <div
@@ -334,15 +323,14 @@ export default function ServicesPage() {
       <section className="bg-navy">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-28 text-center">
           <FadeUp>
-            <SectionLabel light>Ready to See What This Looks Like?</SectionLabel>
+            <SectionLabel light>See It on Your Own Calls</SectionLabel>
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-4 max-w-xl mx-auto">
-              Book a free 30-minute consultation.
+              Try Catch free for {TRIAL.days} days.
             </h2>
             <p className="text-cream/70 text-base leading-relaxed mb-8 max-w-lg mx-auto">
-              We&apos;ll map your current workflow, identify where time and
-              revenue are leaking, and show you what an automation system built
-              for your operation would actually look like. No commitment. No
-              generic pitch.
+              We set it up on your current number in about 20 minutes. No credit
+              card, and if it&apos;s not for you, we switch your forwarding back.
+              Prefer to talk first? Book a free 30-minute call.
             </p>
             <div className="flex flex-wrap items-center justify-center gap-4">
               <CTAButton href={CTA.primary.href} variant="primary" className="text-base px-8 py-4">
@@ -353,7 +341,7 @@ export default function ServicesPage() {
               </CTAButton>
             </div>
             <p className="mt-5 text-xs text-cream/40 tracking-wide">
-              Working with businesses in the DMV and beyond.
+              Working with auto repair shops in the DMV.
             </p>
           </FadeUp>
         </div>
