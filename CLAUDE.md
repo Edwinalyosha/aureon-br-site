@@ -17,6 +17,47 @@ STEP 4 → Read peers/hive-config.md + resolve digests via HIVE.md (reads_from: 
 STEP 5 → Report: phase, next 3 tasks, active blockers, relevant peer patterns
 ```
 
+## Current State — READ THIS FIRST (updated 2026-11-05)
+Parts of this file below were written at initial planning and are stale. Where they conflict, this
+section and `lib/constants.ts` win.
+
+- **Roadmap across all Aureon projects:** `context/roadmap.md`.
+- **Strategy:** "Aureon Bridge Strategy Review" v2 (2026-11-05) — summarised in `context/roadmap.md`.
+- **Plans (monthly, no setup fees), source of truth `PRICING_TIERS` in `lib/constants.ts`:**
+  - Catch $99, 150 min — **the only plan on sale.** AI answers missed/after-hours calls via forwarding on
+    the shop's current number; summary + transcript email; callback list; monthly report.
+  - Presence $249, 300 min — coming soon (needs Aureon Phone on Google Play).
+  - Pipeline $449, 600 min — coming soon, version 1.1 (needs Tekmetric sync; the Steer replacement).
+  - Momentum $799, 1,000 min — coming soon, max 3 shops.
+  A plan flips `status` to "available" only when the piece it depends on works. Never use "Most Popular".
+  Old tiers (Starter…Enterprise; Presence $299/Pipeline $499/Momentum $849) are retired.
+- **Trial:** 7 days of Catch, 60 minutes, no card (`TRIAL`). Higher plans: 30-day money-back when launched.
+- **Morgatech:** describe as "our first auto repair client" (Edwin's wording, 2026-11-05).
+- **Terms:** billed monthly in advance, month-to-month; cancel with 30 days' notice (60 for Momentum);
+  data kept/exported on request; price rises max once a year, ≤5%.
+  Wording "no long-term contract" is on the site; whether that's acceptable vs the old "never say no
+  contract" rule is an open decision for Edwin.
+- **Overage:** $0.25/min is a placeholder — confirm against Vapi cost before quoting.
+- **Primary CTA:** "Start a free 7-day trial" → `/trial` (Presence features, 60 call minutes, no card).
+  Secondary: "Book a free consultation" → `/contact`. Booking uses **Cal.com**
+  (`CONTACT.calendarUrl`), not Calendly.
+- **Stack/deploy:** Next.js 16 + Tailwind v4, Docker + Caddy on the VPS (not Vercel). Deploy = commit,
+  merge to master, push, then `git pull` + `docker compose up -d --build` on the VPS. Uncommitted work
+  is never live.
+- **Product ecosystem the site sells:**
+  - AI receptionist (Vapi + Twilio) — answers missed/forwarded calls, captures name/number/reason.
+  - Owner dashboard — dashboard.aureonnbridge.com (repo `scripe ai/aureon`): calls, transcripts,
+    leads, billing (Stripe), admin onboarding.
+  - **Aureon Phone** — Android app (repo `scripe ai/aureon-phone`): business line rings on owner's
+    phone, unanswered → AI; Calls, Callbacks, Keypad, Messages, Settings. Not yet on Play Store
+    (waits on D-U-N-S). Not yet on the website.
+  - Claims allowed: AI-answered calls get a summary + transcript. NOT allowed: call recordings/playback
+    (not built), "transcripts of every call" (owner-answered calls aren't transcribed), sending texts
+    (blocked on A2P 10DLC).
+- **Verticals:** auto repair (Morgatech proof), engineering, real estate (Anze Properties voice build
+  in `scripe ai/aureon calls`, pending EIN). Market focus is independent auto repair shops, MD/DC/VA.
+  Tekmetric is Pipeline's first integration; the site says "your shop management system".
+
 ## Mandatory Session End Sequence
 ```
 STEP 1 → PATCH memory/tasks.json                (update tasks touched this session)

@@ -6,6 +6,7 @@ import { CalloutBlock } from "@/components/ui/CalloutBlock";
 import { DiagonalDivider } from "@/components/ui/DiagonalDivider";
 import { FadeUp } from "@/components/ui/FadeUp";
 import { ParticleField } from "@/components/ui/ParticleField";
+import { CTA } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: "AI Automation for Auto Repair Shops",
@@ -79,12 +80,20 @@ export default function ForShopsPage() {
           </FadeUp>
 
           <FadeUp delay={160}>
-            <Link
-              href="/contact"
-              className="inline-flex items-center gap-2 bg-gold hover:bg-goldlight text-white text-sm font-semibold px-6 py-3 transition-colors"
-            >
-              Book a free audit →
-            </Link>
+            <div className="flex flex-wrap items-center gap-4">
+              <Link
+                href={CTA.primary.href}
+                className="inline-flex items-center gap-2 bg-gold hover:bg-goldlight text-white text-sm font-semibold px-6 py-3 transition-colors"
+              >
+                {CTA.primary.label} →
+              </Link>
+              <Link
+                href={CTA.secondary.href}
+                className="text-sm font-semibold text-gold hover:text-goldlight transition-colors"
+              >
+                Or book a free audit →
+              </Link>
+            </div>
           </FadeUp>
         </div>
       </section>
@@ -104,28 +113,21 @@ export default function ForShopsPage() {
           <FadeUp delay={80}>
             <CalloutBlock className="mb-6 max-w-2xl">
               <p className="text-xs font-bold tracking-widest uppercase text-gold mb-3">
-                Morgatech Auto Repair — DMV Area
+                Morgatech Auto Repair, Beltsville MD
               </p>
               <p className="text-sm text-grey leading-relaxed">
-                We built Morgatech Auto Repair a full automation stack: AI
-                booking intake, Google Ads management, automated email
-                follow-up sequences, social media content, and a single
-                dashboard showing all of it in real time. One system.
-                Everything connected.
+                Morgatech is our first auto repair client. The AI answers the
+                calls the shop can&apos;t get to, and we built the shop a website
+                assistant that books appointments, email follow-up, Google Ads
+                and a dashboard that shows it all in one place.
               </p>
             </CalloutBlock>
           </FadeUp>
 
           <FadeUp delay={160}>
-            {/* Owner quote placeholder */}
-            <div className="border border-dashed border-gold/40 bg-gold/5 p-4 max-w-2xl">
-              <p className="text-xs font-bold tracking-wider uppercase text-gold/70 mb-1">
-                Placeholder — Owner Quote Before Launch
-              </p>
-              <p className="text-xs text-grey/60 italic">
-                Replace with one sentence from Edwin&apos;s dad before go-live.
-              </p>
-            </div>
+            <p className="text-sm text-grey max-w-2xl">
+              The full case study, with results, is coming soon.
+            </p>
           </FadeUp>
         </div>
       </section>

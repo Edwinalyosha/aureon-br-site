@@ -1,6 +1,6 @@
-﻿import Link from "next/link";
+import Link from "next/link";
 import Image from "next/image";
-import { FOOTER_NAV, FOOTER_LEGAL } from "@/lib/constants";
+import { FOOTER_NAV, FOOTER_LEGAL, CONTACT, CTA } from "@/lib/constants";
 
 export function Footer() {
   return (
@@ -83,22 +83,33 @@ export function Footer() {
             </p>
             <div className="space-y-4">
               <a
-                href="mailto:info@aureonnbridge.com"
+                href={`mailto:${CONTACT.email}`}
                 className="block text-sm text-gray-300 hover:text-white transition-colors"
               >
-                info@aureonnbridge.com
+                {CONTACT.email}
               </a>
               <a
-                href="tel:+12406604547"
+                href={CONTACT.phoneHref}
                 className="block text-sm text-gray-300 hover:text-white transition-colors"
               >
-                (240) 660-4547
+                {CONTACT.phoneDisplay}
               </a>
+              <address className="not-italic text-sm text-gray-400 leading-relaxed">
+                {CONTACT.streetAddress}
+                {CONTACT.addressLocality && <><br />{CONTACT.addressLocality}</>}
+              </address>
+              <ul className="text-xs text-gray-400 space-y-1">
+                {CONTACT.hours.map((h) => (
+                  <li key={h.days}>
+                    {h.days}: {h.time}
+                  </li>
+                ))}
+              </ul>
               <Link
-                href="/contact"
+                href={CTA.primary.href}
                 className="inline-block bg-gold hover:bg-goldlight text-white text-sm font-semibold px-5 py-2.5 transition-colors"
               >
-                Book a Call →
+                {CTA.primary.label} →
               </Link>
             </div>
           </div>

@@ -35,42 +35,34 @@ const Q4 = ["Under $200/month", "$200–$500/month", "$500–$1,000/month", "Ove
 // ─── Results generator ────────────────────────────────────────────────────────
 function generateResults(answers: Answers): string {
   const { businessType, staffSize, biggestPain } = answers;
-
-  let lossRange = "$3,200–$4,800";
   let painFocus = "disconnected tools and manual admin";
   let tier = "Pipeline";
 
   if (businessType === "Auto repair shop") {
     if (biggestPain.includes("booking") || biggestPain.includes("calls")) {
-      lossRange = "$2,800–$4,400";
       painFocus = "missed calls and unconfirmed appointments";
       tier = staffSize === "6–20 people" || staffSize === "More than 20" ? "Momentum" : "Pipeline";
     } else if (biggestPain.includes("follow")) {
-      lossRange = "$3,400–$5,200";
       painFocus = "lapsed customers and unanswered follow-ups";
       tier = "Pipeline";
     } else if (biggestPain.includes("tools")) {
-      lossRange = "$3,800–$5,600";
       painFocus = "fragmented systems that don't communicate";
       tier = "Momentum";
     }
   } else if (businessType === "Engineering firm") {
-    lossRange = "$4,000–$6,500";
     painFocus = "manual coordination and project communication gaps";
     tier = "Momentum";
   } else if (businessType === "Real estate operation") {
-    lossRange = "$3,600–$5,400";
     painFocus = "lead follow-up and scheduling gaps";
     tier = "Pipeline";
   } else {
-    lossRange = "$3,000–$5,000";
     painFocus = "manual processes that AI can handle automatically";
     tier = "Pipeline";
   }
 
   if (staffSize === "More than 20") tier = "Momentum";
 
-  return `Based on what you've shared, operations like yours typically lose ${lossRange}/month to ${painFocus}.\n\nAureon Bridge's ${tier} tier is built for exactly this situation. Edwin will review your answers before the call — you won't need to repeat yourself.\n\nPick a time below.`;
+  return `Based on what you've shared, the biggest opportunity for you is tackling ${painFocus}.\n\nAureon Bridge's ${tier} tier is built for exactly this situation. Edwin will review your answers before the call — you won't need to repeat yourself.\n\nPick a time below.`;
 }
 
 // ─── Typing indicator ─────────────────────────────────────────────────────────

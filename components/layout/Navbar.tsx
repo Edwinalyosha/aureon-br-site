@@ -5,7 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
-import { NAV_LINKS } from "@/lib/constants";
+import { NAV_LINKS, CTA } from "@/lib/constants";
 import { cn } from "@/lib/utils";
 
 export function Navbar() {
@@ -69,22 +69,28 @@ export function Navbar() {
           </nav>
 
           {/* Desktop CTA */}
-          <div className="hidden md:flex items-center">
+          <div className="hidden md:flex items-center gap-5">
             <Link
-              href="/contact"
+              href={CTA.secondary.href}
+              className="text-sm font-medium text-grey hover:text-navy transition-colors"
+            >
+              Book a call
+            </Link>
+            <Link
+              href={CTA.primary.href}
               className="bg-gold hover:bg-goldlight text-white text-sm font-semibold px-5 py-2.5 transition-colors"
             >
-              Book a Call
+              Start free trial
             </Link>
           </div>
 
           {/* Mobile: CTA pill + hamburger */}
           <div className="md:hidden flex items-center gap-3">
             <Link
-              href="/contact"
+              href={CTA.primary.href}
               className="bg-gold text-white text-xs font-semibold px-4 py-2 transition-colors"
             >
-              Book a Call
+              Free trial
             </Link>
             <button
               onClick={() => setMobileOpen(!mobileOpen)}
@@ -116,13 +122,20 @@ export function Navbar() {
               {link.label}
             </Link>
           ))}
-          <div className="pt-4">
+          <div className="pt-4 space-y-3">
             <Link
-              href="/contact"
+              href={CTA.primary.href}
               onClick={() => setMobileOpen(false)}
               className="block w-full text-center bg-gold hover:bg-goldlight text-white text-sm font-semibold px-6 py-3 transition-colors"
             >
-              Book a Free Consultation
+              {CTA.primary.label}
+            </Link>
+            <Link
+              href={CTA.secondary.href}
+              onClick={() => setMobileOpen(false)}
+              className="block w-full text-center border border-gold text-gold text-sm font-semibold px-6 py-3 transition-colors"
+            >
+              {CTA.secondary.label}
             </Link>
           </div>
         </div>

@@ -9,6 +9,6 @@ export default function robots(): MetadataRoute.Robots {
         disallow: ["/thank-you", "/api/"],
       },
     ],
-    sitemap: "https://aureonbridge.com/sitemap.xml",
+    sitemap: "https://aureonnbridge.com/sitemap.xml",
   };
 }
