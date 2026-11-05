@@ -81,3 +81,11 @@ h1, h2, h3 {
   );
   background-size: 28px 28px;
 }
+
+/* Printed pages (e.g. /forwarding): no chat widget. Navbar and footer use print:hidden. */
+@media print {
+  #aurea-bubble,
+  #aurea-window {
+    display: none !important;
+  }
+}

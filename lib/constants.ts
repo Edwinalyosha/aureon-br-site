@@ -12,6 +12,7 @@ export const FOOTER_NAV: NavItem[] = [
   { label: "Pricing",       href: "/pricing" },
   { label: "Free Trial",    href: "/trial" },
   { label: "For Shops",     href: "/for-shops" },
+  { label: "Forwarding Setup", href: "/forwarding" },
   { label: "Contact",       href: "/contact" },
 ];
 
