@@ -1,13 +1,14 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import {
-  CalendarCheck,
   Mail,
-  MessageSquare,
-  BarChart3,
-  BellOff,
-  LayoutGrid,
-  Users,
+  PhoneMissed,
+  UserRound,
+  Moon,
+  ListChecks,
+  Smartphone,
+  BellRing,
+  Megaphone,
   Phone,
   ArrowRight,
 } from "lucide-react";
@@ -22,13 +23,13 @@ import { PricingCard } from "@/components/ui/PricingCard";
 import { PRICING_TIERS, CTA, DEMO_PHONE, TRIAL } from "@/lib/constants";
 
 export const metadata: Metadata = {
-  title: "Aureon Bridge — AI Automation for Independent Businesses",
+  title: "Aureon Bridge | AI Receptionist for Auto Repair Shops",
   description:
-    "Aureon Bridge builds custom AI automation systems for independent businesses. Booking, follow-up, reviews, and reporting — integrated and automated.",
+    "Catch answers the calls your shop misses, on the number you already have. The AI takes the customer's name, number, vehicle and reason and emails you a summary. $99/month, free for 7 days.",
   openGraph: {
-    title: "Aureon Bridge — Bridge the Gap. Automate the Rest.",
+    title: "Aureon Bridge | Never lose a missed call",
     description:
-      "Custom AI automation for businesses that want to run leaner without hiring more people.",
+      "An AI receptionist for independent auto repair shops. Answers the calls you can't, on your current number. Free for 7 days.",
   },
 };
 
@@ -64,13 +65,16 @@ function HeroSection() {
         <div className="max-w-3xl">
           {/* Staggered entrance — each child delayed 150ms */}
           <h1 className="hero-anim text-4xl sm:text-5xl md:text-6xl font-bold leading-[1.1] tracking-tight mb-6">
-            Never miss another call, booking, or follow-up again.
+            Your phone rings while you&apos;re under a car. We answer it.
           </h1>
           <p
             className="hero-anim text-base sm:text-lg text-goldlight font-medium tracking-wide mb-10 max-w-2xl"
             style={{ animationDelay: "100ms" }}
           >
-            Aureon Bridge builds you a tireless digital employee — one that answers calls, books appointments, and follows up with customers around the clock. Your team stops doing busywork and starts doing the work that actually pays.
+            Catch puts an AI receptionist on the shop number you already have.
+            When nobody can pick up, it answers, takes the customer&apos;s name,
+            number, vehicle and what&apos;s wrong, and emails you the summary.
+            $99 a month, free for {TRIAL.days} days.
           </p>
           <div
             className="hero-anim flex flex-wrap items-center gap-4 mb-10"
@@ -90,7 +94,7 @@ function HeroSection() {
             className="hero-anim text-xs text-cream/40 tracking-wide"
             style={{ animationDelay: "420ms" }}
           >
-            No credit card. No setup fees. Month-to-month.
+            Keeps your number. No credit card. No setup fees. Month-to-month.
           </p>
         </div>
       </div>
@@ -102,19 +106,19 @@ function HeroSection() {
 function ProblemSection() {
   const pains = [
     {
-      icon: <BellOff size={22} />,
-      title: "No Customer Falls Through the Cracks",
-      body: "Every call, text, and inquiry gets a reply and a follow-up, on time, automatically. Nothing gets missed because someone forgot to get back to them.",
+      icon: <PhoneMissed size={22} />,
+      title: "A missed call goes to the next shop",
+      body: "Most people don't leave a voicemail. They go back to Google and call the next shop on the list, and that job is gone.",
     },
     {
-      icon: <LayoutGrid size={22} />,
-      title: "Your Business Runs the Same Way Every Day",
-      body: "Booking, reminders, and intake happen the same way whether you're in the shop or not. Set it up once, and it keeps working.",
+      icon: <UserRound size={22} />,
+      title: "Your advisor can't be in three places",
+      body: "Someone's at the counter, a tech needs an answer, and the phone rings again. Something gets dropped, and it's usually the phone.",
     },
     {
-      icon: <Users size={22} />,
-      title: "Grow Without Hiring More People",
-      body: "The busywork that used to eat up an employee's day now runs itself — so your people spend their time on the work that actually makes you money.",
+      icon: <Moon size={22} />,
+      title: "After hours, the phone just rings",
+      body: "Evenings and weekends are when people notice the noise or the warning light. If nobody answers, they book with whoever does.",
     },
   ];
 
@@ -125,14 +129,12 @@ function ProblemSection() {
         <FadeUp>
           <SectionLabel>The Reality</SectionLabel>
           <h2 className="text-3xl sm:text-4xl font-bold text-navy leading-tight mb-6 max-w-2xl">
-            Every growing business hits the same ceiling.
+            Up to 1 in 5 calls to auto shops go unanswered.
           </h2>
           <p className="text-grey text-base leading-relaxed mb-14 max-w-2xl">
-            When you&apos;re under a car, on a roof or in a crawlspace, the phone
-            keeps ringing. Answering it, chasing follow-ups and juggling
-            reminders eats into the hours you&apos;d rather spend on paid work.
-            Aureon Bridge takes that off your plate so you can focus on running
-            the business.
+            That&apos;s from call-tracking data across auto service businesses
+            (Marchex). At a busy independent shop it&apos;s easy to see why: the
+            people who could answer the phone are the same people doing the work.
           </p>
         </FadeUp>
 
@@ -157,23 +159,23 @@ function HowItWorksSection() {
   const steps = [
     {
       number: "01",
-      title: "Audit",
-      body: "We look at how your business actually runs today and find out where time and money are slipping away.",
+      title: "We set it up at your counter",
+      body: "About 20 minutes. We turn on forwarding for the calls you don't answer, so your number and your phones stay the same.",
     },
     {
       number: "02",
-      title: "Map",
-      body: "We figure out exactly which parts of your day-to-day should run automatically — and which shouldn't.",
+      title: "The AI answers what you can't",
+      body: "When a call isn't picked up, the AI answers, takes the caller's name, number, vehicle and reason, and tells them the shop will call back.",
     },
     {
       number: "03",
-      title: "Build",
-      body: "We build it around your business as it already runs. No ripping out what works, no starting over.",
+      title: "You get the summary",
+      body: "A summary and the full transcript land in your inbox after every call, and the caller goes on your callback list.",
     },
     {
       number: "04",
-      title: "Run & Optimize",
-      body: "It runs in the background. We keep an eye on it and fine-tune it as your business changes.",
+      title: "You call them back",
+      body: "Work through the list when you have a minute. Each month you see how many calls the AI caught that would have gone to voicemail.",
     },
   ];
 
@@ -183,10 +185,10 @@ function HowItWorksSection() {
         <FadeUp>
           <SectionLabel>How It Works</SectionLabel>
           <h2 className="text-3xl sm:text-4xl font-bold text-navy leading-tight mb-3 max-w-2xl">
-            How we get you past the ceiling.
+            Nothing changes at your shop, except the calls stop getting lost.
           </h2>
           <p className="text-grey text-base mb-14">
-            Four steps. No guesswork. A system that works.
+            Turn it off any time by switching your forwarding back.
           </p>
         </FadeUp>
 
@@ -230,33 +232,51 @@ function HowItWorksSection() {
   );
 }
 
-// ─── 4. Services Preview ──────────────────────────────────────────────────────
+// ─── 4. What you get ──────────────────────────────────────────────────────────
+// "plan" names the cheapest plan that includes it; coming-soon items are marked as such.
 function ServicesSection() {
   const services = [
     {
-      icon: <CalendarCheck size={22} />,
-      title: "Booking Automation",
-      body: "Handles inbound requests, confirms appointments, and sends reminders — no manual touchpoints required.",
+      icon: <Phone size={22} />,
+      title: "AI Phone Receptionist",
+      body: "Answers the calls your shop misses, day or night, on the number you already have.",
+      plan: "Catch",
+      soon: false,
     },
     {
       icon: <Mail size={22} />,
-      title: "Automated Follow-Up",
-      body: "Checks in with customers after their visit, asks for reviews, and reaches back out to ones you haven't heard from in a while — set once, running in the background.",
+      title: "Call Summaries & Transcripts",
+      body: "Who called, their number, their vehicle and what they need, in your inbox after every call.",
+      plan: "Catch",
+      soon: false,
     },
     {
-      icon: <MessageSquare size={22} />,
-      title: "Customer Communication",
-      body: "Replies to customer questions and reviews for you — fast, consistent, and in your voice.",
+      icon: <ListChecks size={22} />,
+      title: "Callback List",
+      body: "Everyone waiting to hear back, in one list, so nobody slips through between jobs.",
+      plan: "Catch",
+      soon: false,
     },
     {
-      icon: <BarChart3 size={22} />,
-      title: "Reporting & Visibility",
-      body: "One dashboard. Booking rate, follow-up performance, review scores, and revenue trends — all in real time.",
+      icon: <Smartphone size={22} />,
+      title: "Aureon Phone App",
+      body: "Your business line rings on your cell. Answer from anywhere and call back from the shop number.",
+      plan: "Presence",
+      soon: true,
     },
     {
-      icon: <Phone size={22} />,
-      title: "AI Phone Receptionist",
-      body: "Answers calls, qualifies leads, and books appointments automatically — so no call goes unanswered.",
+      icon: <BellRing size={22} />,
+      title: "Reminders & Reviews",
+      body: "Service reminders and review requests that go out on their own. You approve with one tap.",
+      plan: "Pipeline",
+      soon: true,
+    },
+    {
+      icon: <Megaphone size={22} />,
+      title: "Hands-On Marketing",
+      body: "Google Ads, campaigns and personal follow-up on price shoppers, done for you.",
+      plan: "Momentum",
+      soon: true,
     },
   ];
 
@@ -264,10 +284,10 @@ function ServicesSection() {
     <section className="bg-cream">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-28">
         <FadeUp>
-          <SectionLabel>What We Build</SectionLabel>
+          <SectionLabel>What You Get</SectionLabel>
           <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-14">
             <h2 className="text-3xl sm:text-4xl font-bold text-navy leading-tight max-w-xl">
-              One system that does it all. Not five apps that don&apos;t talk to each other.
+              Start with the calls. Add more when it&apos;s ready.
             </h2>
             <Link
               href="/services"
@@ -285,7 +305,14 @@ function ServicesSection() {
                 <div className="bg-white p-7 h-full">
                   <div className="text-gold mb-4">{service.icon}</div>
                   <h3 className="text-base font-bold text-navy mb-2">{service.title}</h3>
-                  <p className="text-sm text-grey leading-relaxed">{service.body}</p>
+                  <p className="text-sm text-grey leading-relaxed mb-4">{service.body}</p>
+                  <p
+                    className={`text-[10px] font-semibold tracking-wider uppercase ${
+                      service.soon ? "text-grey/70" : "text-gold"
+                    }`}
+                  >
+                    {service.soon ? `${service.plan} · coming soon` : `Included in ${service.plan}`}
+                  </p>
                 </div>
               </TiltCard>
             </FadeUp>
@@ -300,20 +327,20 @@ function ServicesSection() {
 function UseCasesSection() {
   const cases = [
     {
-      trade: "Auto repair",
-      body: "Answers \"is my car ready?\" and \"can you fit me in Thursday?\" while your techs stay under the hood, and books the appointment.",
+      trade: "The lunch rush",
+      body: "Customers call on their own lunch break, right when your counter is busiest. The AI takes the calls nobody can get to.",
     },
     {
-      trade: "HVAC",
-      body: "Picks up when the AC dies on the hottest day, captures the address and the problem, and flags no-heat or no-cool calls as urgent.",
+      trade: "Under the car",
+      body: "\"Is my car ready?\" and \"Can you fit me in Thursday?\" get answered and written down while your techs stay on the job.",
     },
     {
-      trade: "Plumbing",
-      body: "Takes the burst-pipe call at 9 pm, gets the details you need to quote, and books the visit instead of sending it to voicemail.",
+      trade: "After closing",
+      body: "The check-engine light comes on at 7 pm. Instead of voicemail, the caller gets an answer and you get their details in the morning.",
     },
     {
-      trade: "Electrical",
-      body: "Sorts emergencies from estimate requests, collects the job details you need, and keeps your schedule full without you on the phone.",
+      trade: "Saturdays",
+      body: "Short-staffed or closed, the phone still gets answered, and Monday starts with a list of people to call back.",
     },
   ];
 
@@ -321,13 +348,13 @@ function UseCasesSection() {
     <section className="bg-white">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-28">
         <FadeUp>
-          <SectionLabel>Who It&apos;s For</SectionLabel>
+          <SectionLabel>When It Helps</SectionLabel>
           <h2 className="text-3xl sm:text-4xl font-bold text-navy leading-tight mb-4 max-w-2xl">
-            Built for businesses that can&apos;t stop to answer the phone.
+            Built for shops that can&apos;t stop to answer the phone.
           </h2>
           <p className="text-grey text-base leading-relaxed mb-12 max-w-2xl">
-            Any independent business that runs on calls and appointments. A few
-            examples:
+            Independent auto repair shops, from one bay to ten. The moments
+            calls get missed most:
           </p>
         </FadeUp>
 
@@ -421,7 +448,7 @@ function PricingSection() {
           <SectionLabel>Pricing</SectionLabel>
           <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-4">
             <h2 className="text-3xl sm:text-4xl font-bold text-navy leading-tight max-w-xl">
-              Affordable automation. No enterprise pricing.
+              $99 a month to stop losing calls.
             </h2>
             <Link
               href="/pricing"
@@ -458,11 +485,11 @@ function FinalCTASection() {
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-24 md:py-32 text-center">
         <FadeUp>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white leading-tight mb-5 max-w-2xl mx-auto">
-            Ready for your business to run itself?
+            Stop sending customers to voicemail.
           </h2>
           <p className="text-cream/70 text-base sm:text-lg leading-relaxed mb-10 max-w-xl mx-auto">
-            Try it free for {TRIAL.days} days, no credit card. Or book a free
-            30-minute call and we&apos;ll show you exactly what we&apos;d build.
+            Try Catch free for {TRIAL.days} days on your current number, no credit
+            card. Or book a free 30-minute call and we&apos;ll walk you through it.
           </p>
           <div className="flex flex-wrap items-center justify-center gap-4">
             <CTAButton href={CTA.primary.href} variant="primary" className="text-base px-8 py-4">
