@@ -4,7 +4,7 @@ import { FOOTER_NAV, FOOTER_LEGAL, CONTACT, CTA } from "@/lib/constants";
 
 export function Footer() {
   return (
-    <footer className="bg-navy text-white">
+    <footer className="bg-navy text-white print:hidden">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-8">
 
         {/* Columns */}
