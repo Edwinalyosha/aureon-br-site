@@ -15,6 +15,7 @@ import { ParticleField } from "@/components/ui/ParticleField";
 import { CTAButton } from "@/components/ui/CTAButton";
 import { DiagonalDivider } from "@/components/ui/DiagonalDivider";
 import { FadeUp } from "@/components/ui/FadeUp";
+import { CTA } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: "Services",
@@ -38,7 +39,7 @@ const SERVICES = [
       "Full call transcript stored and logged automatically",
       "Urgency detection — emergency calls flagged separately",
     ],
-    tier: "All plans",
+    tier: "All plans, from Catch",
   },
   {
     icon: <CalendarCheck size={26} />,
@@ -55,7 +56,7 @@ const SERVICES = [
       "Calendar integration so there's no double-booking",
       "Confirmation sent to the customer automatically",
     ],
-    tier: "Pipeline and above",
+    tier: "Presence and above · coming soon",
   },
   {
     icon: <Mail size={26} />,
@@ -72,7 +73,7 @@ const SERVICES = [
       "Re-engagement campaigns for lapsed customers",
       "Timing and messaging designed for your specific workflow",
     ],
-    tier: "Pipeline and above",
+    tier: "Pipeline and above · coming soon",
   },
   {
     icon: <Star size={26} />,
@@ -89,7 +90,7 @@ const SERVICES = [
       "Review request automation woven into your post-job follow-up",
       "Google ranking signals improved through active engagement",
     ],
-    tier: "Pipeline and above",
+    tier: "Pipeline and above · coming soon",
   },
   {
     icon: <BarChart3 size={26} />,
@@ -106,7 +107,7 @@ const SERVICES = [
       "Campaign-level data so you know what's working and what isn't",
       "Built to your metrics — not a generic template",
     ],
-    tier: "Momentum",
+    tier: "Pipeline and above · coming soon",
   },
   {
     icon: <Plug size={26} />,
@@ -123,7 +124,7 @@ const SERVICES = [
       "No more copy-pasting between platforms",
       "Reduced tool count — most clients end up with fewer subscriptions, not more",
     ],
-    tier: "Momentum",
+    tier: "Pipeline and above · coming soon",
   },
   {
     icon: <Megaphone size={26} />,
@@ -140,7 +141,7 @@ const SERVICES = [
       "Content tied to your actual business (seasonal demand, service promotions, team highlights)",
       "Voice guidelines set once, maintained automatically",
     ],
-    tier: "Momentum",
+    tier: "Momentum · coming soon",
   },
   {
     icon: <MousePointer size={26} />,
@@ -157,7 +158,7 @@ const SERVICES = [
       "Monthly performance report — spend, clicks, calls generated",
       "Landing page recommendations to improve conversion rate",
     ],
-    tier: "Momentum",
+    tier: "Momentum · coming soon",
   },
 ];
 
@@ -218,9 +219,14 @@ export default function ServicesPage() {
               className="hero-anim"
               style={{ animationDelay: "250ms" }}
             >
-              <CTAButton href="/contact" variant="primary" className="text-base px-8 py-4">
-                Book a Free Consultation <ArrowRight size={16} className="ml-1" />
-              </CTAButton>
+              <div className="flex flex-wrap items-center gap-4">
+                <CTAButton href={CTA.primary.href} variant="primary" className="text-base px-8 py-4">
+                  {CTA.primary.label} <ArrowRight size={16} className="ml-1" />
+                </CTAButton>
+                <CTAButton href={CTA.secondary.href} variant="secondary" className="text-base px-8 py-4">
+                  {CTA.secondary.label}
+                </CTAButton>
+              </div>
             </div>
           </div>
         </div>
@@ -338,9 +344,14 @@ export default function ServicesPage() {
               for your operation would actually look like. No commitment. No
               generic pitch.
             </p>
-            <CTAButton href="/contact" variant="primary" className="text-base px-8 py-4">
-              Book a Free Consultation <ArrowRight size={16} className="ml-1" />
-            </CTAButton>
+            <div className="flex flex-wrap items-center justify-center gap-4">
+              <CTAButton href={CTA.primary.href} variant="primary" className="text-base px-8 py-4">
+                {CTA.primary.label} <ArrowRight size={16} className="ml-1" />
+              </CTAButton>
+              <CTAButton href={CTA.secondary.href} variant="secondary" className="text-base px-8 py-4">
+                {CTA.secondary.label}
+              </CTAButton>
+            </div>
             <p className="mt-5 text-xs text-cream/40 tracking-wide">
               Working with businesses in the DMV and beyond.
             </p>

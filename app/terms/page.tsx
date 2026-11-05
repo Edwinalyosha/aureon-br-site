@@ -1,4 +1,5 @@
-﻿import type { Metadata } from "next";
+import type { Metadata } from "next";
+import { OVERAGE_PER_MINUTE, TRIAL } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: "Terms of Service",
@@ -34,47 +35,56 @@ export default function TermsPage() {
           </Section>
 
           <Section title="2. Payment Terms">
-            There is no setup fee. The monthly retainer is billed on the same
-            calendar date each month. Retainer
-            invoices unpaid after 14 days are subject to service suspension. All prices
-            are in USD.
+            There is no setup fee. Plans are billed monthly in advance, on the same
+            calendar date each month. Each plan includes a monthly allowance of call
+            minutes (Catch 150, Presence 300, Pipeline 600, Momentum 1,000); minutes beyond the
+            allowance are billed at ${OVERAGE_PER_MINUTE.toFixed(2)} per minute in the
+            following invoice. Invoices unpaid after 14 days are subject to service
+            suspension. All prices are in USD. Rates for existing clients rise at
+            most once a year, by no more than 5%, with 30 days&apos; notice.
           </Section>
 
           <Section title="3. Service Agreement and Exit Terms">
-            Presence and Pipeline tier clients may terminate with 30 days written
-            notice. Momentum tier clients may terminate with 60 days written notice. No early-termination penalties apply. Final month
-            prorated if applicable.
+            Service is month-to-month with no long-term contract. Catch, Presence and
+            Pipeline clients may cancel with 30 days&apos; written notice; Momentum
+            clients with 60 days&apos; written notice. No early-termination
+            penalties apply. Final month prorated if applicable.
           </Section>
 
-          <Section title="4. What You Own">
+          <Section title="4. Free Trial">
+            The free trial lasts {TRIAL.days} days, includes {TRIAL.plan} features and
+            up to {TRIAL.minutes} minutes of calls, and requires no payment
+            details. {TRIAL.finePrint} No charge is made unless you choose a plan.
+          </Section>
+
+          <Section title="5. What You Own">
             All data you provide — customer records, booking history, campaign results
-            — is yours. Upon termination, we deliver a full data export within 5
-            business days. We do not retain your data after 90 days of service
-            termination.
+            — is yours. On request, we deliver a full data export within 5 business
+            days. We do not retain your data after 90 days of service termination.
           </Section>
 
-          <Section title="5. Limitation of Liability">
+          <Section title="6. Limitation of Liability">
             [Attorney-reviewed limitation of liability clause — required before launch.
             Wyoming LLC governing law applies.]
           </Section>
 
-          <Section title="6. AI Tools Disclosure">
+          <Section title="7. AI Tools Disclosure">
             Some services use AI-assisted processing. We disclose the use of AI tools
             where required by applicable law. AI-generated outputs are reviewed before
             deployment in any customer-facing context unless you have explicitly opted
             into automatic publishing.
           </Section>
 
-          <Section title="7. Dispute Resolution">
+          <Section title="8. Dispute Resolution">
             [Attorney-reviewed dispute resolution clause — required before launch.]
           </Section>
 
-          <Section title="8. Governing Law">
+          <Section title="9. Governing Law">
             These Terms are governed by the laws of the State of Wyoming, without
             regard to conflict of law principles.
           </Section>
 
-          <Section title="9. Contact">
+          <Section title="10. Contact">
             Questions about these Terms:{" "}
             <a href="mailto:info@aureonnbridge.com" className="text-gold hover:text-goldlight">
               info@aureonnbridge.com

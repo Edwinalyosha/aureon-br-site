@@ -10,7 +10,6 @@ import {
   Users,
   Phone,
   ArrowRight,
-  CheckCircle2,
 } from "lucide-react";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 import { CTAButton } from "@/components/ui/CTAButton";
@@ -19,8 +18,8 @@ import { FadeUp } from "@/components/ui/FadeUp";
 import { DiagonalDivider } from "@/components/ui/DiagonalDivider";
 import { ParticleField } from "@/components/ui/ParticleField";
 import { TiltCard } from "@/components/ui/TiltCard";
-import { PRICING_TIERS } from "@/lib/constants";
-import { cn } from "@/lib/utils";
+import { PricingCard } from "@/components/ui/PricingCard";
+import { PRICING_TIERS, CTA, DEMO_PHONE, TRIAL } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: "Aureon Bridge — AI Automation for Independent Businesses",
@@ -45,7 +44,9 @@ export default function HomePage() {
       <DiagonalDivider from="#ffffff" to="#FAF7F0" />
       <ServicesSection />
       <DiagonalDivider from="#FAF7F0" to="#ffffff" flip />
-      {/* <ProofSection /> — hidden until Morgatech quote is confirmed */}
+      <UseCasesSection />
+      {DEMO_PHONE && <DemoLineSection demo={DEMO_PHONE} />}
+      <ProofSection />
       <DiagonalDivider from="#ffffff" to="#FAF7F0" />
       <PricingSection />
       <DiagonalDivider from="#FAF7F0" to="#1A1A2E" flip />
@@ -75,21 +76,21 @@ function HeroSection() {
             className="hero-anim flex flex-wrap items-center gap-4 mb-10"
             style={{ animationDelay: "300ms" }}
           >
-            <CTAButton href="/contact" variant="primary" className="text-base px-8 py-4">
-              Book a Free Consultation
+            <CTAButton href={CTA.primary.href} variant="primary" className="text-base px-8 py-4">
+              {CTA.primary.label}
             </CTAButton>
-            <a
-              href="#how-it-works"
+            <Link
+              href={CTA.secondary.href}
               className="text-sm font-medium text-cream/70 hover:text-cream transition-colors flex items-center gap-1.5"
             >
-              See How It Works <ArrowRight size={15} />
-            </a>
+              {CTA.secondary.label} <ArrowRight size={15} />
+            </Link>
           </div>
           <p
             className="hero-anim text-xs text-cream/40 tracking-wide"
             style={{ animationDelay: "420ms" }}
           >
-            Working with businesses in the DMV.
+            No credit card. No setup fees. Month-to-month.
           </p>
         </div>
       </div>
@@ -127,11 +128,11 @@ function ProblemSection() {
             Every growing business hits the same ceiling.
           </h2>
           <p className="text-grey text-base leading-relaxed mb-14 max-w-2xl">
-            62% of small business calls go unanswered — and 85% of those callers
-            never call back. The average owner loses 24 working days a year just
-            to admin work: answering phones, chasing follow-ups, juggling
-            reminders. Aureon Bridge takes that off your plate so you can focus
-            on running the business.
+            When you&apos;re under a car, on a roof or in a crawlspace, the phone
+            keeps ringing. Answering it, chasing follow-ups and juggling
+            reminders eats into the hours you&apos;d rather spend on paid work.
+            Aureon Bridge takes that off your plate so you can focus on running
+            the business.
           </p>
         </FadeUp>
 
@@ -215,12 +216,12 @@ function HowItWorksSection() {
 
         <FadeUp delay={400} className="mt-12">
           <div className="flex items-center gap-2 text-sm text-grey">
-            <span>Start with a free audit.</span>
+            <span>See it working on your own calls.</span>
             <Link
-              href="/contact"
+              href={CTA.primary.href}
               className="text-gold font-semibold hover:text-goldlight transition-colors flex items-center gap-1"
             >
-              Book a Consultation <ArrowRight size={14} />
+              {CTA.primary.label} <ArrowRight size={14} />
             </Link>
           </div>
         </FadeUp>
@@ -295,60 +296,114 @@ function ServicesSection() {
   );
 }
 
-// ─── 5. Proof ─────────────────────────────────────────────────────────────────
-function ProofSection() {
+// ─── 5. Use cases ─────────────────────────────────────────────────────────────
+function UseCasesSection() {
+  const cases = [
+    {
+      trade: "Auto repair",
+      body: "Answers \"is my car ready?\" and \"can you fit me in Thursday?\" while your techs stay under the hood, and books the appointment.",
+    },
+    {
+      trade: "HVAC",
+      body: "Picks up when the AC dies on the hottest day, captures the address and the problem, and flags no-heat or no-cool calls as urgent.",
+    },
+    {
+      trade: "Plumbing",
+      body: "Takes the burst-pipe call at 9 pm, gets the details you need to quote, and books the visit instead of sending it to voicemail.",
+    },
+    {
+      trade: "Electrical",
+      body: "Sorts emergencies from estimate requests, collects the job details you need, and keeps your schedule full without you on the phone.",
+    },
+  ];
+
   return (
     <section className="bg-white">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-28">
         <FadeUp>
-          <SectionLabel>Proof</SectionLabel>
-          <h2 className="text-3xl sm:text-4xl font-bold text-navy leading-tight mb-12 max-w-2xl">
+          <SectionLabel>Who It&apos;s For</SectionLabel>
+          <h2 className="text-3xl sm:text-4xl font-bold text-navy leading-tight mb-4 max-w-2xl">
+            Built for businesses that can&apos;t stop to answer the phone.
+          </h2>
+          <p className="text-grey text-base leading-relaxed mb-12 max-w-2xl">
+            Any independent business that runs on calls and appointments. A few
+            examples:
+          </p>
+        </FadeUp>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          {cases.map((c, i) => (
+            <FadeUp key={c.trade} delay={i * 80}>
+              <div className="border-l-4 border-gold bg-cream px-6 py-6 h-full">
+                <h3 className="text-base font-bold text-navy mb-2">{c.trade}</h3>
+                <p className="text-sm text-grey leading-relaxed">{c.body}</p>
+              </div>
+            </FadeUp>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// ─── 6. Demo line (shown only once DEMO_PHONE is set) ─────────────────────────
+function DemoLineSection({ demo }: { demo: { display: string; href: string } }) {
+  return (
+    <section className="bg-white">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pb-20 md:pb-28">
+        <FadeUp>
+          <div className="bg-navy text-white px-8 py-10 flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+            <div>
+              <p className="text-xs font-bold tracking-widest uppercase text-goldlight mb-2">
+                Hear it for yourself
+              </p>
+              <h2 className="text-2xl sm:text-3xl font-bold leading-tight">
+                Call our AI receptionist.
+              </h2>
+            </div>
+            <a
+              href={demo.href}
+              className="inline-flex items-center gap-2 bg-gold hover:bg-goldlight text-white text-lg font-semibold px-8 py-4 transition-colors self-start md:self-auto"
+            >
+              <Phone size={18} /> {demo.display}
+            </a>
+          </div>
+        </FadeUp>
+      </div>
+    </section>
+  );
+}
+
+// ─── 7. Proof ─────────────────────────────────────────────────────────────────
+// Case study placeholder: describe what was built, no numbers until real data exists.
+function ProofSection() {
+  return (
+    <section className="bg-white">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pb-20 md:pb-28">
+        <FadeUp>
+          <SectionLabel>Case Study</SectionLabel>
+          <h2 className="text-3xl sm:text-4xl font-bold text-navy leading-tight mb-10 max-w-2xl">
             Built for real operations, not demo environments.
           </h2>
         </FadeUp>
 
         <FadeUp delay={100}>
-          <CalloutBlock className="mb-8 max-w-2xl">
+          <CalloutBlock className="mb-6 max-w-2xl">
             <p className="text-xs font-bold tracking-widest uppercase text-gold mb-3">
-              Morgatech Auto Repair — DMV Area
+              Morgatech Auto Repair, Beltsville MD
             </p>
-            <h3 className="text-base font-bold text-navy mb-3">
-              What we built for Morgatech Auto Repair
-            </h3>
             <p className="text-sm text-grey leading-relaxed">
-              We built Morgatech Auto Repair a full automation stack from the
-              ground up: AI-powered booking intake, Google Ads campaign
-              management, social media content automation, email follow-up
-              sequences, and a real-time operational dashboard. Every tool
-              connected. Nothing requiring manual handoff between systems.
+              Morgatech is our first auto repair client. Its calls are answered by
+              the same AI receptionist you get on Catch, and we built the shop a
+              website assistant that answers questions and books appointments,
+              email follow-up and a dashboard that shows it all in one place.
             </p>
           </CalloutBlock>
         </FadeUp>
 
         <FadeUp delay={200}>
-          {/* Owner quote placeholder */}
-          <div className="border border-dashed border-gold/40 bg-gold/5 p-5 max-w-2xl mb-12">
-            <p className="text-xs font-bold tracking-wider uppercase text-gold/70 mb-2">
-              Placeholder — Owner Quote Needed Before Launch
-            </p>
-            <p className="text-sm text-grey/70 italic">
-              Ask Edwin&apos;s dad for one sentence. Even casual. &ldquo;Before
-              this, I was spending X hours on...&rdquo; This placeholder will be
-              replaced before the site goes live.
-            </p>
-          </div>
-        </FadeUp>
-
-        <FadeUp delay={300}>
           <p className="text-sm text-grey max-w-xl">
-            We&apos;re actively onboarding pilot clients in the DMV. If you want
-            to see what this looks like for your operation,{" "}
-            <Link
-              href="/contact"
-              className="text-gold font-semibold hover:text-goldlight transition-colors"
-            >
-              book a free audit →
-            </Link>
+            The full case study, with results, is coming soon.
           </p>
         </FadeUp>
       </div>
@@ -356,7 +411,7 @@ function ProofSection() {
   );
 }
 
-// ─── 6. Pricing Anchor ────────────────────────────────────────────────────────
+// ─── 8. Pricing Anchor ────────────────────────────────────────────────────────
 function PricingSection() {
   return (
     <section className="relative bg-cream overflow-hidden">
@@ -376,91 +431,17 @@ function PricingSection() {
             </Link>
           </div>
           <p className="text-grey text-base leading-relaxed mb-12 max-w-2xl">
-            Three tiers. No setup fees. Launch pricing available now — lock it
-            in before it goes to regular rate.
+            Start with Catch at $99 a month. It answers the calls you miss, on
+            the number you already have. The bigger plans go on sale as each one
+            is ready. No setup fees, month-to-month. {TRIAL.headline}
           </p>
         </FadeUp>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
           {PRICING_TIERS.map((tier, i) => (
             <FadeUp key={tier.id} delay={i * 80}>
-              <TiltCard
-                className={cn(
-                  "relative h-full",
-                  tier.highlighted
-                    ? "bg-navy/75 text-white backdrop-blur-sm"
-                    : "bg-white/65 shadow-sm hover:shadow-lg transition-shadow duration-300 backdrop-blur-sm"
-                )}
-              >
-              <div className="p-7 h-full">
-                {tier.highlighted && (
-                  <span className="absolute top-0 right-6 -translate-y-1/2 bg-gold text-white text-[10px] font-bold tracking-widest uppercase px-3 py-1">
-                    Most Popular
-                  </span>
-                )}
-                <p
-                  className={`text-sm font-bold mb-0.5 ${
-                    tier.highlighted ? "text-white" : "text-navy"
-                  }`}
-                >
-                  {tier.name}
-                </p>
-                <p className={`text-xs mb-3 ${tier.highlighted ? "text-cream/60" : "text-grey/70"}`}>
-                  {tier.tagline}
-                </p>
-                <div className="mb-1">
-                  <span className={`text-xs line-through ${tier.highlighted ? "text-cream/50" : "text-grey/50"}`}>
-                    ${tier.regularPrice.toLocaleString()}/mo
-                  </span>
-                </div>
-                <div className="mb-1">
-                  <span className={`text-3xl font-bold ${tier.highlighted ? "text-white" : "text-navy"}`}>
-                    ${tier.monthly.toLocaleString()}
-                  </span>
-                  <span className={`text-sm ml-1 ${tier.highlighted ? "text-cream/70" : "text-grey"}`}>
-                    /mo
-                  </span>
-                </div>
-                <p className={`text-[10px] font-semibold tracking-wider uppercase mb-4 ${tier.highlighted ? "text-goldlight" : "text-gold"}`}>
-                  Launch price
-                </p>
-                <p
-                  className={`text-xs leading-relaxed mb-6 ${
-                    tier.highlighted ? "text-cream/70" : "text-grey"
-                  }`}
-                >
-                  {tier.description}
-                </p>
-                <ul className="space-y-2 mb-7">
-                  {tier.features.map((f) => (
-                    <li key={f} className="flex items-start gap-2">
-                      <CheckCircle2
-                        size={13}
-                        className={`flex-shrink-0 mt-0.5 ${
-                          tier.highlighted ? "text-goldlight" : "text-gold"
-                        }`}
-                      />
-                      <span
-                        className={`text-xs leading-relaxed ${
-                          tier.highlighted ? "text-cream/80" : "text-grey"
-                        }`}
-                      >
-                        {f}
-                      </span>
-                    </li>
-                  ))}
-                </ul>
-                <Link
-                  href="/contact"
-                  className={`block text-center text-xs font-semibold px-4 py-2.5 transition-colors ${
-                    tier.highlighted
-                      ? "bg-gold hover:bg-goldlight text-white"
-                      : "border border-gold text-gold hover:bg-gold hover:text-white"
-                  }`}
-                >
-                  Get started →
-                </Link>
-              </div>
+              <TiltCard className="relative h-full shadow-sm hover:shadow-lg transition-shadow duration-300">
+                <PricingCard tier={tier} />
               </TiltCard>
             </FadeUp>
           ))}
@@ -470,7 +451,7 @@ function PricingSection() {
   );
 }
 
-// ─── 7. Final CTA ─────────────────────────────────────────────────────────────
+// ─── 9. Final CTA ─────────────────────────────────────────────────────────────
 function FinalCTASection() {
   return (
     <section className="bg-navy">
@@ -480,12 +461,17 @@ function FinalCTASection() {
             Ready for your business to run itself?
           </h2>
           <p className="text-cream/70 text-base sm:text-lg leading-relaxed mb-10 max-w-xl mx-auto">
-            A 30-minute call. We&apos;ll look at how your business runs today and
-            show you exactly what we&apos;d build — no commitment required.
+            Try it free for {TRIAL.days} days, no credit card. Or book a free
+            30-minute call and we&apos;ll show you exactly what we&apos;d build.
           </p>
-          <CTAButton href="/contact" variant="primary" className="text-base px-8 py-4">
-            Book a Free Consultation →
-          </CTAButton>
+          <div className="flex flex-wrap items-center justify-center gap-4">
+            <CTAButton href={CTA.primary.href} variant="primary" className="text-base px-8 py-4">
+              {CTA.primary.label} →
+            </CTAButton>
+            <CTAButton href={CTA.secondary.href} variant="secondary" className="text-base px-8 py-4">
+              {CTA.secondary.label}
+            </CTAButton>
+          </div>
         </FadeUp>
       </div>
     </section>

@@ -10,7 +10,7 @@ export async function POST(req: NextRequest) {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          source: "aureonbridge.com",
+          source: "aureonnbridge.com",
           timestamp: new Date().toISOString(),
           ...body,
         }),

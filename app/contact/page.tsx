@@ -1,6 +1,8 @@
-﻿import type { Metadata } from "next";
+import type { Metadata } from "next";
+import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { SectionLabel } from "@/components/ui/SectionLabel";
+import { CONTACT, CTA, TRIAL } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: "Book a Free Consultation",
@@ -15,7 +17,7 @@ const CALL_TOPICS = [
   "Timeline and next steps if it's a fit",
 ];
 
-const calendarUrl = "https://cal.com/edwin-ssekyondwa-pfuhrv/30min";
+const calendarUrl = CONTACT.calendarUrl;
 
 export default function ContactPage() {
   return (
@@ -64,25 +66,47 @@ export default function ContactPage() {
             </div>
           )}
 
+          <p className="mt-6 text-sm text-grey">
+            Rather see it work first?{" "}
+            <Link
+              href={CTA.primary.href}
+              className="text-gold font-semibold hover:text-goldlight transition-colors"
+            >
+              {CTA.primary.label} →
+            </Link>{" "}
+            <span className="text-grey/70">({TRIAL.minutes} minutes of calls, no credit card.)</span>
+          </p>
+
           <div className="mt-8 pt-8 border-t border-gray-100 space-y-2">
             <p className="text-sm text-grey">
               Prefer email?{" "}
               <a
-                href="mailto:info@aureonnbridge.com"
+                href={`mailto:${CONTACT.email}`}
                 className="text-gold font-medium hover:text-goldlight transition-colors"
               >
-                info@aureonnbridge.com
+                {CONTACT.email}
               </a>
             </p>
             <p className="text-sm text-grey">
               Or call us:{" "}
               <a
-                href="tel:+12406604547"
+                href={CONTACT.phoneHref}
                 className="text-gold font-medium hover:text-goldlight transition-colors"
               >
-                (240) 660-4547
+                {CONTACT.phoneDisplay}
               </a>
             </p>
+            <address className="not-italic text-sm text-grey pt-2">
+              {CONTACT.streetAddress}
+              {CONTACT.addressLocality && <>, {CONTACT.addressLocality}</>}
+            </address>
+            <ul className="text-sm text-grey">
+              {CONTACT.hours.map((h) => (
+                <li key={h.days}>
+                  {h.days}: {h.time}
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
       </div>

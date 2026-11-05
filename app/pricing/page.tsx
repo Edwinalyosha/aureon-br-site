@@ -1,43 +1,52 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { CheckCircle2, ArrowRight } from "lucide-react";
+import { PricingCard } from "@/components/ui/PricingCard";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 import { CTAButton } from "@/components/ui/CTAButton";
 import { DiagonalDivider } from "@/components/ui/DiagonalDivider";
 import { FadeUp } from "@/components/ui/FadeUp";
-import { PRICING_TIERS } from "@/lib/constants";
+import { PRICING_TIERS, PRICING_TERMS, OVERAGE_PER_MINUTE, TRIAL, CTA } from "@/lib/constants";
 import { ParticleField } from "@/components/ui/ParticleField";
 
 export const metadata: Metadata = {
   title: "Pricing",
   description:
-    "Transparent pricing for custom AI automation. Plans from $299/month. No setup fees. Simple service agreement with easy exit.",
+    "Catch answers your missed calls on your current number for $99/month, with a free 7-day trial. No setup fees, month-to-month. Presence, Pipeline and Momentum are coming soon.",
 };
 
 const FAQ = [
   {
-    q: "What happens if I cancel?",
-    a: "You keep your data. Always. If you cancel, we export everything — customer records, campaign history, booking data — and hand it over in a format you can use. The automations are built on tools that would need to be maintained or rebuilt elsewhere, but your data is yours from day one.",
+    q: "What can I buy today?",
+    a: "Catch. It answers the calls you miss on the number you already have, emails you a summary and transcript of each one, and keeps a callback list. Presence, Pipeline and Momentum go on sale as each one is ready. Their prices are shown so you know where you can go next.",
   },
   {
-    q: "Is there a long-term contract?",
-    a: "We use a simple service agreement. It's easy to exit — 30 days written notice is all we need for Presence and Pipeline; 60 days for Momentum. No penalties, no long-term lock-in.",
+    q: "How does the free trial work?",
+    a: `${TRIAL.headline} ${TRIAL.finePrint}`,
+  },
+  {
+    q: "Do I need a new phone number?",
+    a: "Not for Catch. You turn on call forwarding for unanswered calls, so the AI only picks up when you don't. Turning forwarding off stops it within seconds.",
   },
   {
     q: "How long does setup take?",
-    a: "Setup takes between 3 and 14 working days depending on the scope of your system and how quickly we can access your existing tools. We scope it before we start so you know exactly what to expect.",
+    a: "About 20 minutes for Catch. We set it up with you, turn on forwarding and make a test call together.",
   },
   {
-    q: "Do you work with the software I'm already using?",
-    a: "Usually, yes. We've built around the most common booking platforms and business management tools. If you're using something niche, we'll tell you in the consultation whether we can integrate it cleanly.",
+    q: "Is there a long-term contract?",
+    a: "No. It's month-to-month, billed monthly in advance. Cancel with 30 days' notice, or 60 days' notice on Momentum. No penalties.",
+  },
+  {
+    q: "What happens if I cancel?",
+    a: "You keep your data. On request, we export your call history, transcripts and customer details in a format you can use. The AI stops answering when the plan ends.",
+  },
+  {
+    q: "What if I use more call minutes than my plan includes?",
+    a: `Each plan includes a monthly allowance of AI call minutes (150 on Catch). Minutes beyond that are billed at $${OVERAGE_PER_MINUTE.toFixed(2)} per minute.`,
   },
   {
     q: "Is there a setup fee?",
-    a: "No. You pay the monthly price for your tier and nothing upfront. If you need something beyond the three tiers, we scope it in your consultation and give you the exact number before you sign anything. No hourly billing, no scope creep without your approval.",
-  },
-  {
-    q: "Can I upgrade my tier later?",
-    a: "Yes. Most clients start at Presence or Pipeline and move up once they see what's possible. Upgrading means we expand your automation coverage and adjust the monthly retainer. No full rebuild required.",
+    a: "No. You pay the monthly price and nothing upfront.",
   },
 ];
 
@@ -50,16 +59,17 @@ export default function PricingPage() {
           <div className="max-w-2xl">
             <SectionLabel>Pricing</SectionLabel>
             <h1 className="text-3xl sm:text-4xl font-bold text-navy leading-tight mb-4">
-              Transparent pricing. No surprises.
+              Start at $99. Add more as it&apos;s ready.
             </h1>
             <p className="text-grey text-base leading-relaxed mb-5">
-              A monthly retainer. No setup fees. Pick the tier that matches
-              where your operation is today — upgrade when you&apos;re ready for more.
+              Catch answers the calls you miss, on the number you already have.
+              Each plan above it adds a bigger job, and goes on sale when that
+              part is built and working. No setup fees. Month-to-month.
             </p>
             <div className="border-l-4 border-gold bg-cream px-5 py-4">
               <p className="text-sm text-grey leading-relaxed">
-                Not sure which tier fits? Book a free consultation and
-                we&apos;ll scope it for you — no commitment required.
+                Want to hear it first? Start the free {TRIAL.days}-day trial, or book a
+                free consultation and we&apos;ll walk you through it.
               </p>
             </div>
           </div>
@@ -70,97 +80,50 @@ export default function PricingPage() {
       <section className="relative bg-cream overflow-hidden">
         <ParticleField id="particles-pricing-page" />
         <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
             {PRICING_TIERS.map((tier, i) => (
               <FadeUp key={tier.id} delay={i * 80}>
-                <div
-                  className={`relative p-7 h-full flex flex-col hover:-translate-y-1.5 transition-transform duration-200 backdrop-blur-sm ${
-                    tier.highlighted ? "bg-navy/75 text-white" : "bg-white/65"
-                  }`}
-                >
-                  {tier.highlighted && (
-                    <span className="absolute top-0 right-6 -translate-y-1/2 bg-gold text-white text-[10px] font-bold tracking-widest uppercase px-3 py-1">
-                      Most Popular
-                    </span>
-                  )}
-
-                  <div className="mb-auto">
-                    <p
-                      className={`text-sm font-bold mb-0.5 ${
-                        tier.highlighted ? "text-white" : "text-navy"
-                      }`}
-                    >
-                      {tier.name}
-                    </p>
-                    <p className={`text-xs mb-3 ${tier.highlighted ? "text-cream/60" : "text-grey/70"}`}>
-                      {tier.tagline}
-                    </p>
-                    <div className="mb-1">
-                      <span className={`text-xs line-through ${tier.highlighted ? "text-cream/50" : "text-grey/50"}`}>
-                        ${tier.regularPrice.toLocaleString()}/mo
-                      </span>
-                    </div>
-                    <div className="flex items-baseline gap-1 mb-1">
-                      <span
-                        className={`text-3xl font-bold ${
-                          tier.highlighted ? "text-white" : "text-navy"
-                        }`}
-                      >
-                        ${tier.monthly.toLocaleString()}
-                      </span>
-                      <span
-                        className={`text-sm ${
-                          tier.highlighted ? "text-cream/70" : "text-grey"
-                        }`}
-                      >
-                        /mo
-                      </span>
-                    </div>
-                    <p className={`text-[10px] font-semibold tracking-wider uppercase mb-4 ${tier.highlighted ? "text-goldlight" : "text-gold"}`}>
-                      Launch price
-                    </p>
-                    <p
-                      className={`text-xs leading-relaxed mb-6 ${
-                        tier.highlighted ? "text-cream/70" : "text-grey"
-                      }`}
-                    >
-                      {tier.description}
-                    </p>
-                    <ul className="space-y-2.5 mb-8">
-                      {tier.features.map((f) => (
-                        <li key={f} className="flex items-start gap-2">
-                          <CheckCircle2
-                            size={13}
-                            className={`flex-shrink-0 mt-0.5 ${
-                              tier.highlighted ? "text-goldlight" : "text-gold"
-                            }`}
-                          />
-                          <span
-                            className={`text-xs leading-relaxed ${
-                              tier.highlighted ? "text-cream/80" : "text-grey"
-                            }`}
-                          >
-                            {f}
-                          </span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-
-                  <Link
-                    href="/contact"
-                    className={`block text-center text-xs font-semibold px-4 py-3 transition-colors mt-auto ${
-                      tier.highlighted
-                        ? "bg-gold hover:bg-goldlight text-white"
-                        : "border border-gold text-gold hover:bg-gold hover:text-white"
-                    }`}
-                  >
-                    Get started →
-                  </Link>
+                <div className="h-full hover:-translate-y-1.5 transition-transform duration-200">
+                  <PricingCard tier={tier} />
                 </div>
               </FadeUp>
             ))}
           </div>
+
+          <FadeUp delay={240}>
+            <div className="mt-10 grid grid-cols-1 lg:grid-cols-2 gap-5">
+              <div className="bg-white/65 backdrop-blur-sm p-6">
+                <p className="text-xs font-bold tracking-widest uppercase text-gold mb-4">
+                  The fine print, up front
+                </p>
+                <ul className="space-y-2.5">
+                  <li className="flex items-start gap-2 text-xs text-grey leading-relaxed">
+                    <CheckCircle2 size={13} className="flex-shrink-0 mt-0.5 text-gold" />
+                    Calls beyond your included minutes: ${OVERAGE_PER_MINUTE.toFixed(2)} per minute, on every plan.
+                  </li>
+                  {PRICING_TERMS.map((term) => (
+                    <li key={term} className="flex items-start gap-2 text-xs text-grey leading-relaxed">
+                      <CheckCircle2 size={13} className="flex-shrink-0 mt-0.5 text-gold" />
+                      {term}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div className="bg-navy/90 text-white p-6 flex flex-col">
+                <p className="text-xs font-bold tracking-widest uppercase text-goldlight mb-3">
+                  Try it first
+                </p>
+                <p className="text-sm font-semibold leading-relaxed mb-2">{TRIAL.headline}</p>
+                <p className="text-xs text-cream/70 leading-relaxed mb-5">{TRIAL.finePrint}</p>
+                <Link
+                  href={CTA.primary.href}
+                  className="mt-auto self-start bg-gold hover:bg-goldlight text-white text-xs font-semibold px-5 py-3 transition-colors"
+                >
+                  {CTA.primary.label} →
+                </Link>
+              </div>
+            </div>
+          </FadeUp>
         </div>
       </section>
 
@@ -203,16 +166,20 @@ export default function PricingPage() {
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-28 text-center">
           <FadeUp>
             <h2 className="text-2xl sm:text-3xl font-bold text-white mb-4 max-w-xl mx-auto">
-              Not sure which tier fits?
+              Hear it answer your own calls.
             </h2>
             <p className="text-cream/70 text-base leading-relaxed mb-8 max-w-md mx-auto">
-              Start with a free consultation. We&apos;ll scope your system and
-              recommend the tier that makes sense — not the most expensive one,
-              the right one.
+              Try Catch free for {TRIAL.days} days on your current number. No credit
+              card, and we switch your forwarding back if it&apos;s not for you.
             </p>
-            <CTAButton href="/contact" variant="primary" className="text-base px-8 py-4">
-              Book a Free Consultation <ArrowRight size={16} className="ml-1" />
-            </CTAButton>
+            <div className="flex flex-wrap items-center justify-center gap-4">
+              <CTAButton href={CTA.primary.href} variant="primary" className="text-base px-8 py-4">
+                {CTA.primary.label} <ArrowRight size={16} className="ml-1" />
+              </CTAButton>
+              <CTAButton href={CTA.secondary.href} variant="secondary" className="text-base px-8 py-4">
+                {CTA.secondary.label}
+              </CTAButton>
+            </div>
           </FadeUp>
         </div>
       </section>

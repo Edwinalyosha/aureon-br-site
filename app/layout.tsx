@@ -1,8 +1,9 @@
-﻿import type { Metadata } from "next";
+import type { Metadata } from "next";
 import { Inter, Space_Mono, Nova_Square, Michroma } from "next/font/google";
 import Script from "next/script";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
+import { CONTACT, SITE_URL } from "@/lib/constants";
 import "./globals.css";
 
 const inter = Inter({
@@ -33,7 +34,7 @@ const michroma = Michroma({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://aureonbridge.com"),
+  metadataBase: new URL("https://aureonnbridge.com"),
   title: {
     default: "Aureon Bridge — AI Automation for Independent Businesses",
     template: "%s | Aureon Bridge",
@@ -44,7 +45,7 @@ export const metadata: Metadata = {
     title: "Aureon Bridge — Bridge the Gap. Automate the Rest.",
     description:
       "Custom AI automation for businesses that want to run leaner without hiring more people.",
-    url: "https://aureonbridge.com",
+    url: "https://aureonnbridge.com",
     siteName: "Aureon Bridge",
     locale: "en_US",
     type: "website",
@@ -69,8 +70,16 @@ export default function RootLayout({
               "@context": "https://schema.org",
               "@type": "ProfessionalService",
               name: "Aureon Bridge",
-              url: "https://aureonbridge.com",
-              email: "info@aureonnbridge.com",
+              url: SITE_URL,
+              email: CONTACT.email,
+              telephone: CONTACT.phoneDisplay,
+              address: {
+                "@type": "PostalAddress",
+                streetAddress: CONTACT.streetAddress,
+                ...(CONTACT.addressLocality ? { addressLocality: CONTACT.addressLocality } : {}),
+                addressCountry: "US",
+              },
+              openingHours: ["Mo-Fr 08:00-18:00", "Sa 09:00-14:00"],
               description:
                 "Custom AI automation agency for independent businesses. Booking, follow-up, reviews, and operational dashboards — integrated into one system.",
               areaServed: {
