@@ -5,7 +5,7 @@ import Link from "next/link";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
 import { CONTACT, TRIAL } from "@/lib/constants";
 
-const BUSINESS_TYPES = ["Auto repair", "HVAC", "Plumbing", "Electrical", "Something else"];
+const BUSINESS_TYPES = ["Auto repair shop", "Something else"];
 
 type Status = "idle" | "submitting" | "done" | "error";
 

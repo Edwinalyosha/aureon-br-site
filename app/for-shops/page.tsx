@@ -1,19 +1,52 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowDown } from "lucide-react";
+import { ArrowDown, PhoneMissed, Wrench, DollarSign } from "lucide-react";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 import { CalloutBlock } from "@/components/ui/CalloutBlock";
 import { DiagonalDivider } from "@/components/ui/DiagonalDivider";
 import { FadeUp } from "@/components/ui/FadeUp";
 import { ParticleField } from "@/components/ui/ParticleField";
-import { CTA } from "@/lib/constants";
+import { CONTACT, CTA, TRIAL } from "@/lib/constants";
 
 export const metadata: Metadata = {
-  title: "AI Automation for Auto Repair Shops",
+  title: "AI Receptionist for Auto Repair Shops",
   description:
-    "We build custom AI automation for independent auto repair shops in the DMV and beyond. Booking, follow-up, review management. Free 45-minute audit. Simple exit terms.",
+    "An AI receptionist for independent auto repair shops. Answers the calls you miss on your current number and emails you a summary. $99/month, free for 7 days.",
   robots: { index: true, follow: true },
 };
+
+// The 60-second version: three short columns a manager can read on a phone.
+const SUMMARY = [
+  {
+    icon: <PhoneMissed size={22} />,
+    title: "The problem",
+    points: [
+      "Calls come in while everyone's busy with customers or cars",
+      "Most callers don't leave a voicemail",
+      "They call the next shop instead",
+    ],
+  },
+  {
+    icon: <Wrench size={22} />,
+    title: "What I set up",
+    points: [
+      "An AI that answers only the calls you don't pick up",
+      "Takes name, number, vehicle and what's wrong",
+      "Emails you a summary and transcript after every call",
+      "Keeps a callback list so nobody gets forgotten",
+    ],
+  },
+  {
+    icon: <DollarSign size={22} />,
+    title: "What it costs",
+    points: [
+      "$99 a month. No setup fee",
+      `Free for ${TRIAL.days} days, no credit card`,
+      "Keeps your number and your phones",
+      "Month-to-month, 30 days' notice to cancel",
+    ],
+  },
+];
 
 export default function ForShopsPage() {
   return (
@@ -33,16 +66,17 @@ export default function ForShopsPage() {
               className="hero-anim text-base sm:text-lg text-cream/80 leading-relaxed mb-8"
               style={{ animationDelay: "150ms" }}
             >
-              I build custom AI automation for auto repair shops. No bloat, no
-              enterprise pricing. Just tools that handle the admin work your
-              operation runs on — without needing a person to run them.
+              I set up an AI receptionist for auto repair shops. When nobody can
+              get to the phone, it answers on your current number, takes the
+              customer&apos;s details and emails you a summary. It&apos;s $99 a
+              month, and you can try it free for a week.
             </p>
             <a
-              href="#what-it-looks-like"
+              href="#the-short-version"
               className="hero-anim inline-flex items-center gap-2 text-sm font-medium text-cream/70 hover:text-cream transition-colors"
               style={{ animationDelay: "280ms" }}
             >
-              See what this looks like <ArrowDown size={15} />
+              See the 60-second version <ArrowDown size={15} />
             </a>
           </div>
         </div>
@@ -50,68 +84,59 @@ export default function ForShopsPage() {
 
       <DiagonalDivider from="#1A1A2E" to="#ffffff" />
 
-      {/* ── Section 2: What working with us looks like ───────────────────── */}
-      <section id="what-it-looks-like" className="bg-white">
+      {/* ── Section 2: The 60-second version ─────────────────────────────── */}
+      <section id="the-short-version" className="bg-white">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-28">
           <FadeUp>
-            <SectionLabel>How It Works</SectionLabel>
-            <h2 className="text-2xl sm:text-3xl font-bold text-navy leading-tight mb-8 max-w-xl">
-              Here&apos;s what working with us actually looks like.
+            <SectionLabel>The 60-Second Version</SectionLabel>
+            <h2 className="text-2xl sm:text-3xl font-bold text-navy leading-tight mb-10 max-w-xl">
+              Your phones stay the same. The missed calls stop getting lost.
             </h2>
           </FadeUp>
 
-          <FadeUp delay={80} className="max-w-2xl space-y-5 mb-10">
-            <p className="text-base text-grey leading-relaxed">
-              We start with a free 45-minute audit — no pitch deck, no slide
-              show. Just questions. We want to understand your booking process,
-              how you handle follow-up after a visit, what you do with estimates
-              that go quiet, and how you manage reviews.
-            </p>
-            <p className="text-base text-grey leading-relaxed">
-              Then we map it. We&apos;ll show you exactly which parts of your
-              operation we&apos;d automate, what the system would look like, and
-              what it would cost — before you commit to anything.
-            </p>
-            <p className="text-base text-grey leading-relaxed">
-              If it makes sense for your shop, we build it. If it doesn&apos;t,
-              you&apos;ll still know more about your options than when we started.
-              That&apos;s the deal.
-            </p>
-          </FadeUp>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+            {SUMMARY.map((col, i) => (
+              <FadeUp key={col.title} delay={i * 80}>
+                <div className="border-l-4 border-gold bg-cream px-6 py-6 h-full">
+                  <div className="text-gold mb-3">{col.icon}</div>
+                  <h3 className="text-base font-bold text-navy mb-3">{col.title}</h3>
+                  <ul className="space-y-2">
+                    {col.points.map((p) => (
+                      <li key={p} className="flex items-start gap-2.5">
+                        <span className="mt-2 flex-shrink-0 w-1.5 h-1.5 rounded-full bg-gold" />
+                        <span className="text-sm text-grey leading-relaxed">{p}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </FadeUp>
+            ))}
+          </div>
 
-          <FadeUp delay={160}>
-            <div className="flex flex-wrap items-center gap-4">
-              <Link
-                href={CTA.primary.href}
-                className="inline-flex items-center gap-2 bg-gold hover:bg-goldlight text-white text-sm font-semibold px-6 py-3 transition-colors"
-              >
-                {CTA.primary.label} →
-              </Link>
-              <Link
-                href={CTA.secondary.href}
-                className="text-sm font-semibold text-gold hover:text-goldlight transition-colors"
-              >
-                Or book a free audit →
-              </Link>
-            </div>
+          <FadeUp delay={240}>
+            <p className="text-sm text-grey max-w-2xl">
+              Setup takes about 20 minutes. We turn on forwarding for unanswered
+              calls and make a test call together. To stop it, switch the
+              forwarding back.
+            </p>
           </FadeUp>
         </div>
       </section>
 
       <DiagonalDivider from="#ffffff" to="#FAF7F0" flip />
 
-      {/* ── Section 3: Morgatech proof ───────────────────────────────────── */}
+      {/* ── Section 3: One proof point ───────────────────────────────────── */}
       <section className="bg-cream">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-28">
           <FadeUp>
             <SectionLabel>In Practice</SectionLabel>
             <h2 className="text-2xl sm:text-3xl font-bold text-navy leading-tight mb-8 max-w-xl">
-              What we&apos;ve already done for a shop like yours.
+              Already running at a shop like yours.
             </h2>
           </FadeUp>
 
           <FadeUp delay={80}>
-            <CalloutBlock className="mb-6 max-w-2xl">
+            <CalloutBlock className="max-w-2xl">
               <p className="text-xs font-bold tracking-widest uppercase text-gold mb-3">
                 Morgatech Auto Repair, Beltsville MD
               </p>
@@ -123,46 +148,51 @@ export default function ForShopsPage() {
               </p>
             </CalloutBlock>
           </FadeUp>
-
-          <FadeUp delay={160}>
-            <p className="text-sm text-grey max-w-2xl">
-              The full case study, with results, is coming soon.
-            </p>
-          </FadeUp>
         </div>
       </section>
 
       <DiagonalDivider from="#FAF7F0" to="#1A1A2E" flip />
 
-      {/* ── Section 4: CTA + BookingChat ─────────────────────────────────── */}
+      {/* ── Section 4: Single CTA ────────────────────────────────────────── */}
       <section className="bg-navy">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-28">
           <FadeUp>
-            <SectionLabel light>One Step. No Risk.</SectionLabel>
+            <SectionLabel light>Next Step</SectionLabel>
             <h2 className="text-2xl sm:text-3xl font-bold text-white leading-tight mb-4 max-w-xl">
-              Book 45 minutes. Get a free audit of your operation.
+              Ready to show your owner?
             </h2>
             <p className="text-cream/70 text-base leading-relaxed mb-10 max-w-xl">
-              Walk away with a clear picture of what we&apos;d build for you —
-              and what it would cost.
+              Start the free {TRIAL.days}-day trial on your shop&apos;s number, or
+              book a call and we&apos;ll walk through it together.
             </p>
           </FadeUp>
 
           <FadeUp delay={100}>
-            <a
-              href="https://cal.com/edwin-ssekyondwa-pfuhrv/30min"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 bg-gold hover:bg-goldlight text-white text-sm font-semibold px-8 py-4 transition-colors"
-            >
-              Book a Free Audit →
-            </a>
+            <div className="flex flex-wrap items-center gap-4">
+              <Link
+                href={CTA.primary.href}
+                className="inline-flex items-center gap-2 bg-gold hover:bg-goldlight text-white text-sm font-semibold px-8 py-4 transition-colors"
+              >
+                {CTA.primary.label} →
+              </Link>
+              <a
+                href={CONTACT.calendarUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 border border-gold text-gold hover:bg-gold hover:text-white text-sm font-semibold px-8 py-4 transition-colors"
+              >
+                Book a call →
+              </a>
+            </div>
           </FadeUp>
 
           <FadeUp delay={200}>
             <p className="mt-8 text-xs text-cream/40 max-w-md">
-              Simple service agreement — easy to exit if it&apos;s ever not right
-              for you. You keep your data no matter what.
+              Or call me directly at{" "}
+              <a href={CONTACT.phoneHref} className="text-cream/60 hover:text-cream underline">
+                {CONTACT.phoneDisplay}
+              </a>
+              . Month-to-month, and you keep your data no matter what.
             </p>
           </FadeUp>
         </div>
