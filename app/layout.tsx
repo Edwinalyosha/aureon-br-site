@@ -96,10 +96,10 @@ export default function RootLayout({
         <main id="main-content">{children}</main>
         <Footer />
         <Script id="aurea-chat-config" strategy="afterInteractive">
-          {`window.AureaChatConfig = { account_id: "aureon_bridge", webhook_url: "https://chatbot.archineer-ug.com/chat" };`}
+          {`window.AureaChatConfig = { account_id: "aureon_bridge", webhook_url: "https://chatbot.aureonnbridge.com/chat" };`}
         </Script>
         <Script
-          src="https://chatbot.archineer-ug.com/widget.js"
+          src="https://chatbot.aureonnbridge.com/widget.js"
           strategy="afterInteractive"
         />
       </body>
