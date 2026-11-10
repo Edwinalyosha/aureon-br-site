@@ -11,6 +11,7 @@ export const FOOTER_NAV: NavItem[] = [
   { label: "How It Works",  href: "/#how-it-works" },
   { label: "Pricing",       href: "/pricing" },
   { label: "Free Trial",    href: "/trial" },
+  { label: "Custom Builds", href: "/custom" },
   { label: "For Shops",     href: "/for-shops" },
   { label: "Forwarding Setup", href: "/forwarding" },
   { label: "Contact",       href: "/contact" },
@@ -94,6 +95,16 @@ export const TRIAL = {
 export const CTA = {
   primary: { label: "Start a free 7-day trial", href: "/trial" },
   secondary: { label: "Book a free consultation", href: "/contact" },
+};
+
+// Custom builds (/custom). DRAFT — Edwin hasn't decided to offer these yet (2026-11-10).
+// Starter prices, expected to rise after the first few builds (~$3,000–6,000 build, $300–500/mo care).
+// Change them here only; the page, pricing-page line and metadata all read from this.
+export const CUSTOM_BUILDS = {
+  href: "/custom",
+  buildFrom: 1500,
+  careFrom: 150,
+  typicalWeeks: "2–4",
 };
 
 // TODO: confirm the overage rate after the Vapi per-minute cost check.

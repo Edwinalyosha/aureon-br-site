@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { FOOTER_NAV, FOOTER_LEGAL, CONTACT, CTA } from "@/lib/constants";
+import { FOOTER_NAV, FOOTER_LEGAL, CONTACT, CTA, CUSTOM_BUILDS } from "@/lib/constants";
 
 export function Footer() {
   return (
@@ -34,7 +34,9 @@ export function Footer() {
               </span>
             </Link>
             <p className="text-sm text-gray-400 leading-relaxed pt-1">
-              Custom AI automation for independent businesses.
+              <Link href={CUSTOM_BUILDS.href} className="hover:text-white transition-colors">
+                Custom AI automation for independent businesses.
+              </Link>
             </p>
           </div>
 

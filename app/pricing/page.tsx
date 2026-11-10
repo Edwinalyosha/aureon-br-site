@@ -6,7 +6,7 @@ import { SectionLabel } from "@/components/ui/SectionLabel";
 import { CTAButton } from "@/components/ui/CTAButton";
 import { DiagonalDivider } from "@/components/ui/DiagonalDivider";
 import { FadeUp } from "@/components/ui/FadeUp";
-import { PRICING_TIERS, PRICING_TERMS, OVERAGE_PER_MINUTE, TRIAL, CTA } from "@/lib/constants";
+import { PRICING_TIERS, PRICING_TERMS, OVERAGE_PER_MINUTE, TRIAL, CTA, CUSTOM_BUILDS } from "@/lib/constants";
 import { ParticleField } from "@/components/ui/ParticleField";
 
 export const metadata: Metadata = {
@@ -89,6 +89,13 @@ export default function PricingPage() {
               </FadeUp>
             ))}
           </div>
+
+          <p className="mt-6 text-sm text-grey">
+            Need something built around your shop?{" "}
+            <Link href={CUSTOM_BUILDS.href} className="text-gold font-semibold hover:text-navy transition-colors">
+              See custom builds →
+            </Link>
+          </p>
 
           <FadeUp delay={240}>
             <div className="mt-10 grid grid-cols-1 lg:grid-cols-2 gap-5">
