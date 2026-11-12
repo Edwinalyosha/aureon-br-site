@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter, Space_Mono, Nova_Square, Michroma } from "next/font/google";
 import Script from "next/script";
 import { Navbar } from "@/components/layout/Navbar";
+import { FirstTouch } from "@/components/features/FirstTouch";
 import { Footer } from "@/components/layout/Footer";
 import { CONTACT, SITE_URL } from "@/lib/constants";
 import "./globals.css";
@@ -92,6 +93,7 @@ export default function RootLayout({
         />
       </head>
       <body className="antialiased">
+        <FirstTouch />
         <Navbar />
         <main id="main-content">{children}</main>
         <Footer />

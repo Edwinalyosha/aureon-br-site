@@ -12,6 +12,11 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ ok: false, error: "invalid_json" }, { status: 400 });
   }
 
+  // Honeypot: people never see this field. Pretend it worked.
+  if (typeof body.company_website === "string" && body.company_website.trim()) {
+    return NextResponse.json({ ok: true });
+  }
+
   const missing = REQUIRED.filter((k) => typeof body[k] !== "string" || !(body[k] as string).trim());
   if (missing.length) {
     return NextResponse.json({ ok: false, error: "missing_fields", missing }, { status: 400 });

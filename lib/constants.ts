@@ -97,6 +97,11 @@ export const CTA = {
   secondary: { label: "Book a free consultation", href: "/contact" },
 };
 
+// Lead intake on the dashboard: website forms post here so the lead lands in admin → Prospects
+// (and, with a phone number, on the callback list in the phone app). Contract: docs/lead-intake-api.md
+// in the aureon repo. Browser calls from aureonnbridge.com are allowed by CORS.
+export const LEAD_API_URL = "https://app.aureonnbridge.com/api/public/lead";
+
 // Custom builds (/custom). DRAFT — Edwin hasn't decided to offer these yet (2026-11-10).
 // Starter prices, expected to rise after the first few builds (~$3,000–6,000 build, $300–500/mo care).
 // Change them here only; the page, pricing-page line and metadata all read from this.
