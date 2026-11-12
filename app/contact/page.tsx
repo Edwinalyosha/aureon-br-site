@@ -1,13 +1,13 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
 import { SectionLabel } from "@/components/ui/SectionLabel";
+import { LeadForm } from "@/components/features/LeadForm";
 import { CONTACT, CTA, TRIAL } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: "Book a Free Consultation",
   description:
-    "Book a free 30-minute call. We'll map out exactly what automation would look like for your operation — no commitment required.",
+    "Tell us about your shop and we'll call you within one business day to set up a free 30-minute consultation. No commitment.",
 };
 
 const CALL_TOPICS = [
@@ -16,8 +16,6 @@ const CALL_TOPICS = [
   "What a custom system would look like and what it costs",
   "Timeline and next steps if it's a fit",
 ];
-
-const calendarUrl = CONTACT.calendarUrl;
 
 export default function ContactPage() {
   return (
@@ -29,8 +27,9 @@ export default function ContactPage() {
             Let&apos;s figure out if this is the right fit.
           </h1>
           <p className="text-grey text-base leading-relaxed mb-10">
-            Book a free 30-minute call. No pitch, no pressure — just a honest
-            look at your operation and what automation could do for it.
+            Tell us a little about your shop and we&apos;ll call you within one
+            business day to set up a free 30-minute consultation. No pitch, no
+            pressure, just an honest look at what would help.
           </p>
 
           {/* What we'll cover */}
@@ -48,25 +47,21 @@ export default function ContactPage() {
             </ul>
           </div>
 
-          {/* CTA */}
-          {calendarUrl ? (
+          <LeadForm campaign="contact-page" />
+
+          <p className="mt-8 text-sm text-grey">
+            Rather pick a time yourself?{" "}
             <a
-              href={calendarUrl}
+              href={CONTACT.calendarUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 bg-gold hover:bg-goldlight text-white text-sm font-semibold px-8 py-4 transition-colors"
+              className="text-gold font-semibold hover:text-goldlight transition-colors"
             >
-              Book a Free Consultation <ArrowRight size={15} />
+              Book a 30-minute call on our calendar →
             </a>
-          ) : (
-            <div className="border border-dashed border-gold/40 bg-gold/5 px-4 py-3 text-xs text-grey/70">
-              <strong className="text-gold/80">Developer note:</strong> Set{" "}
-              <code className="font-mono">NEXT_PUBLIC_GOOGLE_CALENDAR_URL</code> in{" "}
-              <code className="font-mono">.env.local</code> to enable booking.
-            </div>
-          )}
+          </p>
 
-          <p className="mt-6 text-sm text-grey">
+          <p className="mt-3 text-sm text-grey">
             Rather see it work first?{" "}
             <Link
               href={CTA.primary.href}

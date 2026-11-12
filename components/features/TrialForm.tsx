@@ -1,9 +1,10 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 import Link from "next/link";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
 import { CONTACT, TRIAL } from "@/lib/constants";
+import { newSubmissionId, submitLead } from "@/lib/lead";
 
 const BUSINESS_TYPES = ["Auto repair shop", "Something else"];
 
@@ -14,21 +15,34 @@ const inputClass =
 
 export function TrialForm() {
   const [status, setStatus] = useState<Status>("idle");
+  const submissionId = useRef<string | null>(null);
 
+  // Each trial signup goes two ways: the n8n email to Edwin
+  // (/api/trial) and the dashboard's Prospects list (lead intake). Either one landing is enough.
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     setStatus("submitting");
-    const data = Object.fromEntries(new FormData(e.currentTarget).entries());
-    try {
-      const res = await fetch("/api/trial", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
-      });
-      setStatus(res.ok ? "done" : "error");
-    } catch {
-      setStatus("error");
-    }
+    const data = Object.fromEntries(new FormData(e.currentTarget).entries()) as Record<string, string>;
+    submissionId.current ??= newSubmissionId();
+    const email = fetch("/api/trial", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data),
+    }).then((r) => r.ok, () => false);
+    const prospect = submitLead({
+      name: data.name ?? "",
+      business_name: data.businessName,
+      phone: data.phone,
+      email: data.email,
+      message: [`Wants the free ${TRIAL.days}-day ${TRIAL.plan} trial.`, data.businessType, data.website]
+        .filter(Boolean)
+        .join(" "),
+      campaign: "trial-signup",
+      submission_id: submissionId.current,
+      company_website: data.company_website ?? "",
+    }).then((err) => err === null);
+    const [emailed, listed] = await Promise.all([email, prospect]);
+    setStatus(emailed || listed ? "done" : "error");
   }
 
   if (status === "done") {
@@ -47,7 +61,7 @@ export function TrialForm() {
   }
 
   return (
-    <form onSubmit={onSubmit} className="space-y-4">
+    <form onSubmit={onSubmit} className="relative space-y-4">
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <label className="block">
           <span className="block text-xs font-semibold text-navy mb-1.5">Your name</span>
@@ -79,6 +93,14 @@ export function TrialForm() {
         <label className="block">
           <span className="block text-xs font-semibold text-navy mb-1.5">Website (optional)</span>
           <input name="website" type="url" placeholder="https://" className={inputClass} />
+        </label>
+      </div>
+
+      {/* Honeypot: hidden from people, filled by bots. */}
+      <div aria-hidden="true" className="absolute -left-[9999px] w-px h-px overflow-hidden">
+        <label>
+          Company website
+          <input name="company_website" type="text" tabIndex={-1} autoComplete="off" defaultValue="" />
         </label>
       </div>
 
