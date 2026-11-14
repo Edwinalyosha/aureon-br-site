@@ -31,9 +31,11 @@ section and `lib/constants.ts` win.
   - Momentum $799, 1,000 min — coming soon, max 3 shops.
   A plan flips `status` to "available" only when the piece it depends on works. Never use "Most Popular".
   Old tiers (Starter…Enterprise; Presence $299/Pipeline $499/Momentum $849) are retired.
-- **No trial (since 2026-11-14).** The first step is a free consultation; never offer a trial. Higher plans:
-  30-day money-back when launched. `/trial` redirects to `/contact`.
-- **Morgatech:** describe as "our first auto repair client" (Edwin's wording, 2026-11-05).
+- **Trial (Edwin, 2026-11-13):** 7 days of Catch, 60 minutes, **no card**, for shops Edwin cold-calls. It
+  lives on `/trial` (public) and `/for-shops` only. Inbound visitors get a free consultation first, so the
+  site-wide buttons point at `/contact`. Higher plans: 30-day money-back when launched.
+- **Morgatech:** don't name it (owner's permission not confirmed, AGRW 2026-11-13). Say "running live at a
+  Maryland independent shop" / "our first auto repair client". No star rating or reviews as an Aureon result.
 - **Terms:** billed monthly in advance, month-to-month; cancel with 30 days' notice (60 for Momentum);
   data kept/exported on request; price rises max once a year, ≤5%.
   Wording "no long-term contract" is on the site; whether that's acceptable vs the old "never say no

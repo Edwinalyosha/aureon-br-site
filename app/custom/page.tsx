@@ -182,7 +182,7 @@ export default function CustomBuildsPage() {
               <SectionLabel>Built So Far</SectionLabel>
               <CalloutBlock>
                 <p className="text-xs font-bold tracking-widest uppercase text-gold mb-3">
-                  Morgatech Auto Repair, Beltsville MD
+                  Running live at a Maryland independent shop
                 </p>
                 <p className="text-sm text-grey leading-relaxed">
                   For our first auto repair client, we built a website assistant

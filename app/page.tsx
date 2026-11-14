@@ -419,10 +419,10 @@ function ProofSection() {
         <FadeUp delay={100}>
           <CalloutBlock className="mb-6 max-w-2xl">
             <p className="text-xs font-bold tracking-widest uppercase text-gold mb-3">
-              Morgatech Auto Repair, Beltsville MD
+              Running live at a Maryland independent shop
             </p>
             <p className="text-sm text-grey leading-relaxed">
-              Morgatech is our first auto repair client. Its calls are answered by
+              Our first auto repair client is an independent shop in Maryland. Its calls are answered by
               the same AI receptionist you get on Catch, and we built the shop a
               website assistant that answers questions and books appointments,
               email follow-up and a dashboard that shows it all in one place.

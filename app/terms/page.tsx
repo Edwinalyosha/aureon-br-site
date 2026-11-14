@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { OVERAGE_PER_MINUTE } from "@/lib/constants";
+import { OVERAGE_PER_MINUTE, TRIAL } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: "Terms of Service",
@@ -52,34 +52,40 @@ export default function TermsPage() {
           </Section>
 
 
-          <Section title="4. What You Own">
+          <Section title="4. Free Trial">
+            The free trial lasts {TRIAL.days} days, includes {TRIAL.plan} features and
+            up to {TRIAL.minutes} minutes of calls, and requires no payment
+            details. {TRIAL.finePrint} No charge is made unless you choose a plan.
+          </Section>
+
+          <Section title="5. What You Own">
             All data you provide — customer records, booking history, campaign results
             — is yours. On request, we deliver a full data export within 5 business
             days. We do not retain your data after 90 days of service termination.
           </Section>
 
-          <Section title="5. Limitation of Liability">
+          <Section title="6. Limitation of Liability">
             [Attorney-reviewed limitation of liability clause — required before launch.
             Wyoming LLC governing law applies.]
           </Section>
 
-          <Section title="6. AI Tools Disclosure">
+          <Section title="7. AI Tools Disclosure">
             Some services use AI-assisted processing. We disclose the use of AI tools
             where required by applicable law. AI-generated outputs are reviewed before
             deployment in any customer-facing context unless you have explicitly opted
             into automatic publishing.
           </Section>
 
-          <Section title="7. Dispute Resolution">
+          <Section title="8. Dispute Resolution">
             [Attorney-reviewed dispute resolution clause — required before launch.]
           </Section>
 
-          <Section title="8. Governing Law">
+          <Section title="9. Governing Law">
             These Terms are governed by the laws of the State of Wyoming, without
             regard to conflict of law principles.
           </Section>
 
-          <Section title="9. Contact">
+          <Section title="10. Contact">
             Questions about these Terms:{" "}
             <a href="mailto:info@aureonnbridge.com" className="text-gold hover:text-goldlight">
               info@aureonnbridge.com
