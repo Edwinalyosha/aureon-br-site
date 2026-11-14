@@ -33,8 +33,8 @@ export default function PrivacyPage() {
           </Section>
 
           <Section title="2. Information We Collect">
-            We collect information you provide directly, including: name, email address,
-            business name, and responses to our intake questionnaire. We also collect
+            We collect information you provide directly, including: name, phone number,
+            email address, business name, and responses to our intake questionnaire. We also collect
             standard analytics data (pages visited, time on site) through [analytics
             provider — add before launch].
           </Section>
@@ -45,11 +45,26 @@ export default function PrivacyPage() {
             services. We do not sell your personal information to third parties.
           </Section>
 
-          <Section title="4. SMS and Email Communications (TCPA / CAN-SPAM)">
-            By submitting our intake form, you consent to receive transactional
-            communications related to your consultation booking. You may opt out at
-            any time by replying STOP to any SMS or using the unsubscribe link in any
-            email. [Full TCPA disclosure — attorney review required.]
+          <Section title="4. Text Messages and Email (TCPA / CAN-SPAM)">
+            <strong className="text-navy">Text messages.</strong> If you give us your mobile
+            number and agree to receive texts, we use it to reply to you, arrange and remind
+            you of your consultation, and send occasional information about our services.
+            Message frequency varies (up to 4 a month). Message and data rates may apply.
+            Reply STOP to stop, HELP for help.
+            <br />
+            <br />
+            <strong className="text-navy">
+              No mobile information will be shared with third parties or affiliates for
+              marketing or promotional purposes. Text messaging opt-in data and consent will
+              not be shared with any third parties.
+            </strong>{" "}
+            Information may be shared with service providers who help us deliver messages
+            and support (for example, our messaging carrier), only for that purpose.
+            <br />
+            <br />
+            <strong className="text-navy">Email.</strong> You can stop our emails at any time
+            with the unsubscribe link in any email. [Full TCPA disclosure — attorney review
+            required.]
           </Section>
 
           <Section title="5. Maryland Online Data Privacy Act (MODPA)">

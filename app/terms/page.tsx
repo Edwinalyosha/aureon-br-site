@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { OVERAGE_PER_MINUTE, TRIAL } from "@/lib/constants";
 
 export const metadata: Metadata = {
@@ -85,7 +86,25 @@ export default function TermsPage() {
             regard to conflict of law principles.
           </Section>
 
-          <Section title="10. Contact">
+          <Section title="10. Text Messaging Program">
+            Aureon Bridge texts people who ask to hear from us: replies to your messages,
+            consultation scheduling and reminders, and occasional information about our
+            services. Message frequency varies, up to 4 messages a month. Message and data
+            rates may apply. Reply <strong className="text-navy">STOP</strong> at any time to
+            cancel; you&apos;ll get one message confirming you&apos;ve opted out. Reply{" "}
+            <strong className="text-navy">HELP</strong> for help, or contact{" "}
+            <a href="mailto:info@aureonnbridge.com" className="text-gold hover:text-goldlight">
+              info@aureonnbridge.com
+            </a>{" "}
+            or (240) 660-4547. Carriers are not liable for delayed or undelivered messages.
+            Agreeing to texts is not a condition of any purchase. See our{" "}
+            <Link href="/privacy" className="text-gold hover:text-goldlight">
+              Privacy Policy
+            </Link>
+            .
+          </Section>
+
+          <Section title="11. Contact">
             Questions about these Terms:{" "}
             <a href="mailto:info@aureonnbridge.com" className="text-gold hover:text-goldlight">
               info@aureonnbridge.com

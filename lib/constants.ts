@@ -106,6 +106,12 @@ export const CTA = {
 // in the aureon repo. Browser calls from aureonnbridge.com are allowed by CORS.
 export const LEAD_API_URL = "https://app.aureonnbridge.com/api/public/lead";
 
+// Texting opt-in wording (A2P 10DLC registration). Must match the dashboard's
+// lib/sms-consent-text.ts word for word, and the privacy/terms SMS sections.
+export const SMS_CONSENT_TEXT =
+  "Text me about my consultation and Aureon Bridge's services. Up to 4 msgs/month. Msg & data rates may apply. " +
+  "Reply STOP to opt out, HELP for help. Consent is not a condition of purchase.";
+
 // Custom builds (/custom). DRAFT — Edwin hasn't decided to offer these yet (2026-11-10).
 // Starter prices, expected to rise after the first few builds (~$3,000–6,000 build, $300–500/mo care).
 // Change them here only; the page, pricing-page line and metadata all read from this.
