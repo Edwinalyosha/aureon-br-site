@@ -66,8 +66,9 @@ export const CONTACT = {
   email: "info@aureonnbridge.com",
   phoneDisplay: "(240) 660-4547",
   phoneHref: "tel:+12406604547",
-  // TODO: add city, state and ZIP — leave addressLocality empty until confirmed.
-  streetAddress: "6713 Ammendale Rd",
+  // Aureon Bridge LLC's own address, exactly as on the IRS EIN letter (A2P texting reviewers check it).
+  // Empty = not shown anywhere (footer, /contact, JSON-LD). Never use 6713 Ammendale Rd: that is Morgatech's.
+  streetAddress: "",
   addressLocality: "",
   hours: [
     { days: "Monday–Friday", time: "8:00 am – 6:00 pm" },
