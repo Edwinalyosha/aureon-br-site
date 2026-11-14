@@ -5,7 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
-import { NAV_LINKS, CTA } from "@/lib/constants";
+import { NAV_LINKS, CTA, CONTACT } from "@/lib/constants";
 import { cn } from "@/lib/utils";
 
 export function Navbar() {
@@ -70,17 +70,17 @@ export function Navbar() {
 
           {/* Desktop CTA */}
           <div className="hidden md:flex items-center gap-5">
-            <Link
-              href={CTA.secondary.href}
+            <a
+              href={CONTACT.phoneHref}
               className="text-sm font-medium text-grey hover:text-navy transition-colors"
             >
-              Book a call
-            </Link>
+              {CONTACT.phoneDisplay}
+            </a>
             <Link
               href={CTA.primary.href}
               className="bg-gold hover:bg-goldlight text-white text-sm font-semibold px-5 py-2.5 transition-colors"
             >
-              Start free trial
+              Book a consultation
             </Link>
           </div>
 
@@ -90,7 +90,7 @@ export function Navbar() {
               href={CTA.primary.href}
               className="bg-gold text-white text-xs font-semibold px-4 py-2 transition-colors"
             >
-              Free trial
+              Book a call
             </Link>
             <button
               onClick={() => setMobileOpen(!mobileOpen)}
@@ -130,13 +130,15 @@ export function Navbar() {
             >
               {CTA.primary.label}
             </Link>
-            <Link
+            <a
               href={CTA.secondary.href}
+              target="_blank"
+              rel="noopener noreferrer"
               onClick={() => setMobileOpen(false)}
               className="block w-full text-center border border-gold text-gold text-sm font-semibold px-6 py-3 transition-colors"
             >
               {CTA.secondary.label}
-            </Link>
+            </a>
           </div>
         </div>
       )}

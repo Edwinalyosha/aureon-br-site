@@ -14,9 +14,11 @@ export function CTAButton({
   variant = "primary",
   className,
 }: CTAButtonProps) {
+  const external = /^https?:\/\//.test(href);
   return (
     <Link
       href={href}
+      {...(external && { target: "_blank", rel: "noopener noreferrer" })}
       className={cn(
         "inline-flex items-center justify-center font-semibold transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2",
         variant === "primary" &&

@@ -6,12 +6,12 @@ import { CalloutBlock } from "@/components/ui/CalloutBlock";
 import { DiagonalDivider } from "@/components/ui/DiagonalDivider";
 import { FadeUp } from "@/components/ui/FadeUp";
 import { ParticleField } from "@/components/ui/ParticleField";
-import { CONTACT, CTA, TRIAL } from "@/lib/constants";
+import { CONTACT, CTA } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: "AI Receptionist for Auto Repair Shops",
   description:
-    "An AI receptionist for independent auto repair shops. Answers the calls you miss on your current number and emails you a summary. $99/month, free for 7 days.",
+    "An AI receptionist for independent auto repair shops. Answers the calls you miss on your current number and emails you a summary. $99/month, no setup fee.",
   robots: { index: true, follow: true },
 };
 
@@ -41,7 +41,7 @@ const SUMMARY = [
     title: "What it costs",
     points: [
       "$99 a month. No setup fee",
-      `Free for ${TRIAL.days} days, no credit card`,
+      "Free consultation first, no commitment",
       "Keeps your number and your phones",
       "Month-to-month, 30 days' notice to cancel",
     ],
@@ -69,7 +69,7 @@ export default function ForShopsPage() {
               I set up an AI receptionist for auto repair shops. When nobody can
               get to the phone, it answers on your current number, takes the
               customer&apos;s details and emails you a summary. It&apos;s $99 a
-              month, and you can try it free for a week.
+              month, with no setup fee.
             </p>
             <a
               href="#the-short-version"
@@ -162,8 +162,8 @@ export default function ForShopsPage() {
               Ready to show your owner?
             </h2>
             <p className="text-cream/70 text-base leading-relaxed mb-10 max-w-xl">
-              Start the free {TRIAL.days}-day trial on your shop&apos;s number, or
-              book a call and we&apos;ll walk through it together.
+              Book a free consultation and we&apos;ll call you back, or pick a time
+              and we&apos;ll walk through it with you and your owner.
             </p>
           </FadeUp>
 

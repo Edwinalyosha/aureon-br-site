@@ -79,7 +79,7 @@ export default function CustomBuildsPage() {
               use. We build them around your shop, at a fixed price.
             </p>
             <div className="hero-anim" style={{ animationDelay: "250ms" }}>
-              <CTAButton href={CTA.secondary.href} variant="primary" className="text-base px-8 py-4">
+              <CTAButton href={CTA.primary.href} variant="primary" className="text-base px-8 py-4">
                 Book a free call <ArrowRight size={16} className="ml-1" />
               </CTAButton>
             </div>
@@ -207,7 +207,7 @@ export default function CustomBuildsPage() {
               A free 30-minute call. You walk away with a fixed price, or an
               honest answer that it isn&apos;t worth building.
             </p>
-            <CTAButton href={CTA.secondary.href} variant="primary" className="text-base px-8 py-4">
+            <CTAButton href={CTA.primary.href} variant="primary" className="text-base px-8 py-4">
               Book a free call <ArrowRight size={16} className="ml-1" />
             </CTAButton>
           </FadeUp>

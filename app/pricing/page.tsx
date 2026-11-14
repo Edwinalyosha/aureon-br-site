@@ -6,13 +6,13 @@ import { SectionLabel } from "@/components/ui/SectionLabel";
 import { CTAButton } from "@/components/ui/CTAButton";
 import { DiagonalDivider } from "@/components/ui/DiagonalDivider";
 import { FadeUp } from "@/components/ui/FadeUp";
-import { PRICING_TIERS, PRICING_TERMS, OVERAGE_PER_MINUTE, TRIAL, CTA, CUSTOM_BUILDS } from "@/lib/constants";
+import { PRICING_TIERS, PRICING_TERMS, OVERAGE_PER_MINUTE, CTA, CUSTOM_BUILDS } from "@/lib/constants";
 import { ParticleField } from "@/components/ui/ParticleField";
 
 export const metadata: Metadata = {
   title: "Pricing",
   description:
-    "Catch answers your missed calls on your current number for $99/month, with a free 7-day trial. No setup fees, month-to-month. Presence, Pipeline and Momentum are coming soon.",
+    "Catch answers your missed calls on your current number for $99/month. No setup fees, month-to-month. Presence, Pipeline and Momentum are coming soon.",
 };
 
 const FAQ = [
@@ -21,8 +21,8 @@ const FAQ = [
     a: "Catch. It answers the calls you miss on the number you already have, emails you a summary and transcript of each one, and keeps a callback list. Presence, Pipeline and Momentum go on sale as each one is ready. Their prices are shown so you know where you can go next.",
   },
   {
-    q: "How does the free trial work?",
-    a: `${TRIAL.headline} ${TRIAL.finePrint}`,
+    q: "What happens on the free consultation?",
+    a: "We look at how your shop handles calls today and tell you straight whether Catch would help. If it's a fit, we set it up on your current number through call forwarding. If it isn't, you've lost half an hour and nothing else.",
   },
   {
     q: "Do I need a new phone number?",
@@ -68,8 +68,8 @@ export default function PricingPage() {
             </p>
             <div className="border-l-4 border-gold bg-cream px-5 py-4">
               <p className="text-sm text-grey leading-relaxed">
-                Want to hear it first? Start the free {TRIAL.days}-day trial, or book a
-                free consultation and we&apos;ll walk you through it.
+                Want to talk it through first? Book a free consultation and
+                we&apos;ll walk you through it.
               </p>
             </div>
           </div>
@@ -118,10 +118,16 @@ export default function PricingPage() {
               </div>
               <div className="bg-navy/90 text-white p-6 flex flex-col">
                 <p className="text-xs font-bold tracking-widest uppercase text-goldlight mb-3">
-                  Try it first
+                  Talk to us first
                 </p>
-                <p className="text-sm font-semibold leading-relaxed mb-2">{TRIAL.headline}</p>
-                <p className="text-xs text-cream/70 leading-relaxed mb-5">{TRIAL.finePrint}</p>
+                <p className="text-sm font-semibold leading-relaxed mb-2">
+                  A free 30-minute consultation. No commitment.
+                </p>
+                <p className="text-xs text-cream/70 leading-relaxed mb-5">
+                  Tell us how your shop handles calls today. We&apos;ll call you within one
+                  business day, show you what Catch would do on your number, and give you a
+                  straight answer on whether it&apos;s worth $99 a month.
+                </p>
                 <Link
                   href={CTA.primary.href}
                   className="mt-auto self-start bg-gold hover:bg-goldlight text-white text-xs font-semibold px-5 py-3 transition-colors"
@@ -173,11 +179,11 @@ export default function PricingPage() {
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-28 text-center">
           <FadeUp>
             <h2 className="text-2xl sm:text-3xl font-bold text-white mb-4 max-w-xl mx-auto">
-              Hear it answer your own calls.
+              Find out how many calls you&apos;re missing.
             </h2>
             <p className="text-cream/70 text-base leading-relaxed mb-8 max-w-md mx-auto">
-              Try Catch free for {TRIAL.days} days on your current number. No credit
-              card, and we switch your forwarding back if it&apos;s not for you.
+              Book a free 30-minute consultation. If Catch is a fit, we set it up on
+              your current number. If it&apos;s not, you&apos;ve lost nothing.
             </p>
             <div className="flex flex-wrap items-center justify-center gap-4">
               <CTAButton href={CTA.primary.href} variant="primary" className="text-base px-8 py-4">
