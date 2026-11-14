@@ -10,7 +10,6 @@ export const FOOTER_NAV: NavItem[] = [
   { label: "Services",      href: "/services" },
   { label: "How It Works",  href: "/#how-it-works" },
   { label: "Pricing",       href: "/pricing" },
-  { label: "Free Trial",    href: "/trial" },
   { label: "Custom Builds", href: "/custom" },
   { label: "For Shops",     href: "/for-shops" },
   { label: "Forwarding Setup", href: "/forwarding" },
@@ -82,19 +81,12 @@ export const CONTACT = {
 // The "Call our AI receptionist" section stays hidden while this is null.
 export const DEMO_PHONE: { display: string; href: string } | null = null;
 
-// The free trial is on Catch only. Higher plans get a 30-day money-back promise when they launch.
-export const TRIAL = {
-  days: 7,
-  minutes: 60,
-  plan: "Catch",
-  headline: "Free 7-day trial of Catch. Up to 60 minutes of calls, no credit card.",
-  finePrint:
-    "Your AI answers on your current number through call forwarding. After 60 minutes, calls go back to your phone or voicemail. At the end, keep Catch at $99/month or we switch your forwarding back.",
-};
-
+// There is no free trial (dropped 2026-11): the first step is a free consultation. The contact
+// form (primary) lands the lead in admin → Prospects; the calendar (secondary) is for people who
+// would rather pick a time themselves. The secondary href is external: open it in a new tab.
 export const CTA = {
-  primary: { label: "Start a free 7-day trial", href: "/trial" },
-  secondary: { label: "Book a free consultation", href: "/contact" },
+  primary: { label: "Book a free consultation", href: "/contact" },
+  secondary: { label: "Pick a time on our calendar", href: CONTACT.calendarUrl },
 };
 
 // Lead intake on the dashboard: website forms post here so the lead lands in admin → Prospects

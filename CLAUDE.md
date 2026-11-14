@@ -31,16 +31,18 @@ section and `lib/constants.ts` win.
   - Momentum $799, 1,000 min — coming soon, max 3 shops.
   A plan flips `status` to "available" only when the piece it depends on works. Never use "Most Popular".
   Old tiers (Starter…Enterprise; Presence $299/Pipeline $499/Momentum $849) are retired.
-- **Trial:** 7 days of Catch, 60 minutes, no card (`TRIAL`). Higher plans: 30-day money-back when launched.
+- **No trial (since 2026-11-14).** The first step is a free consultation; never offer a trial. Higher plans:
+  30-day money-back when launched. `/trial` redirects to `/contact`.
 - **Morgatech:** describe as "our first auto repair client" (Edwin's wording, 2026-11-05).
 - **Terms:** billed monthly in advance, month-to-month; cancel with 30 days' notice (60 for Momentum);
   data kept/exported on request; price rises max once a year, ≤5%.
   Wording "no long-term contract" is on the site; whether that's acceptable vs the old "never say no
   contract" rule is an open decision for Edwin.
 - **Overage:** $0.25/min is a placeholder — confirm against Vapi cost before quoting.
-- **Primary CTA:** "Start a free 7-day trial" → `/trial` (Presence features, 60 call minutes, no card).
-  Secondary: "Book a free consultation" → `/contact`. Booking uses **Cal.com**
-  (`CONTACT.calendarUrl`), not Calendly.
+- **Primary CTA:** "Book a free consultation" → `/contact` (`LeadForm`, posts to the dashboard's lead
+  intake so the lead lands in admin → Prospects; contract in the aureon repo, `docs/lead-intake-api.md`).
+  Secondary: "Pick a time on our calendar" → **Cal.com** (`CONTACT.calendarUrl`), not Calendly.
+  The site no longer posts to n8n.
 - **Stack/deploy:** Next.js 16 + Tailwind v4, Docker + Caddy on the VPS (not Vercel). Deploy = commit,
   merge to master, push, then `git pull` + `docker compose up -d --build` on the VPS. Uncommitted work
   is never live.

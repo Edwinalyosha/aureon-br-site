@@ -15,7 +15,7 @@ import { ParticleField } from "@/components/ui/ParticleField";
 import { CTAButton } from "@/components/ui/CTAButton";
 import { DiagonalDivider } from "@/components/ui/DiagonalDivider";
 import { FadeUp } from "@/components/ui/FadeUp";
-import { CTA, TRIAL } from "@/lib/constants";
+import { CTA } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: "Services",
@@ -323,14 +323,14 @@ export default function ServicesPage() {
       <section className="bg-navy">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-28 text-center">
           <FadeUp>
-            <SectionLabel light>See It on Your Own Calls</SectionLabel>
+            <SectionLabel light>Next Step</SectionLabel>
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-4 max-w-xl mx-auto">
-              Try Catch free for {TRIAL.days} days.
+              Talk it through first.
             </h2>
             <p className="text-cream/70 text-base leading-relaxed mb-8 max-w-lg mx-auto">
-              We set it up on your current number in about 20 minutes. No credit
-              card, and if it&apos;s not for you, we switch your forwarding back.
-              Prefer to talk first? Book a free 30-minute call.
+              Book a free 30-minute consultation. If Catch is a fit, we set it up on
+              your current number in about 20 minutes, and if it&apos;s ever not for
+              you, we switch your forwarding back.
             </p>
             <div className="flex flex-wrap items-center justify-center gap-4">
               <CTAButton href={CTA.primary.href} variant="primary" className="text-base px-8 py-4">

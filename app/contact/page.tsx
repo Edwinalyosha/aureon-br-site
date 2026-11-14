@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 import { LeadForm } from "@/components/features/LeadForm";
-import { CONTACT, CTA, TRIAL } from "@/lib/constants";
+import { CONTACT } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: "Book a Free Consultation",
@@ -59,17 +58,6 @@ export default function ContactPage() {
             >
               Book a 30-minute call on our calendar →
             </a>
-          </p>
-
-          <p className="mt-3 text-sm text-grey">
-            Rather see it work first?{" "}
-            <Link
-              href={CTA.primary.href}
-              className="text-gold font-semibold hover:text-goldlight transition-colors"
-            >
-              {CTA.primary.label} →
-            </Link>{" "}
-            <span className="text-grey/70">({TRIAL.minutes} minutes of calls, no credit card.)</span>
           </p>
 
           <div className="mt-8 pt-8 border-t border-gray-100 space-y-2">

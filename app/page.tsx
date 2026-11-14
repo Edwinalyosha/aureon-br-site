@@ -20,16 +20,16 @@ import { DiagonalDivider } from "@/components/ui/DiagonalDivider";
 import { ParticleField } from "@/components/ui/ParticleField";
 import { TiltCard } from "@/components/ui/TiltCard";
 import { PricingCard } from "@/components/ui/PricingCard";
-import { PRICING_TIERS, CTA, DEMO_PHONE, TRIAL } from "@/lib/constants";
+import { PRICING_TIERS, CTA, DEMO_PHONE } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: "Aureon Bridge | AI Receptionist for Auto Repair Shops",
   description:
-    "Catch answers the calls your shop misses, on the number you already have. The AI takes the customer's name, number, vehicle and reason and emails you a summary. $99/month, free for 7 days.",
+    "Catch answers the calls your shop misses, on the number you already have. The AI takes the customer's name, number, vehicle and reason and emails you a summary. $99/month, no setup fees.",
   openGraph: {
     title: "Aureon Bridge | Never lose a missed call",
     description:
-      "An AI receptionist for independent auto repair shops. Answers the calls you can't, on your current number. Free for 7 days.",
+      "An AI receptionist for independent auto repair shops. Answers the calls you can't, on your current number. $99/month.",
   },
 };
 
@@ -74,7 +74,7 @@ function HeroSection() {
             Catch puts an AI receptionist on the shop number you already have.
             When nobody can pick up, it answers, takes the customer&apos;s name,
             number, vehicle and what&apos;s wrong, and emails you the summary.
-            $99 a month, free for {TRIAL.days} days.
+            $99 a month.
           </p>
           <div
             className="hero-anim flex flex-wrap items-center gap-4 mb-10"
@@ -83,18 +83,20 @@ function HeroSection() {
             <CTAButton href={CTA.primary.href} variant="primary" className="text-base px-8 py-4">
               {CTA.primary.label}
             </CTAButton>
-            <Link
+            <a
               href={CTA.secondary.href}
+              target="_blank"
+              rel="noopener noreferrer"
               className="text-sm font-medium text-cream/70 hover:text-cream transition-colors flex items-center gap-1.5"
             >
               {CTA.secondary.label} <ArrowRight size={15} />
-            </Link>
+            </a>
           </div>
           <p
             className="hero-anim text-xs text-cream/40 tracking-wide"
             style={{ animationDelay: "420ms" }}
           >
-            Keeps your number. No credit card. No setup fees. Month-to-month.
+            Keeps your number. No setup fees. Month-to-month.
           </p>
         </div>
       </div>
@@ -218,7 +220,7 @@ function HowItWorksSection() {
 
         <FadeUp delay={400} className="mt-12">
           <div className="flex items-center gap-2 text-sm text-grey">
-            <span>See it working on your own calls.</span>
+            <span>Want to know what it would catch at your shop?</span>
             <Link
               href={CTA.primary.href}
               className="text-gold font-semibold hover:text-goldlight transition-colors flex items-center gap-1"
@@ -460,7 +462,7 @@ function PricingSection() {
           <p className="text-grey text-base leading-relaxed mb-12 max-w-2xl">
             Start with Catch at $99 a month. It answers the calls you miss, on
             the number you already have. The bigger plans go on sale as each one
-            is ready. No setup fees, month-to-month. {TRIAL.headline}
+            is ready. No setup fees, month-to-month.
           </p>
         </FadeUp>
 
@@ -488,8 +490,8 @@ function FinalCTASection() {
             Stop sending customers to voicemail.
           </h2>
           <p className="text-cream/70 text-base sm:text-lg leading-relaxed mb-10 max-w-xl mx-auto">
-            Try Catch free for {TRIAL.days} days on your current number, no credit
-            card. Or book a free 30-minute call and we&apos;ll walk you through it.
+            Book a free 30-minute consultation. We&apos;ll look at how your shop
+            handles calls today and show you what Catch would pick up.
           </p>
           <div className="flex flex-wrap items-center justify-center gap-4">
             <CTAButton href={CTA.primary.href} variant="primary" className="text-base px-8 py-4">

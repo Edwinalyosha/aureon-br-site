@@ -6,8 +6,8 @@ import { cn } from "@/lib/utils";
 
 /**
  * One plan card, shared by the homepage pricing section and /pricing.
- * An "available" plan links to the free trial; a "coming-soon" plan shows its price and
- * scope but links to a consultation, so nothing is sold before it exists.
+ * Every plan links to a free consultation (there is no trial). A "coming-soon" plan shows its
+ * price and scope but says "Ask about it", so nothing is sold before it exists.
  */
 export function PricingCard({ tier }: { tier: PricingTier }) {
   const dark = tier.highlighted;
@@ -66,7 +66,7 @@ export function PricingCard({ tier }: { tier: PricingTier }) {
       </div>
 
       <Link
-        href={available ? CTA.primary.href : CTA.secondary.href}
+        href={CTA.primary.href}
         className={cn(
           "block text-center text-xs font-semibold px-4 py-3 transition-colors mt-auto",
           available
