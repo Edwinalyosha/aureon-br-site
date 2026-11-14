@@ -66,8 +66,9 @@ export const CONTACT = {
   email: "info@aureonnbridge.com",
   phoneDisplay: "(240) 660-4547",
   phoneHref: "tel:+12406604547",
-  // TODO: add city, state and ZIP — leave addressLocality empty until confirmed.
-  streetAddress: "6713 Ammendale Rd",
+  // Aureon Bridge LLC's own address, exactly as on the IRS EIN letter (A2P texting reviewers check it).
+  // Empty = not shown anywhere (footer, /contact, JSON-LD). Never use 6713 Ammendale Rd: that is Morgatech's.
+  streetAddress: "",
   addressLocality: "",
   hours: [
     { days: "Monday–Friday", time: "8:00 am – 6:00 pm" },
@@ -105,6 +106,12 @@ export const CTA = {
 // (and, with a phone number, on the callback list in the phone app). Contract: docs/lead-intake-api.md
 // in the aureon repo. Browser calls from aureonnbridge.com are allowed by CORS.
 export const LEAD_API_URL = "https://app.aureonnbridge.com/api/public/lead";
+
+// Texting opt-in wording (A2P 10DLC registration). Must match the dashboard's
+// lib/sms-consent-text.ts word for word, and the privacy/terms SMS sections.
+export const SMS_CONSENT_TEXT =
+  "Text me about my consultation and Aureon Bridge's services. Up to 4 msgs/month. Msg & data rates may apply. " +
+  "Reply STOP to opt out, HELP for help. Consent is not a condition of purchase.";
 
 // Custom builds (/custom). DRAFT — Edwin hasn't decided to offer these yet (2026-11-10).
 // Starter prices, expected to rise after the first few builds (~$3,000–6,000 build, $300–500/mo care).

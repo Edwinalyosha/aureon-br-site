@@ -96,10 +96,12 @@ export function Footer() {
               >
                 {CONTACT.phoneDisplay}
               </a>
-              <address className="not-italic text-sm text-gray-400 leading-relaxed">
-                {CONTACT.streetAddress}
-                {CONTACT.addressLocality && <><br />{CONTACT.addressLocality}</>}
-              </address>
+              {CONTACT.streetAddress && (
+                <address className="not-italic text-sm text-gray-400 leading-relaxed">
+                  {CONTACT.streetAddress}
+                  {CONTACT.addressLocality && <><br />{CONTACT.addressLocality}</>}
+                </address>
+              )}
               <ul className="text-xs text-gray-400 space-y-1">
                 {CONTACT.hours.map((h) => (
                   <li key={h.days}>

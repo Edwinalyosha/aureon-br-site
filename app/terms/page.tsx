@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { OVERAGE_PER_MINUTE, TRIAL } from "@/lib/constants";
 
 export const metadata: Metadata = {
@@ -11,21 +12,8 @@ export default function TermsPage() {
     <div className="bg-white min-h-[70dvh]">
       <div className="max-w-2xl mx-auto px-4 sm:px-6 py-20 md:py-28">
         <h1 className="text-3xl font-bold text-navy mb-2">Terms of Service</h1>
-        <p className="text-xs text-grey mb-10">Last updated: [DATE — insert before launch]</p>
+        <p className="text-xs text-grey mb-10">Last updated: November 14, 2026</p>
 
-        {/* Launch blocker notice */}
-        <div className="border border-dashed border-gold/40 bg-gold/5 px-5 py-4 mb-12">
-          <p className="text-xs font-bold tracking-wider uppercase text-gold/70 mb-1">
-            Placeholder — Requires Attorney-Reviewed Content Before Launch
-          </p>
-          <p className="text-xs text-grey/70 leading-relaxed">
-            This page must cover: scope of services, payment terms and fee
-            schedule, service agreement and exit terms, liability limitation,
-            dispute resolution, Wyoming LLC governing law, and AI tool use
-            disclosure. Reference the Legal Brief PDF and confirm exact Wyoming
-            LLC registered name.
-          </p>
-        </div>
 
         <div className="space-y-8 text-grey">
           <Section title="1. The Service">
@@ -65,8 +53,10 @@ export default function TermsPage() {
           </Section>
 
           <Section title="6. Limitation of Liability">
-            [Attorney-reviewed limitation of liability clause — required before launch.
-            Wyoming LLC governing law applies.]
+            To the extent the law allows, our total liability for any claim relating to the
+            services is limited to the fees you paid us in the 3 months before the claim. We
+            are not liable for indirect or consequential losses, such as lost profits or lost
+            bookings, including when a call goes unanswered or a message isn&apos;t delivered.
           </Section>
 
           <Section title="7. AI Tools Disclosure">
@@ -77,7 +67,12 @@ export default function TermsPage() {
           </Section>
 
           <Section title="8. Dispute Resolution">
-            [Attorney-reviewed dispute resolution clause — required before launch.]
+            If you have a concern, contact us first at{" "}
+            <a href="mailto:info@aureonnbridge.com" className="text-gold hover:text-goldlight">
+              info@aureonnbridge.com
+            </a>
+            . We&apos;ll try to resolve it informally within 30 days. If we can&apos;t, the
+            dispute will be resolved in the state or federal courts located in Wyoming.
           </Section>
 
           <Section title="9. Governing Law">
@@ -85,7 +80,25 @@ export default function TermsPage() {
             regard to conflict of law principles.
           </Section>
 
-          <Section title="10. Contact">
+          <Section title="10. Text Messaging Program">
+            Aureon Bridge texts people who ask to hear from us: replies to your messages,
+            consultation scheduling and reminders, and occasional information about our
+            services. Message frequency varies, up to 4 messages a month. Message and data
+            rates may apply. Reply <strong className="text-navy">STOP</strong> at any time to
+            cancel; you&apos;ll get one message confirming you&apos;ve opted out. Reply{" "}
+            <strong className="text-navy">HELP</strong> for help, or contact{" "}
+            <a href="mailto:info@aureonnbridge.com" className="text-gold hover:text-goldlight">
+              info@aureonnbridge.com
+            </a>{" "}
+            or (240) 660-4547. Carriers are not liable for delayed or undelivered messages.
+            Agreeing to texts is not a condition of any purchase. See our{" "}
+            <Link href="/privacy" className="text-gold hover:text-goldlight">
+              Privacy Policy
+            </Link>
+            .
+          </Section>
+
+          <Section title="11. Contact">
             Questions about these Terms:{" "}
             <a href="mailto:info@aureonnbridge.com" className="text-gold hover:text-goldlight">
               info@aureonnbridge.com

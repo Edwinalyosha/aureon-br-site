@@ -74,12 +74,14 @@ export default function RootLayout({
               url: SITE_URL,
               email: CONTACT.email,
               telephone: CONTACT.phoneDisplay,
-              address: {
-                "@type": "PostalAddress",
-                streetAddress: CONTACT.streetAddress,
-                ...(CONTACT.addressLocality ? { addressLocality: CONTACT.addressLocality } : {}),
-                addressCountry: "US",
-              },
+              ...(CONTACT.streetAddress && {
+                address: {
+                  "@type": "PostalAddress",
+                  streetAddress: CONTACT.streetAddress,
+                  ...(CONTACT.addressLocality ? { addressLocality: CONTACT.addressLocality } : {}),
+                  addressCountry: "US",
+                },
+              }),
               openingHours: ["Mo-Fr 08:00-18:00", "Sa 09:00-14:00"],
               description:
                 "Custom AI automation agency for independent businesses. Booking, follow-up, reviews, and operational dashboards — integrated into one system.",

@@ -5,6 +5,7 @@ import Link from "next/link";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
 import { CONTACT, TRIAL } from "@/lib/constants";
 import { newSubmissionId, submitLead } from "@/lib/lead";
+import { SmsConsent } from "@/components/features/SmsConsent";
 
 const BUSINESS_TYPES = ["Auto repair shop", "Something else"];
 
@@ -36,6 +37,7 @@ export function TrialForm() {
       campaign: "trial-signup",
       submission_id: submissionId.current,
       company_website: data.company_website ?? "",
+      sms_consent: data.sms_consent === "yes",
     });
     setError(err);
     setStatus(err ? "error" : "done");
@@ -91,6 +93,8 @@ export function TrialForm() {
           <input name="website" type="url" placeholder="https://" className={inputClass} />
         </label>
       </div>
+
+      <SmsConsent />
 
       {/* Honeypot: hidden from people, filled by bots. */}
       <div aria-hidden="true" className="absolute -left-[9999px] w-px h-px overflow-hidden">

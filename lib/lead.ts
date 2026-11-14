@@ -2,7 +2,7 @@
 // Attribution is first-touch: recorded on the first page of a visit, kept for 30 days, never
 // overwritten, so a lead is credited to whatever brought the visitor in.
 
-import { CONTACT, LEAD_API_URL } from "@/lib/constants";
+import { CONTACT, LEAD_API_URL, SMS_CONSENT_TEXT } from "@/lib/constants";
 
 const STORAGE_KEY = "ab_first_touch";
 const MAX_AGE_MS = 30 * 24 * 60 * 60 * 1000;
@@ -59,6 +59,8 @@ export interface LeadInput {
   submission_id: string;
   /** Honeypot: always empty for people. */
   company_website?: string;
+  /** True only when the visitor ticked the (unticked by default) texting opt-in box. */
+  sms_consent?: boolean;
 }
 
 const FALLBACK_ERROR = `Something went wrong. Please call ${CONTACT.phoneDisplay}.`;
@@ -69,7 +71,14 @@ export async function submitLead(lead: LeadInput): Promise<string | null> {
     const res = await fetch(LEAD_API_URL, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ ...lead, source: "website", attribution: firstTouch() }),
+      body: JSON.stringify({
+        ...lead,
+        sms_consent: lead.sms_consent === true,
+        // The exact wording shown next to the box: the server stores it as proof of consent.
+        ...(lead.sms_consent === true && { consent_text: SMS_CONSENT_TEXT }),
+        source: "website",
+        attribution: firstTouch(),
+      }),
     });
     if (res.ok) return null;
     const j = (await res.json().catch(() => ({}))) as { error?: string };

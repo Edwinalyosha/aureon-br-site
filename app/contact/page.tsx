@@ -79,10 +79,12 @@ export default function ContactPage() {
                 {CONTACT.phoneDisplay}
               </a>
             </p>
-            <address className="not-italic text-sm text-grey pt-2">
-              {CONTACT.streetAddress}
-              {CONTACT.addressLocality && <>, {CONTACT.addressLocality}</>}
-            </address>
+            {CONTACT.streetAddress && (
+              <address className="not-italic text-sm text-grey pt-2">
+                {CONTACT.streetAddress}
+                {CONTACT.addressLocality && <>, {CONTACT.addressLocality}</>}
+              </address>
+            )}
             <ul className="text-sm text-grey">
               {CONTACT.hours.map((h) => (
                 <li key={h.days}>

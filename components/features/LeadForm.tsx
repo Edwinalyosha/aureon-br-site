@@ -3,6 +3,7 @@
 import { useRef, useState } from "react";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
 import { newSubmissionId, submitLead } from "@/lib/lead";
+import { SmsConsent } from "@/components/features/SmsConsent";
 
 type Status = "idle" | "submitting" | "done";
 
@@ -24,6 +25,11 @@ export function LeadForm({ campaign }: { campaign: string }) {
       setError("Please give a phone number or an email so we can reach you.");
       return;
     }
+    const smsConsent = f.get("sms_consent") === "yes";
+    if (smsConsent && !get("phone")) {
+      setError("Please add a mobile number so we can text you, or untick the texting box.");
+      return;
+    }
     submissionId.current ??= newSubmissionId();
     setStatus("submitting");
     setError(null);
@@ -36,6 +42,7 @@ export function LeadForm({ campaign }: { campaign: string }) {
       campaign,
       submission_id: submissionId.current,
       company_website: get("company_website"),
+      sms_consent: smsConsent,
     });
     if (err) {
       setError(err);
@@ -82,6 +89,7 @@ export function LeadForm({ campaign }: { campaign: string }) {
         </label>
       </div>
       <p className="text-xs text-grey/70 -mt-1">A phone number or an email, whichever you prefer.</p>
+      <SmsConsent />
       <label className="block">
         <span className="block text-xs font-semibold text-navy mb-1.5">
           What do you need help with? <span className="font-normal text-grey/60">(optional)</span>
