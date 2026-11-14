@@ -6,12 +6,12 @@ import { CalloutBlock } from "@/components/ui/CalloutBlock";
 import { DiagonalDivider } from "@/components/ui/DiagonalDivider";
 import { FadeUp } from "@/components/ui/FadeUp";
 import { ParticleField } from "@/components/ui/ParticleField";
-import { CONTACT, CTA } from "@/lib/constants";
+import { CONTACT, CTA, TRIAL } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: "AI Receptionist for Auto Repair Shops",
   description:
-    "An AI receptionist for independent auto repair shops. Answers the calls you miss on your current number and emails you a summary. $99/month, no setup fee.",
+    "An AI receptionist for independent auto repair shops. Answers the calls you miss on your current number and emails you a summary. $99/month, free for 7 days.",
   robots: { index: true, follow: true },
 };
 
@@ -41,7 +41,7 @@ const SUMMARY = [
     title: "What it costs",
     points: [
       "$99 a month. No setup fee",
-      "Free consultation first, no commitment",
+      `Free for ${TRIAL.days} days, no credit card`,
       "Keeps your number and your phones",
       "Month-to-month, 30 days' notice to cancel",
     ],
@@ -69,7 +69,7 @@ export default function ForShopsPage() {
               I set up an AI receptionist for auto repair shops. When nobody can
               get to the phone, it answers on your current number, takes the
               customer&apos;s details and emails you a summary. It&apos;s $99 a
-              month, with no setup fee.
+              month, and you can try it free for a week.
             </p>
             <a
               href="#the-short-version"
@@ -138,10 +138,10 @@ export default function ForShopsPage() {
           <FadeUp delay={80}>
             <CalloutBlock className="max-w-2xl">
               <p className="text-xs font-bold tracking-widest uppercase text-gold mb-3">
-                Morgatech Auto Repair, Beltsville MD
+                Running live at a Maryland independent shop
               </p>
               <p className="text-sm text-grey leading-relaxed">
-                Morgatech is our first auto repair client. The AI answers the
+                Our first auto repair client is an independent shop in Maryland. The AI answers the
                 calls the shop can&apos;t get to, and we built the shop a website
                 assistant that books appointments, email follow-up, Google Ads
                 and a dashboard that shows it all in one place.
@@ -162,18 +162,18 @@ export default function ForShopsPage() {
               Ready to show your owner?
             </h2>
             <p className="text-cream/70 text-base leading-relaxed mb-10 max-w-xl">
-              Book a free consultation and we&apos;ll call you back, or pick a time
-              and we&apos;ll walk through it with you and your owner.
+              Start the free {TRIAL.days}-day trial on your shop&apos;s number, or
+              book a call and we&apos;ll walk through it together.
             </p>
           </FadeUp>
 
           <FadeUp delay={100}>
             <div className="flex flex-wrap items-center gap-4">
               <Link
-                href={CTA.primary.href}
+                href={TRIAL.cta.href}
                 className="inline-flex items-center gap-2 bg-gold hover:bg-goldlight text-white text-sm font-semibold px-8 py-4 transition-colors"
               >
-                {CTA.primary.label} →
+                {TRIAL.cta.label} →
               </Link>
               <a
                 href={CONTACT.calendarUrl}

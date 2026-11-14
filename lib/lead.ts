@@ -53,7 +53,7 @@ export interface LeadInput {
   phone?: string;
   email?: string;
   message?: string;
-  /** Which form or page: "contact-page", "pricing-cta". */
+  /** Which form or page: "contact-page", "trial-signup". */
   campaign: string;
   /** One per form fill, so a retry or double click isn't counted twice. */
   submission_id: string;
